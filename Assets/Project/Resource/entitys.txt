@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EntityData>
+    <Name>actor1</Name>
+    <Mesh />
+  </EntityData>
+</ArrayOfEntityData>
