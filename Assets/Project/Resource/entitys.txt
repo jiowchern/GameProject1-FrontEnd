@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
-    <Name>actor1</Name>
-    <Mesh />
+    <Name>ACTOR1</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
+    <Name>ACTOR2</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-1.36602545" y="-0.366025329" />
+        <Vector2 x="0.366025329" y="-1.36602545" />
+        <Vector2 x="1.36602545" y="0.366025329" />
+        <Vector2 x="-0.366025329" y="1.36602545" />
+      </ArrayOfVector2>
+    </Mesh>
   </EntityData>
 </ArrayOfEntityData>

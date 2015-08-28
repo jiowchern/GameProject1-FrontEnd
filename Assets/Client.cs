@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq.Expressions;
 using Regulus.Framework;
 using Regulus.Project.ItIsNotAGame1;
+using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Project.ItIsNotAGame1.Game.Play;
 using Regulus.Utility;
 
@@ -17,6 +18,7 @@ public class Client : MonoBehaviour
         STANDALONE,REMOTING
     }
 
+    public TextAsset EntitySource;
     public MODE Mode;
     public Console Console;
     private Client<IUser> _Client;
@@ -47,6 +49,7 @@ public class Client : MonoBehaviour
         }
         else
         {
+            _InitialResource();
             var feature = new Regulus.Project.ItIsNotAGame1.Game.DummyFrature();
             var center = new Center(feature, feature);
             
@@ -60,6 +63,16 @@ public class Client : MonoBehaviour
 
         User = user;
 
+    }
+
+    private void _InitialResource()
+    {
+        Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Entitys = _ReadEntitys();
+    }
+
+    private EntityData[] _ReadEntitys()
+    {
+        return Regulus.Utility.Serialization.Read<EntityData[]>(EntitySource.bytes);
     }
 
     public IUser User { get; private set; }
