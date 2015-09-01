@@ -12,25 +12,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
     public class Zone :Regulus.Utility.IUpdatable
     {
-        class Realm
-        {
-            private readonly EntityData[] _EntityDatas;
-            private readonly Map _Map;
-
-            public Realm(EntityData[] entity_datas)
-            {
-                _EntityDatas = entity_datas;
-                _Map = new Map();
-            }
-
-            public Map Query()
-            {
-                return _Map;
-            }
-        }
-        private Dictionary<string, Realm> _Realms;
-
         
+
+        private Dictionary<string, Realm> _Realms;
 
         public Zone(RealmMaterial[] realm_materials)
         {
@@ -41,7 +25,12 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
             foreach (var material in realm_materials)
             {
-                _Realms.Add(material.Name , new Realm(material.EntityDatas));
+                Dictionary<MAZEWALL, EntityData> entitys = new Dictionary<MAZEWALL, EntityData>();
+                entitys.Add(MAZEWALL.EAST, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_EAST));
+                entitys.Add(MAZEWALL.SOUTH, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_SOUTH));
+                entitys.Add(MAZEWALL.WESTERN, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_WESTERN));
+                entitys.Add(MAZEWALL.NORTH, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_NORTH));
+                _Realms.Add(material.Name , new Realm(entitys));
             }            
         }
         
