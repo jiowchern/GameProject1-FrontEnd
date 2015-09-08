@@ -31,7 +31,6 @@ public class EntityExportMark : MonoBehaviour
 
             vertices[i] = vertex;
         }
-        
 
         var points = from vertex in vertices select new Regulus.CustomType.Vector2(vertex.x, vertex.z);
 
