@@ -25,12 +25,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
             foreach (var material in realm_materials)
             {
-                Dictionary<MAZEWALL, EntityData> entitys = new Dictionary<MAZEWALL, EntityData>();
-                entitys.Add(MAZEWALL.EAST, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_EAST));
-                entitys.Add(MAZEWALL.SOUTH, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_SOUTH));
-                entitys.Add(MAZEWALL.WESTERN, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_WESTERN));
-                entitys.Add(MAZEWALL.NORTH, Singleton<Resource>.Instance.FindEntity(ENTITY.WALL_NORTH));
-                _Realms.Add(material.Name , new Realm(entitys));
+                
+                _Realms.Add(material.Name , new Realm());
             }            
         }
         

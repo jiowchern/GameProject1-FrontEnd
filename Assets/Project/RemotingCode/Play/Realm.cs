@@ -11,9 +11,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
     {        
         private readonly Map _Map;
 
-        private readonly int _Witdh;
+        private readonly float _Witdh;
 
-        private readonly int _Height;
+        private readonly float _Height;
 
 
         class WallShift
@@ -55,29 +55,27 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         }
 
         private readonly Dictionary<MAZEWALL, WallShift> _DirectionPoints;
-        private readonly Dictionary<MAZEWALL, EntityData> _EntitySource;
+        
 
         private readonly Dictionary<MAZEWALL ,ENTITY> _WallToEntity;
 
-        public Realm(Dictionary<MAZEWALL, EntityData> entity_source)
+        public Realm()
         {
             _WallToEntity = new Dictionary<MAZEWALL, ENTITY>();
             _WallToEntity.Add(MAZEWALL.EAST, ENTITY.WALL_EAST);
             _WallToEntity.Add(MAZEWALL.SOUTH, ENTITY.WALL_SOUTH);
             _WallToEntity.Add(MAZEWALL.WESTERN, ENTITY.WALL_WESTERN);
             _WallToEntity.Add(MAZEWALL.NORTH, ENTITY.WALL_NORTH);
-            _EntitySource = new Dictionary<MAZEWALL, EntityData>(entity_source); 
-
             
 
-            _Witdh = 50;
-            _Height = 50;
+            _Witdh = 10;
+            _Height = 10;
 
             _DirectionPoints = new Dictionary<MAZEWALL, WallShift>();
-            _DirectionPoints.Add(MAZEWALL.EAST, new WallShift(new Vector2(_Witdh , 0) , WallShift._East));
-            _DirectionPoints.Add(MAZEWALL.SOUTH, new WallShift(new Vector2(0, -_Height), WallShift._South));
-            _DirectionPoints.Add(MAZEWALL.WESTERN, new WallShift(new Vector2(-_Witdh, 0), WallShift._Western));
-            _DirectionPoints.Add(MAZEWALL.NORTH, new WallShift(new Vector2(0, _Height), WallShift._North));
+            _DirectionPoints.Add(MAZEWALL.EAST, new WallShift(new Vector2(_Witdh / 2  , 0) , WallShift._East));
+            _DirectionPoints.Add(MAZEWALL.SOUTH, new WallShift(new Vector2(0, -_Height / 2), WallShift._South));
+            _DirectionPoints.Add(MAZEWALL.WESTERN, new WallShift(new Vector2(-_Witdh/ 2, 0), WallShift._Western));
+            _DirectionPoints.Add(MAZEWALL.NORTH, new WallShift(new Vector2(0, _Height / 2), WallShift._North));
 
             _Map = _BuildMap();
 
@@ -86,59 +84,63 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private Map _BuildMap()
         {
             var map = new Map();
-            IEnumerable<MazeCell> cells = _BuildMaze(_Witdh,_Height);
+            IEnumerable<MazeCell> cells = _BuildMaze();
             foreach(var cell in cells)
             {
                 foreach(var wall in cell.Walls)
                 {
-                    IIndividual entity = _BuildWall(wall , cell.X , cell.Y  );
+                    IIndividual entity = _BuildWall(wall , cell.Row , cell.Column  );
                     map.JoinStaff(entity);                    
                 }
             }
             return map;
         }
 
-        private IIndividual _BuildWall(MAZEWALL wall, int x, int y)
+        private IIndividual _BuildWall(MAZEWALL wall, int row, int column)
         {
             Entity entity = _GetEntity(wall);
             IIndividual individual = entity;
+
             var bound = individual.Mesh.Points.ToRect();
-            Vector2 offset = _GetOffset(wall , x ,y , bound);
+
+            Vector2 offset = _GetOffset(wall , -row * _Witdh,- column * _Height , bound);
+
             individual.SetPosition(offset.X , offset.Y);
             return entity;
         }
 
-        private Vector2 _GetOffset(MAZEWALL wall, int x, int y, Rect bound)
+        private Vector2 _GetOffset(MAZEWALL wall, float center_x, float center_y, Rect bound)
         {
             Vector2 directPoint = _DirectionPoints[wall].GetDatum(bound);
-            return new Vector2(directPoint.X + x , directPoint.Y + y);
+            return new Vector2(directPoint.X + center_x , directPoint.Y + center_y);
         }
 
         private Entity _GetEntity(MAZEWALL wall)
-        {
-            var source = _EntitySource[wall];
+        {            
             var record = new GamePlayerRecord();
             record.Entity = _WallToEntity[wall];
             return EntityProvider.Create(record);
         }
 
-        private IEnumerable<MazeCell> _BuildMaze(int width, int height)
+        private IEnumerable<MazeCell> _BuildMaze()
         {
             var maze = new Maze();
             maze.Generate();
             int index = 0;
-            Regulus.CustomType.Flag<MAZEWALL> walls = new Flag<MAZEWALL>();
+            
             foreach(var cell in maze.Cells)
             {
-                int x = index % width;
-                int y = index / width;
+                var walls = new Flag<MAZEWALL>();
+                int column = cell.Column;
+                int row = cell.Row;
                 if(cell.Walls[0] == 1)
                 {
                     walls[MAZEWALL.NORTH] = true;
                 }
                 if (cell.Walls[1] == 1)
                 {
-                    walls[MAZEWALL.WESTERN] = true;
+                    walls[MAZEWALL.EAST] = true;
+                    
                 }
                 if (cell.Walls[2] == 1)
                 {
@@ -146,12 +148,12 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 }
                 if (cell.Walls[3] == 1)
                 {
-                    walls[MAZEWALL.EAST] = true;
+                    walls[MAZEWALL.WESTERN] = true;
                 }
                 yield return new MazeCell()
                 {
-                    X = x,
-                    Y = y,
+                    Row = row,
+                    Column = column,
                     Walls = walls
                 };
 

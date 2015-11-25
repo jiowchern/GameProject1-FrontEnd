@@ -11,9 +11,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
     {
 
         
-        private Regulus.Collection.QuadTree<Visible> _QuadTree;
+        private readonly Regulus.Collection.QuadTree<Visible> _QuadTree;
 
-        private List<Visible> _Set;
+        private readonly List<Visible> _Set;
 
         public Map()
         {
@@ -71,7 +71,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public void JoinChallenger(IIndividual individual)
         {
             _Join(individual);
-            individual.SetPosition(Regulus.Utility.Random.Instance.NextFloat(0,10) , Regulus.Utility.Random.Instance.NextFloat(0, 10));
+            individual.SetPosition(Regulus.Utility.Random.Instance.NextFloat(0,2.5f) , Regulus.Utility.Random.Instance.NextFloat(0, 2.5f));
         }
 
         private void _Join(IIndividual individual)

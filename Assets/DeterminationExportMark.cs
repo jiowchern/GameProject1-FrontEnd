@@ -27,4 +27,9 @@ public class DeterminationExportMark : MonoBehaviour
         {
             return new Vector2(transform.position.x,  transform.position.z);
         } }
+
+    public bool Enable
+    {
+        get { return gameObject.activeInHierarchy; }
+    }
 }

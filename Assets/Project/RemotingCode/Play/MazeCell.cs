@@ -3,8 +3,8 @@
     
     internal struct MazeCell
     {
-        public int X;
-        public int Y;
+        public int Row;
+        public int Column;
 
         
         public Regulus.CustomType.Flag<MAZEWALL> Walls;

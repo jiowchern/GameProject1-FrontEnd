@@ -102,11 +102,18 @@ public class Recorder : EditorWindow {
         }
 
         clip.SampleAnimation(go, clip.length);
-        Debug.LogFormat("mark {0} , Position {1}", markLeft.GetInstanceID(), markLeft.Position);
-        points.Add(markLeft.Position);
+        if(markLeft.Enable)
+        {
+            Debug.LogFormat("mark {0} , Position {1}", markLeft.GetInstanceID(), markLeft.Position);
+            points.Add(markLeft.Position);
+        }
 
-        Debug.LogFormat("mark {0} , Position {1}", markRight.GetInstanceID(), markRight.Position);
-        points.Add(markRight.Position);
+        if(markRight.Enable)
+        {
+            Debug.LogFormat("mark {0} , Position {1}", markRight.GetInstanceID(), markRight.Position);
+            points.Add(markRight.Position);
+        }
+            
 
         return points.ToArray();
     }
