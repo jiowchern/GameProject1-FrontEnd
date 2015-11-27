@@ -109,7 +109,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public void Move(float angle)
         {
-            _Speed = 1.0f;
+            _Speed = 5.0f;
             _SetMove(angle);
         }
 
@@ -144,8 +144,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private Rect _BuildVidw()
         {
             var center = _Mesh.Center;
-            var hw = _View;
-            var hh = _View;
+            var hw = _View / 2;
+            var hh = _View / 2;
             var rect = new Rect(center.X - hw, center.Y - hh, _View , _View);
             return rect;
         }
