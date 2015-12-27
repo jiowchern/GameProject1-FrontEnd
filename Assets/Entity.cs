@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour {
 
     private float _ProbeLength;
 
-    private IActorStatus _ActorStatus;
+    
 
     public Guid Id
     {
@@ -35,32 +35,19 @@ public class Entity : MonoBehaviour {
     {
         if (_Visible != null)
         {
-            _Visible.MoveEvent -= _Move;            
+            _Visible.StatusEvent -= _Move;            
         }
 
         if (_Client != null)
         {
-            _Client.User.ActorStatusProvider.Supply -= _SupplyActorStatus;
+            
             _Client.User.VisibleProvider.Unsupply -= _DestroyEntity;
         }
     }
 
-    private void _SupplyActorStatus(IActorStatus obj)
-    {
-        if(_Visible.Id != obj.Id)
-            return;
-        
-        _ActorStatus = obj;
-        _ActorStatus.ChangeEvent += _ChangeActorStatus;
-    }
+    
 
-    private void _ChangeActorStatus(ACTOR_STATUS_TYPE arg1, ACTOR_STATUS_TYPE arg2)
-    {
-        if (_Animator != null)
-        {
-            _Animator.SetInteger("Status", (int)arg1);            
-        }
-    }
+    
 
     // Use this for initialization
     void Start () {
@@ -68,7 +55,7 @@ public class Entity : MonoBehaviour {
         if (_Client != null)
         {
 
-            _Client.User.ActorStatusProvider.Supply += _SupplyActorStatus;
+            
             _Client.User.VisibleProvider.Unsupply += _DestroyEntity;
         }
 
@@ -108,7 +95,7 @@ public class Entity : MonoBehaviour {
         if(_Visible != null)
             throw new Exception("重複設定.");
         _Visible = visible;
-        _Visible.MoveEvent += _Move;
+        _Visible.StatusEvent += _Move;
 
         
         _SetPosition(_Visible.Position);
@@ -147,18 +134,21 @@ public class Entity : MonoBehaviour {
         _SetPosition(pos);
     }
 
-    private void _Move(Vector2 position, float speed , float direction , float trun)
+    private void _Move(VisibleStatus status)
     {        
-        _SetPosition(position);
+        _SetPosition(status.StartPosition);
         
-        Speed = speed;
-        Trun = trun;
+        Speed = status.Speed;
+        Trun = status.Trun;
 
         var eulerAngles = Root.rotation.eulerAngles;
-        eulerAngles.y = direction;
+        eulerAngles.y = status.Direction;
         Root.rotation = Quaternion.Euler(eulerAngles);
 
-        
+        if (_Animator != null)
+        {
+            _Animator.SetInteger("Status", (int)status.Status);
+        }
     }
 
     private void _UpdateAnimator()

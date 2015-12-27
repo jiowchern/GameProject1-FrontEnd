@@ -3,6 +3,20 @@ guid: 14a1f44bbc34b564cb04a6694ba1b847
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: modern_bay_window_01_A
+    100004: modern_bay_window_01_C
+    100006: modern_window_01
+    400000: //RootNode
+    400002: modern_bay_window_01_A
+    400004: modern_bay_window_01_C
+    400006: modern_window_01
+    2300000: modern_bay_window_01_A
+    2300002: modern_bay_window_01_C
+    2300004: modern_window_01
+    3300000: modern_bay_window_01_A
+    3300002: modern_bay_window_01_C
+    3300004: modern_window_01
     4300000: modern_window_06
     4300002: separation
     4300004: modern_window_05
@@ -28,6 +42,10 @@ ModelImporter:
     4300044: modern_bay_window_01_C
     4300046: modern_bay_window_01
     4300048: modern_bay_window_03
+    6400000: modern_bay_window_01_A
+    6400002: modern_bay_window_01_C
+    6400004: modern_window_01
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0

@@ -3,8 +3,22 @@ guid: f380b4fb152f4d84ba0d9c758ad56161
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: doorknob
+    100004: simple_door
+    400000: //RootNode
+    400002: doorknob
+    400004: simple_door
+    2300000: doorknob
+    2300002: simple_door
+    3300000: doorknob
+    3300002: simple_door
     4300000: simple_door
     4300002: doorknob
+    6400000: doorknob
+    6400002: simple_door
+    7400000: C4D Animation Take
+    11100000: //RootNode
   materials:
     importMaterials: 0
     materialName: 0
