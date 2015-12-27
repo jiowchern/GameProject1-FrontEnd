@@ -1,0 +1,47 @@
+﻿using System;
+
+using UnityEngine;
+using System.Collections;
+
+using Regulus.Project.ItIsNotAGame1.Data;
+
+
+
+public class GameItem : MonoBehaviour
+{
+    public UnityEngine.UI.Text Name;
+    private Regulus.Project.ItIsNotAGame1.Data.Item _Item;
+
+    public Guid Id {
+        get { return _Item.Id; }
+    }
+
+    void OnDestroy()
+    {
+        
+    }
+    void Start () {
+        
+    }
+
+    private void InventoryNotifierProvider_Supply(Regulus.Project.ItIsNotAGame1.Data.IInventoryNotifier obj)
+    {
+        
+        
+        
+        
+    }
+
+    
+
+    // Update is called once per frame
+    public void Update () {
+	
+	}
+
+    public void Set(Regulus.Project.ItIsNotAGame1.Data.Item item)
+    {
+        _Item = item;
+        Name.text = _Item.Name;
+    }
+}

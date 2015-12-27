@@ -6,6 +6,7 @@ using Regulus.Project.ItIsNotAGame1;
 using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Project.ItIsNotAGame1.Game.Play;
 using Regulus.Utility;
+using System;
 
 public class Client : MonoBehaviour
 {
@@ -32,12 +33,16 @@ public class Client : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
+        
+        Regulus.Utility.SpinWait.NotWindowsPlatform();
         var client = new Regulus.Framework.Client<Regulus.Project.ItIsNotAGame1.IUser>(Console, Console);
         client.ModeSelectorEvent += _ToMode;
         _Client = client;
 	    _Updater.Add(_Client);
         
-	}
+    }
+
+    
 
     private void _ToMode(GameModeSelector<IUser> selector)
     {

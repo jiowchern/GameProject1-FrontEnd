@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
+    <Name>ACTOR1</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.2598096" y="0.239789426" />
+        <Vector2 x="-0.239789426" y="-0.2598096" />
+        <Vector2 x="0.2598096" y="-0.239789426" />
+        <Vector2 x="0.239789426" y="0.2598096" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
     <Name>WALL_SOUTH</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -45,24 +56,13 @@
     </Mesh>
   </EntityData>
   <EntityData>
-    <Name>ACTOR1</Name>
+    <Name>DEBIRS</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-0.5" />
-        <Vector2 x="0.5" y="-0.5" />
-        <Vector2 x="0.5" y="0.5" />
-        <Vector2 x="-0.5" y="0.5" />
-      </ArrayOfVector2>
-    </Mesh>
-  </EntityData>
-  <EntityData>
-    <Name>ACTOR2</Name>
-    <Mesh>
-      <ArrayOfVector2>
-        <Vector2 x="-1.36602545" y="-0.366025329" />
-        <Vector2 x="0.366025329" y="-1.36602545" />
-        <Vector2 x="1.36602545" y="0.366025329" />
-        <Vector2 x="-0.366025329" y="1.36602545" />
+        <Vector2 x="-1" y="-1" />
+        <Vector2 x="1" y="-1" />
+        <Vector2 x="1" y="1" />
+        <Vector2 x="-1" y="1" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>

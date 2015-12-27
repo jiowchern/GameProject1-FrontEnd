@@ -29,7 +29,7 @@ public class Login : MonoBehaviour
 
     void OnDestroy()
     {
-        
+        _Machine.Termination();
     }
 
     void Update()

@@ -10,10 +10,12 @@ using Regulus.Extension;
 public class EntityExportMark : MonoBehaviour
 {
     public Regulus.Project.ItIsNotAGame1.Data.ENTITY Name;
-
+    public GameObject Body;
     public EntityData BuildEntity()
     {
-        var filter = GetComponent<MeshFilter>();
+        
+        
+        var filter = Body.GetComponent<MeshFilter>();
         var sharedMesh = filter.sharedMesh;
         var sourceMesh = GameObject.Instantiate(sharedMesh);
 
@@ -22,10 +24,12 @@ public class EntityExportMark : MonoBehaviour
         var angle = Quaternion.AngleAxis(transform.rotation.eulerAngles.y, Vector3.up);
         for (var i = 0; i < vertices.Length; i++)
         {
+            
             var vertex = vertices[i];
-            vertex.x = vertex.x*transform.localScale.x;
-            vertex.y = vertex.y*transform.localScale.y;
-            vertex.z = vertex.z*transform.localScale.z;
+            
+            vertex.x = vertex.x* Body.transform.lossyScale.x;
+            vertex.y = vertex.y* Body.transform.lossyScale.y;
+            vertex.z = vertex.z* Body.transform.lossyScale.z;
 
             vertex = angle * vertex;            
 

@@ -23,9 +23,9 @@ public class Console : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        
-        
-	}
+        Regulus.Utility.Log.Instance.RecordEvent += _WriteLine;
+
+    }
 
     void OnGUI()
     {
