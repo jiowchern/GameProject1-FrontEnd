@@ -11,7 +11,7 @@ using System.Collections;
 [NodeAuthor("Detox Studios LLC", "http://www.detoxstudios.com")]
 [NodeHelp("http://www.uscript.net/docs/index.php?title=Node_Reference_Guide#GUI_Button")]
 
-[FriendlyName("GUI Button", "Shows a GUIButton on the screen and allows responses when held down, released, and clicked.")]
+[FriendlyName("GUI ExploreButton", "Shows a GUIButton on the screen and allows responses when held down, released, and clicked.")]
 public class uScriptAct_GUIButton : uScriptLogic
 {
    private class Identifier
@@ -26,16 +26,16 @@ public class uScriptAct_GUIButton : uScriptLogic
 
    public delegate void uScriptEventHandler(object sender, System.EventArgs args);
 
-   [FriendlyName("Button Down")]
+   [FriendlyName("ExploreButton Down")]
    public event uScriptEventHandler OnButtonDown;
  
-   [FriendlyName("Button Held")]
+   [FriendlyName("ExploreButton Held")]
    public event uScriptEventHandler OnButtonHeld;
  
-   [FriendlyName("Button Up")]
+   [FriendlyName("ExploreButton Up")]
    public event uScriptEventHandler OnButtonUp;
  
-   [FriendlyName("Button Clicked")]
+   [FriendlyName("ExploreButton Clicked")]
    public event uScriptEventHandler OnButtonClicked;
 
    public bool Out { get { return true; } }

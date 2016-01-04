@@ -23,7 +23,7 @@ public class uScriptCon_CompareVector2 : uScriptLogic
       [FriendlyName("A", "First value to compare.")]
       Vector2 A,
 
-      [FriendlyName("B", "Second value to compare.")]
+      [FriendlyName("B", "Total value to compare.")]
       Vector2 B
       )
    {

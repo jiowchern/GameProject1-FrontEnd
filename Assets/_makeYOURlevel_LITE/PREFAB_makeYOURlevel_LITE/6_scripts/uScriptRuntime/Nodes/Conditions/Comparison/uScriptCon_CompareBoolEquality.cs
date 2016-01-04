@@ -26,7 +26,7 @@ public class uScriptCon_CompareBoolEquality : uScriptLogic
       [FriendlyName("A", "First value to compare.")]
       bool A,
       
-      [FriendlyName("B", "Second value to compare.")]
+      [FriendlyName("B", "Total value to compare.")]
       bool B
       )
    {

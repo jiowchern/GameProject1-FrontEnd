@@ -42,7 +42,7 @@ public class uScriptCon_CompareInt : uScriptLogic
       [FriendlyName("A", "First value to compare.")]
       int A,
 
-      [FriendlyName("B", "Second value to compare.")]
+      [FriendlyName("B", "Total value to compare.")]
       int B
       )
    {

@@ -6,11 +6,11 @@ using System.Collections;
 [NodePath("Actions/GUI/Controls")]
 
 [NodeCopyright("Copyright 2012 by Detox Studios LLC")]
-[NodeToolTip("Shows a GUI Button on the screen using Unity's automatic layout system.")]
+[NodeToolTip("Shows a GUI ExploreButton on the screen using Unity's automatic layout system.")]
 [NodeAuthor("Detox Studios LLC", "http://www.detoxstudios.com")]
 [NodeHelp("http://www.uscript.net/docs/index.php?title=Node_Reference_Guide#GUILayout_Button")]
 
-[FriendlyName("GUILayout Button", "Shows a GUI Button on the screen using Unity's automatic layout system. The button will trigger events when Clicked, but also on Down, Held, and Up events.")]
+[FriendlyName("GUILayout ExploreButton", "Shows a GUI ExploreButton on the screen using Unity's automatic layout system. The button will trigger events when Clicked, but also on Down, Held, and Up events.")]
 public class uScriptAct_GUILayoutButton : uScriptLogic
 {
    private class Identifier
@@ -29,13 +29,13 @@ public class uScriptAct_GUILayoutButton : uScriptLogic
 
    public delegate void uScriptEventHandler(object sender, System.EventArgs args);
 
-   [FriendlyName("Button Clicked")]
+   [FriendlyName("ExploreButton Clicked")]
    public event uScriptEventHandler OnButtonClicked;
-   [FriendlyName("Button Down")]
+   [FriendlyName("ExploreButton Down")]
    public event uScriptEventHandler OnButtonDown;
-   [FriendlyName("Button Held")]
+   [FriendlyName("ExploreButton Held")]
    public event uScriptEventHandler OnButtonHeld;
-   [FriendlyName("Button Up")]
+   [FriendlyName("ExploreButton Up")]
    public event uScriptEventHandler OnButtonUp;
 
    public bool Out { get { return true; } }

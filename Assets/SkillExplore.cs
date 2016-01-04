@@ -9,10 +9,15 @@ using Regulus.Project.ItIsNotAGame1.Data;
 public class SkillExplore : MonoBehaviour {
     private Client _Client;
 
-    public UnityEngine.UI.Image Image;
+    public GameObject ExploreObject;
+    
 
-    public UnityEngine.UI.Button Button;
-    private ISkillController _SkillController;
+    public GameObject BattleObject;
+
+    public GameObject MakeObject;
+
+
+    private INormalSkill _SkillController;
 
     // Use this for initialization
 	void Start () {
@@ -20,8 +25,8 @@ public class SkillExplore : MonoBehaviour {
 	    _Client = Client.Instance;
         if(_Client != null)
         {
-            _Client.User.SkillControllerProvider.Supply += _Supply;
-            _Client.User.SkillControllerProvider.Unsupply += _Unsupply;
+            _Client.User.NormalControllerProvider.Supply += _Supply;
+            _Client.User.NormalControllerProvider.Unsupply += _Unsupply;
         }
 
         
@@ -29,8 +34,9 @@ public class SkillExplore : MonoBehaviour {
 
     private void _Disable()
     {
-        Image.enabled = false;
-        Button.enabled = false;
+        ExploreObject.SetActive(false);
+        BattleObject.SetActive(false);
+        MakeObject.SetActive(false);
         _SkillController = null;
     }
 
@@ -38,52 +44,86 @@ public class SkillExplore : MonoBehaviour {
     {
         if (_Client != null)
         {
-            _Client.User.SkillControllerProvider.Supply -= _Supply;
-            _Client.User.SkillControllerProvider.Unsupply -= _Unsupply;
+            _Client.User.NormalControllerProvider.Supply -= _Supply;
+            _Client.User.NormalControllerProvider.Unsupply -= _Unsupply;
         }
     }
 
-    private void _Unsupply(ISkillController obj)
+    private void _Unsupply(INormalSkill obj)
     {
         _Disable();        
         
     }
 
-    private void _Supply(ISkillController obj)
+    private void _Supply(INormalSkill obj)
     {
         _Enable(obj);
     }
 
-    private void _Enable(ISkillController skill_controller)
+    private void _Enable(INormalSkill skill_controller)
     {
-        Button.enabled = true;
-        Image.enabled = true;
+        MakeObject.SetActive(true);
+        ExploreObject.SetActive(true);
+        BattleObject.SetActive(true);
         _SkillController = skill_controller;
     }
 
     // Update is called once per frame
 	void Update ()
     {
-        if(_SkillController != null)
-	        if (Input.GetKeyUp(KeyCode.E))
+	    if (_SkillController != null)
+	    {
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                Explore();
+            }
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                Battle();
+            }
+	        if (Input.GetKeyUp(KeyCode.M))
 	        {
-	            Explore();
+	            Make();
 	        }
+        }
+	        
 	}
+
+    public void Make()
+    {
+        _SkillController.Make();
+    }
+
+    public void Battle()
+    {
+        var entity = _FindEntity();
+        if (entity != null)
+        {
+            _SkillController.Battle();
+        }
+    }
 
     public void Explore()
     {
+        var entity = _FindEntity();
+        if (entity != null)
+        {
+            var id = entity.GetExploreTarget();
+            if (id != Guid.Empty)
+            {
+                _SkillController.Explore(id);
+            }
+        }
+    }
+
+    private Entity _FindEntity()
+    {
         if (_Client != null)
         {
-            var entity = GameObject.FindObjectsOfType<Entity>().FirstOrDefault(e => e.Id == EntityController.MainEntityId);
-            if (entity != null)
-            {
-                var id= entity.GetExploreTarget();
-                if(id != Guid.Empty)
-                    _SkillController.Explore(id);
-            }
-                
+            return  GameObject.FindObjectsOfType<Entity>().FirstOrDefault(e => e.Id == EntityController.MainEntityId);
+
+
         }
-        
+        return null;
     }
 }

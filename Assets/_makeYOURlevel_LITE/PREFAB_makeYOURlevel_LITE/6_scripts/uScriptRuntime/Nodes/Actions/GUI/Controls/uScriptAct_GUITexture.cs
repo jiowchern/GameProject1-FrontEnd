@@ -30,7 +30,7 @@ public class uScriptAct_GUITexture : uScriptLogic
       [DefaultValue(true), SocketState(false, false)]
       bool alphaBlend,
 
-      [FriendlyName("Image Aspect", "Aspect ratio to use for the source image. If 0 (default), the aspect ratio from the image is used. Otherwise, pass width/height.")]
+      [FriendlyName("ExploreImage Aspect", "Aspect ratio to use for the source image. If 0 (default), the aspect ratio from the image is used. Otherwise, pass width/height.")]
       [DefaultValue(1.0f), SocketState(false, false)]
       float aspect
       )

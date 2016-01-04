@@ -13,8 +13,12 @@ public class KickDetector : MonoBehaviour {
     // Use this for initialization
     void Start () {
         _Client = Client.Instance;
-        _Client.User.AccountStatusProvider.Supply += _AccountStatusProvider;
-        _Client.User.AccountStatusProvider.Unsupply += _ToLeave;
+        if (_Client != null)
+        {
+            _Client.User.AccountStatusProvider.Supply += _AccountStatusProvider;
+            _Client.User.AccountStatusProvider.Unsupply += _ToLeave;
+        }
+        
     }
 
     private void _ToLeave(IAccountStatus obj)

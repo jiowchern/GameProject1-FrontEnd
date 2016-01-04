@@ -23,7 +23,7 @@ public class uScriptCon_CompareString : uScriptLogic
       [FriendlyName("A", "First value to compare.")]
       string A,
 
-      [FriendlyName("B", "Second value to compare.")]
+      [FriendlyName("B", "Total value to compare.")]
       string B
       )
    {

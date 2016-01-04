@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 8f0565f23a2b58541a475bd3c1393052
+timeCreated: 1451416294
+licenseType: Pro
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
@@ -842,7 +844,7 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: unitychan_legComb(Clone)
+    - name: unitychan(Clone)
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -974,7 +976,7 @@ ModelImporter:
       transformModified: 1
     - name: Character1_LeftHandPinky1
       position: {x: -.0657528415, y: -.0278355982, z: -.00228359317}
-      rotation: {x: -.114455208, y: .00908514112, z: .0232587978, w: .993114531}
+      rotation: {x: -.114455216, y: .00908514205, z: .0232587997, w: .993114591}
       scale: {x: 1.00000179, y: 1.00000191, z: 1.00000119}
       transformModified: 1
     - name: Character1_LeftHandPinky2
@@ -1049,7 +1051,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_Sode_B01
       position: {x: -.150872916, y: 6.77160026e-17, z: 6.93889349e-19}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_L_Sode_C00
@@ -1059,7 +1061,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_Sode_C01
       position: {x: -.162878796, y: -2.09545425e-09, z: 1.60006741e-09}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_L_Sode_D00
@@ -1069,7 +1071,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_Sode_D01
       position: {x: -.14457126, y: -.000816515123, z: -.00739906589}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Character1_Neck
@@ -1098,8 +1100,8 @@ ModelImporter:
       scale: {x: 1.0000006, y: 1.00000083, z: 1.00000095}
       transformModified: 1
     - name: EL_DEF
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: eye_L_old
@@ -1119,7 +1121,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_HairFront_00
       position: {x: -.118353106, y: .110627212, z: -.00064682652}
-      rotation: {x: -.0460101776, y: .997706354, z: .0389004424, w: -.030851718}
+      rotation: {x: -.0460101813, y: .997706413, z: .0389004461, w: -.0308517199}
       scale: {x: 1.0000006, y: 1.00000036, z: 1.0000006}
       transformModified: 1
     - name: J_L_HairFront_01
@@ -1174,7 +1176,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_HairTail_06
       position: {x: -.15477863, y: 6.88338281e-17, z: 1.22124532e-17}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_L_HeadRibbon_00
@@ -1194,7 +1196,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_HairFront_00
       position: {x: -.118646674, y: .109952554, z: -.00727658486}
-      rotation: {x: -.113700971, y: .97812748, z: -.160298407, w: -.0681405962}
+      rotation: {x: -.113700978, y: .978127539, z: -.160298422, w: -.0681406036}
       scale: {x: 1.00000036, y: 1.0000006, z: 1.0000006}
       transformModified: 1
     - name: J_R_HairFront_01
@@ -1214,7 +1216,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_HairSide_02
       position: {x: -.0707349703, y: 3.33066888e-17, z: -1.12132524e-16}
-      rotation: {x: -.389522761, y: .590145826, z: -.512844384, w: -.486816734}
+      rotation: {x: -.389522791, y: .590145886, z: -.512844443, w: -.486816764}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_HairTail_00
@@ -1249,7 +1251,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_HairTail_06
       position: {x: -.154778227, y: 7.54951665e-17, z: -6.38378209e-18}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_HeadRibbon_00
@@ -1264,7 +1266,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_HeadRibbon_02
       position: {x: -.141728848, y: -9.76996256e-17, z: -6.72797344e-17}
-      rotation: {x: .224375039, y: .670563936, z: -.506723285, w: -.493184894}
+      rotation: {x: .224375054, y: .670563996, z: -.506723344, w: -.493184924}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: MTH_DEF
@@ -1334,12 +1336,12 @@ ModelImporter:
       transformModified: 1
     - name: Character1_RightHandPinky1
       position: {x: -.065019004, y: -.0277216043, z: .0103663178}
-      rotation: {x: .968862951, y: -.00202192995, z: -.0916532576, w: -.230000705}
+      rotation: {x: .968862832, y: -.00202192971, z: -.0916532502, w: -.230000675}
       scale: {x: 1.00000119, y: 1.00000131, z: 1.00000095}
       transformModified: 1
     - name: Character1_RightHandPinky2
       position: {x: -.0180976447, y: -.000144284379, z: -5.28006894e-05}
-      rotation: {x: .024406394, y: -.0405219197, z: -.0130859297, w: .998794794}
+      rotation: {x: .0244063959, y: -.0405219235, z: -.0130859306, w: .998794854}
       scale: {x: 1.00000179, y: 1.00000167, z: 1.00000179}
       transformModified: 1
     - name: Character1_RightHandPinky3
@@ -1354,7 +1356,7 @@ ModelImporter:
       transformModified: 1
     - name: Character1_RightHandRing1
       position: {x: -.0743040219, y: -.0137107428, z: .0196560491}
-      rotation: {x: .97558552, y: -.0202830378, z: -.0170527697, w: -.218015209}
+      rotation: {x: .97558558, y: -.0202830397, z: -.0170527715, w: -.218015224}
       scale: {x: 1.00000131, y: 1.00000143, z: 1.00000083}
       transformModified: 1
     - name: Character1_RightHandRing2
@@ -1379,7 +1381,7 @@ ModelImporter:
       transformModified: 1
     - name: Character1_RightHandThumb2
       position: {x: -.032029476, y: .00112795376, z: .000602410873}
-      rotation: {x: .0329685062, y: .0110797305, z: .000129658307, w: .999394953}
+      rotation: {x: .0329685099, y: .0110797314, z: .000129658321, w: .999395013}
       scale: {x: .999999881, y: .999999762, z: .999999881}
       transformModified: 1
     - name: Character1_RightHandThumb3
@@ -1399,7 +1401,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_Sode_A01
       position: {x: -.149007544, y: -.0133324377, z: .00724474899}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_Sode_B00
@@ -1409,7 +1411,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_Sode_B01
       position: {x: -.150670618, y: -.00781177031, z: 1.28410804e-09}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_Sode_C00
@@ -1419,7 +1421,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_Sode_C01
       position: {x: -.162878856, y: 2.79592651e-08, z: 3.74880305e-09}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_Sode_D00
@@ -1429,7 +1431,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_Sode_D01
       position: {x: -.144763365, y: 1.16322756e-08, z: -6.06250561e-09}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_Mune_root_00
@@ -1454,7 +1456,7 @@ ModelImporter:
       transformModified: 1
     - name: J_Mune_root_01
       position: {x: -3.62123352e-11, y: .0374363996, z: .0395602956}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_Mune_00
@@ -1474,12 +1476,12 @@ ModelImporter:
       transformModified: 1
     - name: J_L_SusoSide_00
       position: {x: -.0554340295, y: .00173068431, z: .0986537337}
-      rotation: {x: -.0937465355, y: .697855115, z: .707468987, w: .0608067624}
+      rotation: {x: -.0937465429, y: .697855175, z: .707469046, w: .0608067662}
       scale: {x: 1.00000036, y: 1.0000006, z: 1.00000048}
       transformModified: 1
     - name: J_L_SusoSide_01
       position: {x: -.0993135497, y: .00980486255, z: .00156923488}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_SusoSide_00
@@ -1489,7 +1491,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_SusoSide_01
       position: {x: .0993131325, y: -.00980511494, z: -.00156925467}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_L_Skirt_00
@@ -1529,7 +1531,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_SkirtBack_02
       position: {x: -.183334112, y: 4.0133321e-17, z: -2.53643354e-17}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_L_SusoBack_00
@@ -1539,7 +1541,7 @@ ModelImporter:
       transformModified: 1
     - name: J_L_SusoBack_01
       position: {x: -.102069087, y: -2.45016109e-18, z: -3.95708878e-17}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_Skirt_00
@@ -1579,7 +1581,7 @@ ModelImporter:
       transformModified: 1
     - name: J_R_SkirtBack_02
       position: {x: .183333844, y: 3.32518404e-08, z: 5.25522807e-08}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: J_R_SusoBack_00
@@ -1589,87 +1591,87 @@ ModelImporter:
       transformModified: 1
     - name: J_R_SusoBack_01
       position: {x: .102068879, y: -1.66403957e-08, z: -6.6199064e-08}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: mesh_root
       position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: 0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: button
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: cheek
       position: {x: 2.220446e-18, y: 0, z: -5.55111512e-17}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: hair_accce
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: hair_front
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: hair_frontside
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: hairband
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Leg
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: Shirts
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: shirts_sode
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: shirts_sode_BK
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: skin
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: tail
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: tail_bottom
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: uwagi
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     - name: uwagi_BK
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
       transformModified: 1
     armTwist: .5

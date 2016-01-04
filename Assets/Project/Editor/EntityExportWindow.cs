@@ -17,4 +17,15 @@ public class EntityExportWindow : EditorWindow
         var path = EditorUtility.SaveFilePanel("select", "", "entitys.txt", "txt");
         Serialization.Write(entitys , path);
     }
+
+
+    [MenuItem("Regulus/ItIsNotAGame1/ExportSkill")]
+    static public void ExportSkillFromScene()
+    {
+        var marks = GameObject.FindObjectsOfType<SkillExportMark>();
+        var entitys = (from mark in marks select mark.Data).ToArray();
+
+        var path = EditorUtility.SaveFilePanel("select", "", "skills.txt", "txt");
+        Serialization.Write(entitys, path);
+    }
 }

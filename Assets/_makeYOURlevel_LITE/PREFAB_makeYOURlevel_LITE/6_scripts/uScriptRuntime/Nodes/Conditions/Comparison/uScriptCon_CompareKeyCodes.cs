@@ -27,7 +27,7 @@ public class uScriptCon_CompareKeyCodes : uScriptLogic
       [FriendlyName("A", "First value to compare.")]
       KeyCode A,
       
-      [FriendlyName("B", "Second value to compare.")]
+      [FriendlyName("B", "Total value to compare.")]
       KeyCode B
       )
    {

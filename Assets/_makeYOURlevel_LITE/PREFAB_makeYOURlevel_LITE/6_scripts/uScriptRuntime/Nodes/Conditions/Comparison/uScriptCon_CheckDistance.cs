@@ -26,7 +26,7 @@ public class uScriptCon_CheckDistance : uScriptLogic
                   [FriendlyName("A", "First GameObject.")]
                   GameObject A,
 
-                  [FriendlyName("B", "Second GameObject.")]
+                  [FriendlyName("B", "Total GameObject.")]
                   GameObject B,
 
                   [FriendlyName("Distance", "The distance value for the test.")]

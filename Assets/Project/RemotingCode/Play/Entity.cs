@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 using Regulus.CustomType;
 using Regulus.Extension;
 using Regulus.Project.ItIsNotAGame1.Data;
 namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
-    public class Entity : IIndividual 
+    public class Entity : IIndividual
     {
         Rect _Bound;
         private readonly Polygon _Mesh;
@@ -18,10 +20,25 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private float _DetectionRange;
 
+        private SkillData[] _Datas;
+        /*        {
+                    new SkillData() { Id = ACTOR_STATUS_TYPE.BATTLE_AXE_BLOCK , Total =1.833f },
+                    new SkillData() { Id = ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK1 , Total =2.4f },
+                    new SkillData() { Id = ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK2 , Total =3.167f }
+                };*/
+
         public Inventory Bag { get; private set; }
 
         public Entity(Polygon mesh, GamePlayerRecord record)
         {
+
+            _Datas = Resource.Instance.SkillDatas;
+            /*_Datas = new []
+            {
+                new SkillData() { Id = ACTOR_STATUS_TYPE.BATTLE_AXE_BLOCK , Total =1.833f },
+                new SkillData() { Id = ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK1 , Total =2.4f },
+                new SkillData() { Id = ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK2 , Total =3.167f }
+            };*/
             this._Id = Guid.NewGuid();
             this._View = 30.0f;
             _DetectionRange = 1.0f;
@@ -32,9 +49,12 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             this._Bound = this._BuildBound(this._Mesh);
 
             Bag = new Inventory();
+
+            _IdleStatus = ACTOR_STATUS_TYPE.NORMAL_IDLE;
+
         }
 
-        
+
 
         ENTITY IVisible.EntityType { get { return this._Record.Entity; } }
 
@@ -59,11 +79,24 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         Vector2 IVisible.Position { get { return this._Mesh.Center; } }
 
+        void IVisible.QueryStatus()
+        {
+            _InvokeStatusEvent(_IdleStatus);
+        }
+
+        private event Action<string> _OnTalkMessageEvent;
+
+        event Action<string> IVisible.TalkMessageEvent
+        {
+            add { this._OnTalkMessageEvent += value; }
+            remove { this._OnTalkMessageEvent -= value; }
+        }
+
         Rect IIndividual.Bounds
         {
             get
             {
-                
+
                 return this._Bound;
             }
         }
@@ -83,7 +116,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private Action _BoundsEvent;
         private float _Trun;
 
-        
+        private ACTOR_STATUS_TYPE _IdleStatus;
 
         public Guid Id { get { return this._Id; } }
 
@@ -109,7 +142,30 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         Item[] IIndividual.Stolen()
         {
-            return new [] { new Item() { Id = Guid.NewGuid() , Weight = 5 , Name = "探索到的物品"} } ;
+            _InvokeStatusEvent(ACTOR_STATUS_TYPE.CHEST_OPEN);
+            var itemProivder = new ItemProvider();            
+            return itemProivder.FromStolen();
+        }
+
+
+
+        bool IIndividual.IsBlock()
+        {
+            return _Block;
+        }
+
+
+
+        private bool _Block;
+
+        private int _DamageCount;
+
+        void IIndividual.AttachDamage(bool smash)
+        {
+            if (smash)
+                _DamageCount += 3;
+            else
+                _DamageCount++;
         }
 
         public void UpdatePosition(Vector2 velocity)
@@ -121,26 +177,37 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             this._Bound = this._BuildBound(this._Mesh);
             if (this._BoundsEvent != null)
                 this._BoundsEvent.Invoke();
-            
+
 
         }
 
         public void Stop()
         {
-            this._Speed = 0.0f ;
+            this._Speed = 0.0f;
             this._SetMove(0);
         }
-
-        public void Move(float angle , bool run)
+        internal void Trun(int trun)
         {
-            this._Speed = 1.0f + (run? 3.0f : 0.0f);
+            this._Trun = trun;
+            _InvokeStatusEvent(_IdleStatus);
+        }
+        public void Move(float angle, bool run)
+        {
+            this._Speed = 1.0f + (run ? 3.0f : 0.0f);
             this._SetMove(angle);
         }
 
         private void _SetMove(float angle)
         {
-            this.Direction = (this.Direction + angle) % 360;
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.WALK);
+            _SetDirection(angle);
+            _InvokeStatusEvent(_IdleStatus);
+        }
+
+        private void _SetDirection(float angle)
+        {
+            Direction = (this.Direction + angle) % 360;
+            Direction += 360;
+            Direction %= 360;
         }
 
         private void _InvokeStatusEvent(ACTOR_STATUS_TYPE type)
@@ -161,7 +228,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public Vector2 GetVelocity(float delta_time)
         {
-            this.Direction = (this.Direction + (this._Trun*delta_time)) % 360;
+            _SetDirection(_Trun * delta_time);
+
             return this._ToVector(this.Direction) * delta_time * this._Speed;
         }
 
@@ -171,27 +239,22 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             return new Vector2((float)Math.Cos(radians), (float)-Math.Sin(radians));
         }
 
-        
+
 
         private Rect _BuildVidw()
         {
             var center = this._Mesh.Center;
             var hw = this._View / 2;
             var hh = this._View / 2;
-            var rect = new Rect(center.X - hw, center.Y - hh, this._View , this._View);
+            var rect = new Rect(center.X - hw, center.Y - hh, this._View, this._View);
             return rect;
         }
 
-        internal void Trun(int trun)
-        {
-            this._Trun = trun;
 
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.WALK);            
-        }
 
         public Polygon GetExploreBound()
         {
-            var ext = new ExtendPolygon(_Mesh , _DetectionRange );
+            var ext = new ExtendPolygon(_Mesh, _DetectionRange);
             return ext.Result;
         }
 
@@ -200,14 +263,94 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             return _BuildVidw();
         }
 
-        public void Idle()
+        public void Normal()
         {
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.IDLE);
+            _IdleStatus = ACTOR_STATUS_TYPE.NORMAL_IDLE;
+            Stop();
         }
 
         public void Explore()
         {
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.EXPLORE);
+            _InvokeStatusEvent(ACTOR_STATUS_TYPE.NORMAL_EXPLORE);
+        }
+
+        public void Battle()
+        {
+            _IdleStatus = ACTOR_STATUS_TYPE.BATTLE_AXE_IDLE;
+            Stop();
+        }
+
+        public ActorSkill FindSkill()
+        {
+            return new ActorSkill(_Datas);
+        }
+
+        public void CastBegin(ACTOR_STATUS_TYPE id)
+        {
+            _Cast(id);
+
+        }
+
+        private void _Cast(ACTOR_STATUS_TYPE id)
+        {
+            _Speed = 0.0f;
+            _Trun = 0.0f;
+            _InvokeStatusEvent(id);
+        }
+
+        public void CastEnd(ACTOR_STATUS_TYPE id)
+        {
+        }
+
+        public int HaveDamage()
+        {
+            var values = _DamageCount;
+            _DamageCount = 0;
+            return values;
+        }
+
+        public void Damage()
+        {
+            _Speed = 0.0f;
+            _Trun = 0.0f;
+            _InvokeStatusEvent(ACTOR_STATUS_TYPE.DAMAGE1);
+        }
+
+        public SkillCaster GetDamagrCaster()
+        {
+            var data = _Datas.First((s) => s.Id == ACTOR_STATUS_TYPE.DAMAGE1);
+            return new SkillCaster(data, new Determination(data.Lefts, data.Rights, data.Total, data.Begin, data.End));
+        }
+
+        public void SetBlock(bool set)
+        {
+            _Block = set;
+        }
+
+        public Vector2 GetPosition()
+        {
+            return _Mesh.Center;
+        }
+
+        public void SetRotation(float next_float)
+        {
+            _SetDirection(next_float);
+            _Mesh.RotationByDegree(next_float);
+        }
+
+        public void Talk(string message)
+        {
+            _OnTalkMessageEvent(message);
+        }
+
+        public void Make()
+        {
+            _InvokeStatusEvent(ACTOR_STATUS_TYPE.MAKE);
+        }
+
+        public ItemFormula[] GetFormulas()
+        {
+            return Resource.Instance.Formulas;
         }
     }
 }

@@ -42,6 +42,6 @@ public class GameItem : MonoBehaviour
     public void Set(Regulus.Project.ItIsNotAGame1.Data.Item item)
     {
         _Item = item;
-        Name.text = _Item.Name;
+        Name.text = _Item.Name + "x" + item.Count;
     }
 }

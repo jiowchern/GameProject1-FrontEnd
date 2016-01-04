@@ -38,7 +38,7 @@ public class uScriptAct_GetSystemTime : uScriptLogic
       [SocketState(false, false)]
       out int Minute,
       
-      [FriendlyName("Second", "Outputs the second value.")]
+      [FriendlyName("Total", "Outputs the second value.")]
       [SocketState(false, false)]
       out int Second,
       

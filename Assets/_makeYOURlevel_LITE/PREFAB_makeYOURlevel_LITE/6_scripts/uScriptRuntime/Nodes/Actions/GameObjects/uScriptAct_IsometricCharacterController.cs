@@ -148,10 +148,10 @@ public class uScriptAct_IsometricCharacterController : uScriptLogic
       [FriendlyName("Target", "The character to control.")]
       GameObject target,
 
-      [FriendlyName("Translation Units Per Second", "How many units to move per second when the forward/backward keys are pressed.")]
+      [FriendlyName("Translation Units Per Total", "How many units to move per second when the forward/backward keys are pressed.")]
       float translation,
 
-      [FriendlyName("Rotation Units Per Second", "How many units to rotate per second when the left/right keys are pressed.")]
+      [FriendlyName("Rotation Units Per Total", "How many units to rotate per second when the left/right keys are pressed.")]
       [DefaultValue(1.5f)]
       float rotation,
 

@@ -1,7 +1,11 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+
+using Regulus.Extension;
 using Regulus.Project.ItIsNotAGame1.Data;
+using Regulus.Utility;
+
 using UnityStandardAssets.Cameras;
 using Vector2 = Regulus.CustomType.Vector2;
 
@@ -12,15 +16,37 @@ public class Entity : MonoBehaviour {
     public Transform CameraTarget;
     private Client _Client;
 
-    private Animator _Animator;
+    public TalkReceiver Talker;
+
+    public Animator Avatar;
     
     public float Trun;
+
     public float Speed;
 
     private float _ProbeLength;
 
+    private float _BeginSpeed;
+    private float _EndSpeed;
+
+    private float _SpeedStep;
+
+    private float _BeginTrun;
+
+    private float _EndTrun;
+
+    private float _TrunStep;
+
+    private float _LongIdleTime;
+
+    public ACTOR_STATUS_TYPE Status;
+
     
 
+    public Entity()
+    {
+
+    }
     public Guid Id
     {
         get
@@ -35,7 +61,8 @@ public class Entity : MonoBehaviour {
     {
         if (_Visible != null)
         {
-            _Visible.StatusEvent -= _Move;            
+            _Visible.StatusEvent -= _Move;
+            _Visible.TalkMessageEvent -= _ShowMessage;
         }
 
         if (_Client != null)
@@ -45,17 +72,16 @@ public class Entity : MonoBehaviour {
         }
     }
 
-    
-
-    
+    private void _ShowMessage(string obj)
+    {
+        Talker.Show(obj);
+    }
 
     // Use this for initialization
     void Start () {
         _Client = Client.Instance;
         if (_Client != null)
         {
-
-            
             _Client.User.VisibleProvider.Unsupply += _DestroyEntity;
         }
 
@@ -66,7 +92,7 @@ public class Entity : MonoBehaviour {
         }
         _ProbeLength = 1.0f;
 
-        _Animator = GetComponentInChildren<Animator>();
+        
     }
 
     private void _DestroyEntity(IVisible obj)
@@ -88,6 +114,8 @@ public class Entity : MonoBehaviour {
         Root.Translate(Vector3.right * Speed * UnityEngine.Time.deltaTime);
         
         Debug.DrawRay(ProbeOrigin.position , ProbeOrigin.right, Color.yellow , _ProbeLength);
+
+	    
     }
 
     public void SetVisible(Regulus.Project.ItIsNotAGame1.Data.IVisible visible)
@@ -96,8 +124,10 @@ public class Entity : MonoBehaviour {
             throw new Exception("重複設定.");
         _Visible = visible;
         _Visible.StatusEvent += _Move;
+        _Visible.TalkMessageEvent += _ShowMessage;
+        _Visible.QueryStatus();
 
-        
+
         _SetPosition(_Visible.Position);
 
         _SetCamera();
@@ -123,6 +153,14 @@ public class Entity : MonoBehaviour {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
             cam.target = CameraTarget;
 
+            var directionLight = GameObject.FindGameObjectWithTag("DirectionLight");
+            
+            directionLight.transform.localPosition.Set(0,0,0);
+            var rot = new Quaternion();
+            rot.eulerAngles.Set(0, 90, 0);
+            directionLight.transform.localRotation = rot;
+            directionLight.transform.SetParent(transform);
+
             Debug.Log("主角入鏡" + _Visible.Id);
         }
         
@@ -139,25 +177,84 @@ public class Entity : MonoBehaviour {
         _SetPosition(status.StartPosition);
         
         Speed = status.Speed;
-        Trun = status.Trun;
 
+        Trun = status.Trun;
+        
         var eulerAngles = Root.rotation.eulerAngles;
         eulerAngles.y = status.Direction;
         Root.rotation = Quaternion.Euler(eulerAngles);
 
-        if (_Animator != null)
+        Status = status.Status;
+
+        if (Avatar != null)
         {
-            _Animator.SetInteger("Status", (int)status.Status);
+            _BeginSpeed = Avatar.GetFloat("Speed");
+            _EndSpeed = Speed;
+            _SpeedStep = 0.0f;
+
+            _BeginTrun = Avatar.GetFloat("Trun");
+            
+            _EndTrun = Trun > 0.0f ? 1 : Trun < 0.0f ? -1 : 0 ;            
+            _TrunStep = 0.0f;
+            
+            if (Status == ACTOR_STATUS_TYPE.DAMAGE1)
+            {
+                Avatar.SetTrigger("Damage1");
+            }
+            else if (Status == ACTOR_STATUS_TYPE.KNOCKOUT1)
+            {
+                Avatar.SetTrigger("Knockout");
+            }
+            else if (Status == ACTOR_STATUS_TYPE.GUARD_IMPACT)
+            {
+                Avatar.SetTrigger("GuardImpact");
+            }
+            else if (Status == ACTOR_STATUS_TYPE.CHEST_OPEN)
+            {
+                Avatar.SetBool("Open" , true);                
+            }            
+            else if (Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed <= 0.0f)
+            {
+                ResetLongIdle();
+            }
         }
     }
 
+    public void ResetLongIdle()
+    {
+        _LongIdleTime = Regulus.Utility.Random.Instance.NextFloat(3.0f, 10.0f);
+    }
     private void _UpdateAnimator()
     {
-        if (_Animator != null)
+        if (Avatar != null)
         {
-            _Animator.SetInteger("Speed" , (int)Speed);
-            _Animator.SetInteger("Trun", (int)Trun);
+            var deltaTime = UnityEngine.Time.deltaTime;
+            if (_LongIdleTime < 0.0f && Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed <= 0.0f)
+            {
+                Avatar.SetTrigger("LongIdle");
+                _LongIdleTime = 0.0f;
+            }
+            else if(_LongIdleTime > 0.0f)
+            {
+                _LongIdleTime -= deltaTime;
+            }
+
+            _SpeedStep += deltaTime * 5.0f;
+            _TrunStep += deltaTime * 10.0f;
+
+            Avatar.SetFloat("Speed", Mathf.Lerp(_BeginSpeed, _EndSpeed, _SpeedStep));
+
+            Avatar.SetFloat("Trun", Mathf.Lerp(_BeginTrun, _EndTrun, _TrunStep));
+
+            Avatar.SetInteger("Status", (int)Status);
+            
         }
+    }
+
+    private float _GetTargetSpeed()
+    {
+        return 0.0f;
+
     }
 
     private void _SetPosition(Vector3 pos)
@@ -169,9 +266,6 @@ public class Entity : MonoBehaviour {
         }
         
         Root.position = pos;
-
-
-        
         
     }
 

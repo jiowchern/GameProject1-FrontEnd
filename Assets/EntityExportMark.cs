@@ -14,7 +14,6 @@ public class EntityExportMark : MonoBehaviour
     public EntityData BuildEntity()
     {
         
-        
         var filter = Body.GetComponent<MeshFilter>();
         var sharedMesh = filter.sharedMesh;
         var sourceMesh = GameObject.Instantiate(sharedMesh);

@@ -34,7 +34,7 @@ public class uScript_PostEffect : uScriptEvent
       }
    }
 
-   [FriendlyName("On Render Image")]
+   [FriendlyName("On Render ExploreImage")]
    public event uScriptEventHandler RenderImage;
 
    void OnRenderImage(RenderTexture source, RenderTexture dest)

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfItemPrototype xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ItemPrototype>
+    <Name>Axe</Name>
+    <Features>WEAPON_AXE</Features>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Rope</Name>
+    <Features>MATERIAL</Features>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Branch</Name>
+    <Features>MATERIAL</Features>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>IronSheets</Name>
+    <Features>MATERIAL</Features>
+  </ItemPrototype>
+</ArrayOfItemPrototype>

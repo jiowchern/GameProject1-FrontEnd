@@ -38,9 +38,11 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private bool _RequestAllItems;
 
-        private ControlStatus _ControlStatus;
+        private readonly ControlStatus _ControlStatus;
 
-        public Regulus.Utility.Updater _Updater;
+        private readonly Regulus.Utility.Updater _Updater;
+
+        
 
         public GameStage(ISoulBinder binder, GamePlayerRecord record, IGameRecorder recoder, Map map)
         {
@@ -108,6 +110,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _ResponseItems(deltaTime);
 
         }
+        
+
+        
 
         private void _ResponseItems(float deltaTime)
         {

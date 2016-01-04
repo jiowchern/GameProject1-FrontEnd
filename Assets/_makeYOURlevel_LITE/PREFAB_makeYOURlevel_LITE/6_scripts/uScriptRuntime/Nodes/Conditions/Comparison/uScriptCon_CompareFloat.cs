@@ -43,7 +43,7 @@ public class uScriptCon_CompareFloat : uScriptLogic
       [FriendlyName("A", "First value to compare.")]
       float A,
       
-      [FriendlyName("B", "Second value to compare.")]
+      [FriendlyName("B", "Total value to compare.")]
       float B
       )
    {
