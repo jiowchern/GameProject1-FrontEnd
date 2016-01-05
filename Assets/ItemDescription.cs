@@ -43,11 +43,20 @@ public class ItemDescription : MonoBehaviour {
         _Id = item.Id;
         Name.text = item.Name;
         string effectText = "";
-        foreach(var effect in item.Effects)
+
+        if(item.Effects != null)
         {
-            effectText += effect.Type.ToString() + ":" + effect.Value;
+            foreach (var effect in item.Effects)
+            {
+                effectText += effect.Type.ToString() + ":" + effect.Value;
+            }
+            Effect.text = effectText;
         }
-        Effect.text = effectText;
+        else
+        {
+            Effect.text = "";
+        }
+
     }
 
     public void Discard()

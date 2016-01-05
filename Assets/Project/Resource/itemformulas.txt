@@ -64,6 +64,15 @@
           </Effect>
         </Effects>
       </ItemEffect>
+      <ItemEffect>
+        <Quality>0.85</Quality>
+        <Effects>
+          <Effect>
+            <Type>ATTACK_ADD</Type>
+            <Value>2</Value>
+          </Effect>
+        </Effects>
+      </ItemEffect>
     </Effects>
     <Name>Axe</Name>
     <Item>Axe</Item>
