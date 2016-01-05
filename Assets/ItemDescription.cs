@@ -8,6 +8,7 @@ public class ItemDescription : MonoBehaviour {
     Client _Client;
 
     public UnityEngine.UI.Text Name;
+    public UnityEngine.UI.Text Effect;
     private IInventoryNotifier _InventoryNotifier;
 
     private System.Guid _Id ;
@@ -41,6 +42,12 @@ public class ItemDescription : MonoBehaviour {
     {
         _Id = item.Id;
         Name.text = item.Name;
+        string effectText = "";
+        foreach(var effect in item.Effects)
+        {
+            effectText += effect.Type.ToString() + ":" + effect.Value;
+        }
+        Effect.text = effectText;
     }
 
     public void Discard()

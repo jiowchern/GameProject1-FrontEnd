@@ -20,7 +20,7 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
         var wnd = EditorWindow.GetWindow(typeof(ItemFormulaEditor1));
         wnd.Show();
     }
-    private int _NeedCount;
+    
 
     private int _ItemEffectCount;
 
@@ -50,7 +50,7 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
     private void _DrawSpreadsheet(ItemFormula key)
     {
         EditorGUILayout.BeginHorizontal();        
-        for (int i = 0; i < key.NeedItems.Length; i++)
+        for (int i = 0; i < key.NeedItems.Length && i < _TestCount.Length; i++)
         {
             _TestCount[i] = EditorGUILayout.IntField(_TestCount[i]);
         }
@@ -170,13 +170,14 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
         
 
         EditorGUILayout.BeginHorizontal();
-        _NeedCount = EditorGUILayout.IntField("NeedCount", _NeedCount);
-        if (key.NeedItems.Length != _NeedCount)
+        var needCount = key.NeedItems.Length;
+        needCount = EditorGUILayout.IntField("NeedCount", needCount);
+        if (key.NeedItems.Length != needCount)
         {
             var needs = key.NeedItems;
-            key.NeedItems = new ItemFormulaNeed[_NeedCount];
+            key.NeedItems = new ItemFormulaNeed[needCount];
 
-            _TestCount = new int[_NeedCount];
+            _TestCount = new int[needCount];
 
             for (int i = 0; i < key.NeedItems.Length && i < needs.Length; i++)
             {

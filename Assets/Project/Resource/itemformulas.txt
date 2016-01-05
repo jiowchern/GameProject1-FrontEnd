@@ -20,7 +20,7 @@
     </NeedItems>
     <Effects>
       <ItemEffect>
-        <Quality>80</Quality>
+        <Quality>0.8</Quality>
         <Effects>
           <Effect>
             <Type>ATTACK_ADD</Type>
@@ -29,7 +29,7 @@
         </Effects>
       </ItemEffect>
       <ItemEffect>
-        <Quality>60</Quality>
+        <Quality>0.6</Quality>
         <Effects>
           <Effect>
             <Type>ATTACK_ADD</Type>
@@ -38,7 +38,7 @@
         </Effects>
       </ItemEffect>
       <ItemEffect>
-        <Quality>30</Quality>
+        <Quality>0.3</Quality>
         <Effects>
           <Effect>
             <Type>ATTACK_ADD</Type>
@@ -47,7 +47,7 @@
         </Effects>
       </ItemEffect>
       <ItemEffect>
-        <Quality>20</Quality>
+        <Quality>0.2</Quality>
         <Effects>
           <Effect>
             <Type>ATTACK_ADD</Type>

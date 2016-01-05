@@ -345,6 +345,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public void Make()
         {
+            _Speed = 0.0f;
+            _Trun = 0.0f;
             _InvokeStatusEvent(ACTOR_STATUS_TYPE.MAKE);
         }
 
