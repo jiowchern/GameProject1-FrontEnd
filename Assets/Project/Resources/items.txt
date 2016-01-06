@@ -3,17 +3,21 @@
   <ItemPrototype>
     <Name>Axe</Name>
     <Features>WEAPON_AXE</Features>
+    <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Name>Rope</Name>
     <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Name>Branch</Name>
     <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Name>IronSheets</Name>
     <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
   </ItemPrototype>
 </ArrayOfItemPrototype>

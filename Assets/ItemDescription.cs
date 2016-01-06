@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+
+
+using UnityEngine;
 using System.Collections;
 
 using Regulus.Project.ItIsNotAGame1.Data;
@@ -10,6 +13,7 @@ public class ItemDescription : MonoBehaviour {
     public UnityEngine.UI.Text Name;
     public UnityEngine.UI.Text Effect;
     private IInventoryNotifier _InventoryNotifier;
+    private IEquipmentNotifier _EquipmentNotifier;
 
     private System.Guid _Id ;
 
@@ -17,13 +21,19 @@ public class ItemDescription : MonoBehaviour {
     {
         if (_Client != null)
         {
+            
+            _Client.User.EquipmentNotifierProvider.Supply -= EquipmentNotifierProvider_Supply;
             _Client.User.InventoryNotifierProvider.Supply -= InventoryNotifierProvider_Supply;
         }
     }
+
+    
+
     void Start () {
         _Client = Client.Instance;
         if (_Client != null)
         {
+            _Client.User.EquipmentNotifierProvider.Supply += EquipmentNotifierProvider_Supply;
             _Client.User.InventoryNotifierProvider.Supply += InventoryNotifierProvider_Supply;
         }
     }
@@ -33,6 +43,10 @@ public class ItemDescription : MonoBehaviour {
         _InventoryNotifier = obj;
     }
 
+    private void EquipmentNotifierProvider_Supply(IEquipmentNotifier obj)
+    {
+        _EquipmentNotifier = obj;
+    }
     void Update ()
     {
 	        
@@ -59,6 +73,14 @@ public class ItemDescription : MonoBehaviour {
 
     }
 
+    public void Unequip()
+    {
+        _EquipmentNotifier.Unequip(_Id);
+    }
+    public void Equip()
+    {
+        _InventoryNotifier.Equip(_Id);
+    }
     public void Discard()
     {
         _InventoryNotifier.Discard(_Id);

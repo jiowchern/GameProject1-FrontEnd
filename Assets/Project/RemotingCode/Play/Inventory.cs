@@ -99,7 +99,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 if (amount < 0)
                 {
                     newItem = item.Clone();
-                    newItem.Count += amount;
+                    newItem.Count =- amount;
                     break;
                 }                
             }
@@ -115,6 +115,11 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 Add(newItem);
             }
             return amount ;
+        }
+
+        public Item Find(Guid id)
+        {
+            return _Items.FirstOrDefault(i => i.Id == id);
         }
     }
 }

@@ -26,6 +26,8 @@ namespace Assets.Project.Editor
 
         private string _Description;
 
+        private EQUIP_PART _EquipPart;
+
         [MenuItem("Regulus/ItIsNotAGame1/ItemEditor")]
         public static void Open()
         {
@@ -85,7 +87,8 @@ namespace Assets.Project.Editor
             
             _ItemName = EditorGUILayout.TextField("Name", _ItemName);
 
-            
+
+            _EquipPart = (EQUIP_PART)EditorGUILayout.EnumPopup("EquipPart", _EquipPart);
             _ItemFeatures = (ITEM_FEATURES)EditorGUILayout.EnumPopup("Features", _ItemFeatures);
             _Description = EditorGUILayout.TextField("Description", _Description);
             EditorGUILayout.EndHorizontal();
@@ -94,13 +97,20 @@ namespace Assets.Project.Editor
             if (GUILayout.Button("Set/Add"))
             {
                 
-                _ItemSet.Add(new ItemPrototype() { Name = _ItemName, Features = _ItemFeatures } );
+                _ItemSet.Add(new ItemPrototype()
+                {
+                    Name = _ItemName,
+                    Features = _ItemFeatures,
+                    EquipPart = _EquipPart
+
+                } );
             }
             if (GUILayout.Button("Load"))
             {
                 var item = _ItemSet.Find(_ItemName);
                 _ItemFeatures = item.Features;
                 _Description = item.Description;
+                _EquipPart = item.EquipPart;
             }
             if (GUILayout.Button("Remove"))
             {

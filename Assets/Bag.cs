@@ -9,15 +9,12 @@ using Regulus.Project.ItIsNotAGame1.Data;
 
 using UnityEngine.UI;
 
-public class Bag : MonoBehaviour {
-
-    public GameObject ItemSource;
-    private Client _Client;
-    private Regulus.Project.ItIsNotAGame1.Data.IInventoryNotifier _InventoryNotifier;
-
-    public ItemDescription Description;
+public class Bag : Inventory
+{
 
     
+    private Client _Client;
+    private Regulus.Project.ItIsNotAGame1.Data.IInventoryNotifier _InventoryNotifier;
 
     // Use this for initialization
     void Start () {
@@ -53,17 +50,7 @@ public class Bag : MonoBehaviour {
         _InventoryNotifier.Query();
     }
 
-    private void _RemoveItem(Guid id)
-    {
-        var gameItems = GetComponentsInChildren<GameItem>();
-        foreach (var item in gameItems)
-        {
-            if (item.Id == id)
-            {
-                GameObject.DestroyObject(item.gameObject);
-            }
-        }
-    }
+   
 
     void OnEnable()
     {
@@ -74,47 +61,16 @@ public class Bag : MonoBehaviour {
 
     private void _InventoryNotifier_AllItemEvent(Regulus.Project.ItIsNotAGame1.Data.Item[] items)
     {
-        var gameItems = GetComponentsInChildren<GameItem>();
-        foreach(var item in items)
-        {
-            bool any = Bag.UpdateItem(gameItems, item);                        
-            if(any == false)
-                _CreateItem(item);
-        }
+        _Reflush(items);
     }
 
-    private void _AddEvent(Item item)
-    {
-        _CreateItem(item);
-    }
+    
 
-    private static bool UpdateItem(GameItem[] gameItems, Item item)
-    {
-        foreach (var gi in gameItems)
-        {
-            if (gi.Id == item.Id)
-            {
-                gi.Set(item);
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
-    private void _CreateItem(Regulus.Project.ItIsNotAGame1.Data.Item item)
-    {
-        var slot = GameObject.Instantiate(ItemSource);
-                
-        var rectTransform = slot.GetComponent<RectTransform>();
-        rectTransform.SetParent(transform);
-        slot.GetComponent<GameItem>().Set(item);
-        var button = slot.GetComponent<UnityEngine.UI.Button>();
-        button.onClick.AddListener(
-            () =>
-            {
-                Description.Set(item);
-            });
-    }
+    
+
+    
 
     // Update is called once per frame
     void Update () {
