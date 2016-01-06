@@ -61,6 +61,7 @@ public class Entity : MonoBehaviour {
     {
         if (_Visible != null)
         {
+            _Visible.EquipEvent -= _UpdateAvatar;
             _Visible.StatusEvent -= _Move;
             _Visible.TalkMessageEvent -= _ShowMessage;
         }
@@ -123,6 +124,7 @@ public class Entity : MonoBehaviour {
         if(_Visible != null)
             throw new Exception("重複設定.");
         _Visible = visible;
+        _Visible.EquipEvent += _UpdateAvatar;
         _Visible.StatusEvent += _Move;
         _Visible.TalkMessageEvent += _ShowMessage;
         _Visible.QueryStatus();
@@ -131,6 +133,23 @@ public class Entity : MonoBehaviour {
         _SetPosition(_Visible.Position);
 
         _SetCamera();
+    }
+
+    private void _UpdateAvatar(EquipStatus[] equip_statuses)
+    {
+        switch(Status)
+        {
+            case ACTOR_STATUS_TYPE.NORMAL_IDLE:
+            case ACTOR_STATUS_TYPE.NORMAL_EXPLORE:
+            case ACTOR_STATUS_TYPE.LONG_IDLE:
+            case ACTOR_STATUS_TYPE.MAKE:
+//                _UpdateAvatarNormal(equip_statuses);
+                break;
+            default:
+                //_UpdateAvatarBattle(equip_statuses);
+                break;
+
+        }
     }
 
     private void _ClearCamera()
