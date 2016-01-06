@@ -26,31 +26,20 @@ public class Inventory : MonoBehaviour
     protected void _Reflush(Item[] items)
     {
         var gameItems = GetComponentsInChildren<GameItem>();
+        foreach (var gameItem in gameItems)
+        {
+            GameObject.Destroy(gameItem.gameObject);
+        }
         foreach (var item in items)
         {
-            bool any = Bag.UpdateItem(gameItems, item);
-            if (any == false)
-            {
-                _CreateItem(item);
-            }
+            _CreateItem(item);
         }
     }
     protected void _AddEvent(Item item)
     {
         _CreateItem(item);
     }
-    protected static bool UpdateItem(GameItem[] gameItems, Item item)
-    {
-        foreach (var gi in gameItems)
-        {
-            if (gi.Id == item.Id)
-            {
-                gi.Set(item);
-                return true;
-            }
-        }
-        return false;
-    }
+    
     protected void _CreateItem(Regulus.Project.ItIsNotAGame1.Data.Item item)
     {
         var slot = GameObject.Instantiate(ItemSource);

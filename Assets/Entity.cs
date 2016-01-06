@@ -133,6 +133,17 @@ public class Entity : MonoBehaviour {
         _SetPosition(_Visible.Position);
 
         _SetCamera();
+
+        _SetAvatarEquipments();
+    }
+
+    private void _SetAvatarEquipments()
+    {
+        var  aes  = gameObject.GetComponentsInChildren < AvatarEquipment>();
+        foreach (var avatarEquipment in aes)
+        {
+            avatarEquipment.SetId(_Visible);
+        }
     }
 
     private void _UpdateAvatar(EquipStatus[] equip_statuses)
