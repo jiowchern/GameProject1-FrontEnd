@@ -41,6 +41,7 @@ public class Client : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
+	    
 	    Application.logMessageReceived += _Log;
         Regulus.Utility.SpinWait.NotWindowsPlatform();
         var client = new Regulus.Framework.Client<Regulus.Project.ItIsNotAGame1.IUser>(Console, Console);
@@ -51,6 +52,7 @@ public class Client : MonoBehaviour
 	    _Updater.Add(_Client);
 	    Debug.Log("Started .");
     }
+    
 
     private void _Log(string condition, string stacktrace, LogType type)
     {

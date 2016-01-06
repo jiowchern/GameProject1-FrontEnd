@@ -13,8 +13,10 @@ public class UIItemFormula : MonoBehaviour
 
     public UnityEngine.UI.Text Name;
     public UnityEngine.UI.Text Item;
+    public UnityEngine.UI.Image ItemImage;
 
-    public UnityEngine.UI.Text[] MaterialNames;
+    
+    public UnityEngine.UI.Image[] MaterialImages;
     public UnityEngine.UI.Text[] MaterialAmountTexts;
     public UnityEngine.UI.Slider[] MaterialAmounts;
 
@@ -27,7 +29,7 @@ public class UIItemFormula : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	    for(int i = 0; i < MaterialNames.Length; i++)
+	    for(int i = 0; i < MaterialAmountTexts.Length; i++)
 	    {
             MaterialAmountTexts[i].text = ((int)MaterialAmounts[i].value).ToString();
 	    }
@@ -38,20 +40,23 @@ public class UIItemFormula : MonoBehaviour
         
         Name.text = formula_lite.Name;
         Item.text = formula_lite.Item;
+        ItemImage.sprite = (Sprite)UnityEngine.Resources.Load("Icon/Item/" + formula_lite.Item , typeof (Sprite));
         int i = 0;
         for (; i < formula_lite.NeedItems.Length ; i++)
         {
             var item = formula_lite.NeedItems[i];
-            MaterialNames[i].text = item.Item;            
+            
             MaterialAmounts[i].minValue = item.Min;
-            MaterialAmounts[i].maxValue = 10;
+            MaterialAmounts[i].maxValue = formula_lite.NeedLimit;
             MaterialAmountTexts[i].text = item.Min.ToString();
+            MaterialImages[i].sprite = (Sprite)UnityEngine.Resources.Load("Icon/Item/" + item.Item , typeof(Sprite));
         }
-        for(; i < MaterialNames.Length ; i++)
+        for(; i < MaterialAmountTexts.Length ; i++)
         {
-            MaterialNames[i].enabled = false;
+            
             MaterialAmounts[i].enabled = false;            
             MaterialAmountTexts[i].enabled = false;
+            MaterialImages[i].enabled = false;
         }
     }
 

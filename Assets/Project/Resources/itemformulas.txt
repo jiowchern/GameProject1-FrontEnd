@@ -5,16 +5,16 @@
       <ItemFormulaNeed>
         <Item>Rope</Item>
         <Min>2</Min>
-        <Max>3</Max>
+        <Max>4</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
         <Item>Branch</Item>
         <Min>2</Min>
-        <Max>2</Max>
+        <Max>6</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
         <Item>IronSheets</Item>
-        <Min>1</Min>
+        <Min>3</Min>
         <Max>3</Max>
       </ItemFormulaNeed>
     </NeedItems>
@@ -73,8 +73,18 @@
           </Effect>
         </Effects>
       </ItemEffect>
+      <ItemEffect>
+        <Quality>1</Quality>
+        <Effects>
+          <Effect>
+            <Type>ATTACK_ADD</Type>
+            <Value>10</Value>
+          </Effect>
+        </Effects>
+      </ItemEffect>
     </Effects>
     <Name>Axe</Name>
     <Item>Axe</Item>
+    <NeedLimit>10</NeedLimit>
   </ItemFormula>
 </ArrayOfItemFormula>

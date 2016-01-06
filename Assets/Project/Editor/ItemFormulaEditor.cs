@@ -40,6 +40,7 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
     {
         key.Name = EditorGUILayout.TextField("Formula", key.Name);
         key.Item = EditorGUILayout.TextField("Item", key.Item);
+        key.NeedLimit = EditorGUILayout.IntField("NeedLimit", key.NeedLimit);
         _DrawNeeds(key);
 
         _DrawEffects(key);

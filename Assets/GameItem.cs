@@ -9,6 +9,7 @@ using Regulus.Project.ItIsNotAGame1.Data;
 
 public class GameItem : MonoBehaviour
 {
+    public UnityEngine.UI.Image Image;
     public UnityEngine.UI.Text Name;
     private Regulus.Project.ItIsNotAGame1.Data.Item _Item;
 
@@ -42,6 +43,8 @@ public class GameItem : MonoBehaviour
     public void Set(Regulus.Project.ItIsNotAGame1.Data.Item item)
     {
         _Item = item;
-        Name.text = _Item.Name + "x" + item.Count;
+        Name.text =  item.Count.ToString();
+         
+        Image.sprite = (Sprite)UnityEngine.Resources.Load("Icon/Item/" + _Item.Name , typeof(Sprite));
     }
 }

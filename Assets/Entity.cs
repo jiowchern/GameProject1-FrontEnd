@@ -239,8 +239,8 @@ public class Entity : MonoBehaviour {
                 _LongIdleTime -= deltaTime;
             }
 
-            _SpeedStep += deltaTime * 5.0f;
-            _TrunStep += deltaTime * 10.0f;
+            _SpeedStep += deltaTime * 2.50f;
+            _TrunStep += deltaTime * 5.0f;
 
             Avatar.SetFloat("Speed", Mathf.Lerp(_BeginSpeed, _EndSpeed, _SpeedStep));
 
