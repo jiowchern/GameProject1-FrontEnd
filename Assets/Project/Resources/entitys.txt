@@ -12,6 +12,17 @@
     </Mesh>
   </EntityData>
   <EntityData>
+    <Name>WALL_NORTH_AISLE</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-15" y="-5" />
+        <Vector2 x="15" y="-5" />
+        <Vector2 x="15" y="5" />
+        <Vector2 x="-15" y="5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
     <Name>WALL_SOUTH</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -23,6 +34,17 @@
     </Mesh>
   </EntityData>
   <EntityData>
+    <Name>WALL_SOUTH_AISLE</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-15" y="-5" />
+        <Vector2 x="15" y="-5" />
+        <Vector2 x="15" y="5" />
+        <Vector2 x="-15" y="5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
     <Name>WALL_NORTH</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -30,6 +52,28 @@
         <Vector2 x="15" y="-0.5" />
         <Vector2 x="15" y="0.5" />
         <Vector2 x="-15" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
+    <Name>WALL_WESTERN_AISLE</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-5" y="-15" />
+        <Vector2 x="5" y="-15" />
+        <Vector2 x="5" y="15" />
+        <Vector2 x="-5" y="15" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
+    <Name>WALL_EAST_AISLE</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-5" y="-15" />
+        <Vector2 x="5" y="-15" />
+        <Vector2 x="5" y="15" />
+        <Vector2 x="-5" y="15" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
