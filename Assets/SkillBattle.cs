@@ -43,31 +43,40 @@ public class SkillBattle : MonoBehaviour {
     private void _UnsupplyBattle(IBattleSkill obj)
     {
         _Battle = null;
+        
         DisarmObject.SetActive(false);
     }
 
     private void _SupplyBattle(IBattleSkill obj)
     {
         _Battle = obj;
-        DisarmObject.SetActive(true);
+        DisarmObject.SetActive(true);        
     }
 
     private void _SupplyCastBattle(ICastSkill obj)
     {
         _CastSkill = obj;
         CastSkillObject.SetActive(true);
+        
     }
 
     private void _UnsupplyCastBattle(ICastSkill obj)
     {
         _CastSkill = null;
         CastSkillObject.SetActive(false);
+        
     }
 
     // Update is called once per frame
     void Update () {
-	
-	}
+        if(_Battle != null)
+        {
+            if(Input.GetKeyUp(KeyCode.R))
+            {
+                _Battle.Disarm();
+            }
+        }
+    }
 
     public void Disarm()
     {

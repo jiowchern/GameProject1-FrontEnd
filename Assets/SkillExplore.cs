@@ -38,6 +38,8 @@ public class SkillExplore : MonoBehaviour {
         BattleObject.SetActive(false);
         MakeObject.SetActive(false);
         _SkillController = null;
+
+        Cursor.visible = false;
     }
 
     void OnDestroy()
@@ -66,6 +68,7 @@ public class SkillExplore : MonoBehaviour {
         ExploreObject.SetActive(true);
         BattleObject.SetActive(true);
         _SkillController = skill_controller;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame

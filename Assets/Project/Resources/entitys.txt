@@ -15,10 +15,10 @@
     <Name>WALL_SOUTH</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-5" y="-0.5" />
-        <Vector2 x="5" y="-0.5" />
-        <Vector2 x="5" y="0.5" />
-        <Vector2 x="-5" y="0.5" />
+        <Vector2 x="-15" y="-0.5" />
+        <Vector2 x="15" y="-0.5" />
+        <Vector2 x="15" y="0.5" />
+        <Vector2 x="-15" y="0.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -26,10 +26,10 @@
     <Name>WALL_NORTH</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-5" y="-0.5" />
-        <Vector2 x="5" y="-0.5" />
-        <Vector2 x="5" y="0.5" />
-        <Vector2 x="-5" y="0.5" />
+        <Vector2 x="-15" y="-0.5" />
+        <Vector2 x="15" y="-0.5" />
+        <Vector2 x="15" y="0.5" />
+        <Vector2 x="-15" y="0.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -37,10 +37,10 @@
     <Name>WALL_WESTERN</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-5" />
-        <Vector2 x="0.5" y="-5" />
-        <Vector2 x="0.5" y="5" />
-        <Vector2 x="-0.5" y="5" />
+        <Vector2 x="-0.5" y="-15" />
+        <Vector2 x="0.5" y="-15" />
+        <Vector2 x="0.5" y="15" />
+        <Vector2 x="-0.5" y="15" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -48,10 +48,10 @@
     <Name>WALL_EAST</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-5" />
-        <Vector2 x="0.5" y="-5" />
-        <Vector2 x="0.5" y="5" />
-        <Vector2 x="-0.5" y="5" />
+        <Vector2 x="-0.5" y="-15" />
+        <Vector2 x="0.5" y="-15" />
+        <Vector2 x="0.5" y="15" />
+        <Vector2 x="-0.5" y="15" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>

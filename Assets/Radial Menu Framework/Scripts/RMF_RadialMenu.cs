@@ -17,6 +17,9 @@ public class RMF_RadialMenu : MonoBehaviour {
     [Tooltip("Adjusts the radial menu for use with a gamepad or joystick. You might need to edit this script if you're not using the default horizontal and vertical input axes.")]
     public bool useGamepad = false;
 
+    [Tooltip("Adjusts the radial menu for use with a gamepad or joystick. You might need to edit this script if you're not using the default horizontal and vertical input axes.")]
+    public bool useMouseOffset = false;
+
     [Tooltip("With lazy selection, you only have to point your mouse (or joystick) in the direction of an element to select it, rather than be moused over the element entirely.")]
     public bool useLazySelection = true;
 
@@ -52,6 +55,8 @@ public class RMF_RadialMenu : MonoBehaviour {
     private int previousActiveIndex = 0; //Used to determine which buttons to unhighlight in lazy selection.
 
     private PointerEventData pointer;
+
+    private Vector3 _PrevMouse;
 
     void Awake() {
 
@@ -106,17 +111,25 @@ public class RMF_RadialMenu : MonoBehaviour {
         //==============================================================================================
 
 
-        float rawAngle;
+        float rawAngle = 0.0f;
         
-        if (!useGamepad)
+        if (!useGamepad && !useMouseOffset)
             rawAngle = Mathf.Atan2(Input.mousePosition.y - rt.position.y, Input.mousePosition.x - rt.position.x) * Mathf.Rad2Deg;
-        else
+        else if(!useGamepad && useMouseOffset && Input.mousePosition != _PrevMouse)
+        {
+            rawAngle = Mathf.Atan2(Input.mousePosition.y - _PrevMouse.y, Input.mousePosition.x - _PrevMouse.x) * Mathf.Rad2Deg;            
+        }
+        else if(!useMouseOffset)
             rawAngle = Mathf.Atan2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg;
 
         //If no gamepad, update the angle always. Otherwise, only update it if we've moved the joystick.
-        if (!useGamepad)
+        if (!useGamepad && !useMouseOffset)
             currentAngle = normalizeAngle(-rawAngle + 90 - globalOffset + (angleOffset / 2f));
-        else if (joystickMoved)
+        else if(!useGamepad && useMouseOffset && Input.mousePosition != _PrevMouse)
+        {
+            currentAngle = normalizeAngle(-rawAngle + 90 - globalOffset + (angleOffset / 2f));
+        }
+        else if (joystickMoved && !useMouseOffset)
             currentAngle = normalizeAngle(-rawAngle + 90 - globalOffset + (angleOffset / 2f));
 
         //Handles lazy selection. Checks the current angle, matches it to the index of an element, and then highlights that element.
@@ -147,8 +160,8 @@ public class RMF_RadialMenu : MonoBehaviour {
                 selectionFollowerContainer.rotation = Quaternion.Euler(0, 0, rawAngle + 270);
            
 
-        } 
-
+        }
+        _PrevMouse = Input.mousePosition;
     }
 
 
