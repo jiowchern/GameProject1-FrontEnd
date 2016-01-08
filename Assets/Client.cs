@@ -133,7 +133,17 @@ public class Client : MonoBehaviour
 
     // Update is called once per frame
 	void Update () {
-	    _Updater.Working();
+
+	    try
+	    {
+            _Updater.Working();
+        }
+	    catch(Exception e)
+	    {
+	        Debug.Log(e);
+	        
+	    }
+	    
 	}
 
     void OnDestroy()
