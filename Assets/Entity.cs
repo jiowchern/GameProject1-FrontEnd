@@ -41,11 +41,11 @@ public class Entity : MonoBehaviour {
 
     public ACTOR_STATUS_TYPE Status;
 
-    
+    private Regulus.Utility.TimeCounter _DeltaTime;
 
     public Entity()
     {
-
+        _DeltaTime = new TimeCounter();
     }
     public Guid Id
     {
@@ -108,15 +108,17 @@ public class Entity : MonoBehaviour {
     // Update is called once per frame
 	void Update ()
 	{
+	    var delta = _DeltaTime.Second;
+        _DeltaTime.Reset();
         _UpdateAnimator();
 
-        var offsetRotY =  Trun * UnityEngine.Time.deltaTime;
+        var offsetRotY =  Trun * delta;
         Root.Rotate(new Vector3(0, offsetRotY, 0));
-        Root.Translate(Vector3.right * Speed * UnityEngine.Time.deltaTime);
+        Root.Translate(Vector3.right * Speed * delta);
         
         Debug.DrawRay(ProbeOrigin.position , ProbeOrigin.right, Color.yellow , _ProbeLength);
+        
 
-	    
     }
 
     public void SetVisible(Regulus.Project.ItIsNotAGame1.Data.IVisible visible)
@@ -163,6 +165,12 @@ public class Entity : MonoBehaviour {
         }
     }
 
+    public bool IsMainActor()
+    {
+        if(_Visible != null)
+            return EntityController.MainEntityId == _Visible.Id;
+        return false;
+    }
     private void _ClearCamera()
     {
         if (EntityController.MainEntityId == _Visible.Id)

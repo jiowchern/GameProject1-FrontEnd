@@ -76,6 +76,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             this._Mesh = mesh;
             this._Bound = this._BuildBound(this._Mesh);
+            _CollisionTargets = new IIndividual[0];
         }
 
         private void _BroadcastEquipEvent(Guid obj)
@@ -268,6 +269,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             Direction %= 360;
         }
 
+        private VisibleStatus _PrevVisibleStatus;
         private void _InvokeStatusEvent(ACTOR_STATUS_TYPE type)
         {
             if (this._StatusEvent != null)
@@ -280,14 +282,22 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                     Direction = this.Direction,
                     Trun = _Trun
                 };
-                this._StatusEvent.Invoke(status);
+                if (status.Direction != _PrevVisibleStatus.Direction ||
+                    status.Speed!= _PrevVisibleStatus.Speed||
+                    status.Trun!= _PrevVisibleStatus.Trun||                    
+                    status.Status != _PrevVisibleStatus.Status
+                    )
+                {
+                    this._StatusEvent.Invoke(status);
+                    _PrevVisibleStatus = status;
+                }
+                
             }
         }
 
         public Vector2 GetVelocity(float delta_time)
         {
             _SetDirection(_Trun * delta_time);
-
             return this._ToVector(this.Direction) * delta_time * this._Speed;
         }
 
@@ -296,8 +306,6 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             var radians = angle * 0.0174532924;
             return new Vector2((float)Math.Cos(radians), (float)-Math.Sin(radians));
         }
-
-
 
         private Rect _BuildVidw()
         {
@@ -358,6 +366,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public void CastEnd(ACTOR_STATUS_TYPE id)
         {
+
         }
 
         public int HaveDamage()
@@ -411,6 +420,28 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public ItemFormula[] GetFormulas()
         {
             return Resource.Instance.Formulas;
+        }
+
+        private IEnumerable<IIndividual> _CollisionTargets;
+        public void SetCollisionTargets(IEnumerable<IIndividual> hitthetargets)
+        {
+            _CollisionTargets = hitthetargets;
+        }
+
+        public void ClearCollisionTargets()
+        {
+            _CollisionTargets = new IIndividual[0];
+        }
+
+        public IEnumerable<IIndividual> GetCollisionTargets()
+        {
+            return _CollisionTargets;
+        }
+
+        public void SetDirection(float dir)
+        {
+            _SetDirection(dir);
+            _InvokeStatusEvent(_IdleStatus);
         }
     }
 }

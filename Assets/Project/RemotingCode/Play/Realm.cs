@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
+
 
 using Regulus.CustomType;
 using Regulus.Extension;
@@ -101,13 +101,40 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private void _BuildEnterance(Map map)
         {
             // player enterance
-            var entity = EntityProvider.CreateEnterance(new [] { ENTITY.ACTOR1} );
-            IIndividual individual = entity;
-            var x = _Random.NextInt(0, Maze.kDimension) * _Witdh ;
-            var y = _Random.NextInt(0, Maze.kDimension) * _Height ;
+            this._BuildPlayerEnternace(map);
 
-            individual.SetPosition(x,y);
+            //this._BuildAboriginalEnternace(map);
+        }
+
+        private void _BuildAboriginalEnternace(Map map)
+        {
+            var types = new[]
+                {
+                    ENTITY.ACTOR2
+                };
+            this._BuildEnternace(map, types);
+        }
+
+        private void _BuildPlayerEnternace(Map map)
+        {
+            var types = new[]
+                {
+                    ENTITY.ACTOR1 , ENTITY.ACTOR2
+                };
+            this._BuildEnternace(map, types);
+        }
+        
+        private void _BuildEnternace(Map map, ENTITY[] types)
+        {
+
             
+            var entity = EntityProvider.CreateEnterance(types);
+            IIndividual individual = entity;
+            var x = this._Random.NextInt(0, Maze.kDimension) * this._Witdh;
+            var y = this._Random.NextInt(0, Maze.kDimension) * this._Height;
+
+            individual.SetPosition(x, y);
+
             map.JoinStaff(individual);
         }
 

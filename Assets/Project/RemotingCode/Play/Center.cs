@@ -14,7 +14,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private readonly Hall _Hall;
         private readonly Updater _Updater;
 
-        private readonly AboriginalHall _AboriginalHall;
+        private readonly Race _Race;
 
         private Zone _Zone;
         public Center(IAccountFinder accountFinder, IGameRecorder gameRecorder  )
@@ -24,6 +24,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             this._Hall = new Hall();
             this._Updater = new Updater();
             this._Zone = new Zone(new RealmMaterial[] { new RealmMaterial { Name = "test", EntityDatas = new EntityData[0] } });
+
+            _Race = new Race(_Zone);
         }
         public void Join(Remoting.ISoulBinder binder)
         {
@@ -34,7 +36,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             this._Updater.Add(this._Hall);
             this._Updater.Add(this._Zone);
-            //_Updater.Add(_AboriginalHall);
+            _Updater.Add(_Race);
         }
 
         void IBootable.Shutdown()

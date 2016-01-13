@@ -20,4 +20,9 @@
     <Features>MATERIAL</Features>
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
+  <ItemPrototype>
+    <Name>Sword</Name>
+    <Features>WEAPON_AXE</Features>
+    <EquipPart>RIGHT_HAND</EquipPart>
+  </ItemPrototype>
 </ArrayOfItemPrototype>

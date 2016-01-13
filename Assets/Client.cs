@@ -51,6 +51,8 @@ public class Client : MonoBehaviour
         _Client = client;
 	    _Updater.Add(_Client);
 	    Debug.Log("Started .");
+
+	    
     }
     
 

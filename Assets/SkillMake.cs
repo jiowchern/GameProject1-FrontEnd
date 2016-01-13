@@ -59,7 +59,7 @@ public class SkillMake : MonoBehaviour {
         _MakeSkill = obj;
         _MakeSkill.FormulasEvent += _AddFormulas;
         _MakeSkill.QueryFormula();
-        Cursor.visible = true;
+        
     }
 
     private void _AddFormulas(ItemFormulaLite[] obj)
@@ -71,7 +71,7 @@ public class SkillMake : MonoBehaviour {
         MakeObject.SetActive(false);
         _MakeSkill.FormulasEvent -= _AddFormulas;
         _MakeSkill = null;
-        Cursor.visible = false;
+        
     }
 
     void _RemoveFormulaAll()
