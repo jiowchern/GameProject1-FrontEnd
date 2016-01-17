@@ -7,7 +7,8 @@ public class DeterminationExportMark : MonoBehaviour
     public enum PART
     {
         LEFT,
-        RIGHT
+        RIGHT,
+        ROOT
     }
 
     public PART Part;

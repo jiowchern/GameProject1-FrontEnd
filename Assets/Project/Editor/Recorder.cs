@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using Regulus.Extension;
+using Regulus.Project.ItIsNotAGame1.Data;
 
 using UnityEditor;
 using UnityEditor.Animations;
@@ -70,8 +72,7 @@ public class Recorder : EditorWindow {
             return;
         var anim = _Ani as Animator;
         
-        var ac = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
-        var infos = anim.GetCurrentAnimatorClipInfo(0);
+        var ac = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;        
         if (ac == null)
         {
             return;
@@ -95,99 +96,94 @@ public class Recorder : EditorWindow {
         {
             var state = _FindLayer(ac, _Layer);
             var clip = _FindClips(state , _State);
-            Vector2[] points = _FindPoints(clip, _Interval);
-            var drawer = _Drawer as DeterminationDrawer;
-            
-            _Record(points , clip.length , _BeginTime , _EndTime);
 
+            var data  = _FindPoints(clip, _Interval );
             
-            
-        }
-        
+            _Record(data);
+        }        
     }
-
-    private void _Record(Vector2[] points, float length, float begin_time, float end_time)
+    
+    private void _Record(SkillData data)
     {
-        
-        List<Vector2> left = new List<Vector2>();
-        List<Vector2> right = new List<Vector2>();
-        for (int i = 0; i < points.Length - 1; i += 2)
-        {
-            left.Add(points[i]);
-            right.Add(points[i + 1]);
-        }
         var drawer = _Drawer as DeterminationDrawer;
         if (drawer != null)
         {
-            drawer.Left = left.ToArray();
-            drawer.Right = right.ToArray();
-            drawer.Total = length;
-            drawer.Begin = begin_time;
-            drawer.End = end_time;
+            drawer.Left = (from l in data.Lefts select new UnityEngine.Vector2(l.X, l.Y )).ToArray();
+            drawer.Right = (from r in data.Rights select new UnityEngine.Vector2(r.X, r.Y)).ToArray();
+            drawer.Total = data.Total;
+            drawer.Begin = data.Begin;
+            drawer.End = data.End;
         }
 
         var skillExportMark = _Skill as SkillExportMark;
         if (skillExportMark != null)
         {
-            skillExportMark.Data.Lefts = (from l in left select new Regulus.CustomType.Vector2(l.x , l.y)).ToArray();
-            skillExportMark.Data.Rights = (from r in right select new Regulus.CustomType.Vector2(r.x, r.y)).ToArray();
-            skillExportMark.Data.Total = length;
-            skillExportMark.Data.Begin = begin_time;
-            skillExportMark.Data.End = end_time;
-
+            skillExportMark.Data = data;
         }
 
     }
 
-    private void _Record(Vector2[] points)
+    private SkillData _FindPoints( AnimationClip clip, float interval)
     {
-        
-    }
-
-
-    
-    
-    private Vector2[] _FindPoints( AnimationClip clip, float interval)
-    {
+        var data = new SkillData(); 
         var anim = _Ani as Animator;
+        
         var go = anim.gameObject;
-        var position = new Vector2(go.transform.position.x , go.transform.position.z);
-        var marks = go.GetComponentsInChildren<DeterminationExportMark>();
-        var markLeft = (from m in marks where m.Part == DeterminationExportMark.PART.LEFT select m).Single();
+        
+        var marks = go.GetComponentsInChildren<DeterminationExportMark>(); 
+        var markLeft = (from m in marks where m.Part == DeterminationExportMark.PART.LEFT select m).Single(); 
         var markRight = (from m in marks where m.Part == DeterminationExportMark.PART.RIGHT select m).Single();
-        List < Vector2 > points = new List<Vector2>();
-        for (var i = _BeginTime ; i < _EndTime; i+= interval)
-        {
-            clip.SampleAnimation(go, i);            
-            Debug.LogFormat("mark {0} , Position {1}", markLeft.GetInstanceID(), markLeft.Position);
-            points.Add(markLeft.Position - position);
+        var markRoot = (from m in marks where m.Part == DeterminationExportMark.PART.ROOT select m).Single();
+        var len = clip.length;
+        
+        List<Vector2> left = new List<Vector2>();
+        List<Vector2> right = new List<Vector2>();
+        List<Translate> root = new List<Translate>();
 
-            Debug.LogFormat("mark {0} , Position {1}", markRight.GetInstanceID(), markRight.Position);
-            points.Add(markRight.Position - position);
-
-        }
-
-        clip.SampleAnimation(go, clip.length);
-        if(markLeft.Enable)
-        {
-            Debug.LogFormat("mark {0} , Position {1}", markLeft.GetInstanceID(), markLeft.Position);
-            points.Add(markLeft.Position - position);
-        }
-
-        if(markRight.Enable)
-        {
-            Debug.LogFormat("mark {0} , Position {1}", markRight.GetInstanceID(), markRight.Position);
-            points.Add(markRight.Position - position);
-        }
+        float eulerAngle = go.transform.rotation.eulerAngles.y;
+        var rootPosition = new Vector2(go.transform.position.x, go.transform.position.z);
+        var basePosition = markRoot.Position; 
+        Debug.Log("basePosition  : " + basePosition);
+        for (var i = 0.0f ; i < len; i += interval) 
+        {           
+            clip.SampleAnimation(go, i);
             
+            var currentposition = markRoot.Position - basePosition ;            
+            var position = currentposition;
+            var y = go.transform.rotation.eulerAngles.y;
+            var t = new Translate()
+            {
+                Position = new Regulus.CustomType.Vector2(position.x, position.y),
+                Rotation = eulerAngle - y
+            };
+            
+            root.Add(t);
+            eulerAngle = y;
+            if (i >= _BeginTime && i <= _EndTime)
+            {
+                left.Add(markLeft.Position - rootPosition  );
 
-        return points.ToArray();
+                right.Add(markRight.Position - rootPosition );
+            }
+        }
+        data.Lefts = (from l in left select new Regulus.CustomType.Vector2(l.x, l.y)).ToArray();
+        data.Rights = (from r in right select new Regulus.CustomType.Vector2(r.x, r.y)).ToArray();
+        data.Roots = root.ToArray();
+        data.Total = len;
+        data.Begin = _BeginTime;
+        data.End = _EndTime;
+
+        
+
+
+        return data;
     }
 
     private AnimationClip _FindClips(AnimatorStateMachine state, string state_name)
     {
         foreach (var child in state.states)
         {
+            
             Debug.Log("Clip name " + child.state.name);
             if (child.state.name == state_name)
             {
@@ -217,3 +213,4 @@ public class Recorder : EditorWindow {
     
     
 }
+

@@ -70,14 +70,23 @@ public class RMF_RadialMenu : MonoBehaviour {
         if (useSelectionFollower && selectionFollowerContainer == null)
             Debug.LogError("Radial Menu: Selection follower container is unassigned on " + gameObject.name + ", which has the selection follower enabled.");
 
+        _Initial();
+    }
+
+    private void _Initial()
+    {
+        previousActiveIndex = 0;
         elementCount = elements.Count;
 
         angleOffset = (360f / (float)elementCount);
 
         //Loop through and set up the elements.
-        for (int i = 0; i < elementCount; i++) {
-            if (elements[i] == null) {
-                Debug.LogError("Radial Menu: element " + i.ToString() + " in the radial menu " + gameObject.name + " is null!");
+        for (int i = 0; i < elementCount; i++)
+        {
+            if (elements[i] == null)
+            {
+                Debug.LogError(
+                    "Radial Menu: element " + i.ToString() + " in the radial menu " + gameObject.name + " is null!");
                 continue;
             }
             elements[i].parentRM = this;
@@ -85,11 +94,8 @@ public class RMF_RadialMenu : MonoBehaviour {
             elements[i].setAllAngles((angleOffset * i) + globalOffset, angleOffset);
 
             elements[i].assignedIndex = i;
-
         }
-
     }
-
 
     void Start() {
 
@@ -138,20 +144,23 @@ public class RMF_RadialMenu : MonoBehaviour {
             //Current element index we're pointing at.
             index = (int)(currentAngle / angleOffset);
 
-            if (elements[index] != null) {
-
+            
+            if (index < elements.Count && index >= 0
+                && elements[index] != null)
+            {
+                
                 //Select it.
                 selectButton(index);
 
                 //If we click or press a "submit" button (Button on joystick, enter, or spacebar), then we'll execut the OnClick() function for the button.
-                if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit")) {
+                if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("Submit"))
+                {
 
                     ExecuteEvents.Execute(elements[index].button.gameObject, pointer, ExecuteEvents.submitHandler);
 
 
                 }
             }
-
         }
 
         //Updates the selection follower if we're using one.
@@ -194,5 +203,26 @@ public class RMF_RadialMenu : MonoBehaviour {
 
     }
 
+    public void arrangeElements()
+    {
+        _Initial();
+        RMF_RadialMenu rm = this;
+         
+
+
+        /*for (int i = 0; i < rm.elements.Count; i++)
+        {
+            if (rm.elements[i] == null)
+            {
+                Debug.LogError("Radial Menu: element " + i.ToString() + " in the radial menu " + rm.gameObject.name + " is null!");
+                continue;
+            }
+            RectTransform elemRt = rm.elements[i].GetComponent<RectTransform>();
+            elemRt.rotation = Quaternion.Euler(0, 0, -((360f / (float)rm.elements.Count) * i) - rm.globalOffset);
+
+        }*/
+
+
+    }
 
 }

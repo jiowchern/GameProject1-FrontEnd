@@ -93,8 +93,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             var map = new Map();
             this._BuildWall(map);
-            this._BuildDebirs(map);
+            
             _BuildEnterance(map);
+            this._BuildDebirs(map);
             return map;
         }
 
@@ -103,7 +104,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             // player enterance
             this._BuildPlayerEnternace(map);
 
-            //this._BuildAboriginalEnternace(map);
+            this._BuildAboriginalEnternace(map);
         }
 
         private void _BuildAboriginalEnternace(Map map)
@@ -112,14 +113,18 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 {
                     ENTITY.ACTOR2
                 };
-            this._BuildEnternace(map, types);
+            for (int i = 0; i < 40; i++)
+            {
+                this._BuildEnternace(map, types);
+            }
+            
         }
 
         private void _BuildPlayerEnternace(Map map)
         {
             var types = new[]
                 {
-                    ENTITY.ACTOR1 , ENTITY.ACTOR2
+                    ENTITY.ACTOR1 , ENTITY.ACTOR2 , ENTITY.DEBIRS
                 };
             this._BuildEnternace(map, types);
         }
@@ -157,13 +162,19 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private void _BuildDebirs(Map map)
         {            
-            for(int i = 0; i < 50; ++ i )
+            for(int i = 0; i < 20; ++ i )
             {
                 var entity = this._GetEntity(ENTITY.DEBIRS);
                 entity.SetRotation(Utility.Random.Instance.NextFloat(0, 360));
+                map.JoinChallenger(entity);
                 IIndividual individual = entity;
-                individual.SetPosition(Utility.Random.Instance.NextFloat(0, 100), Utility.Random.Instance.NextFloat(0, 100));
-                map.JoinStaff(entity);
+
+                var x = individual.Position.X;
+                var y = individual.Position.Y;
+
+                individual.SetPosition(x + Utility.Random.Instance.NextFloat(0, 20), y + Utility.Random.Instance.NextFloat(0, 20));
+                
+                
             }
         }
 

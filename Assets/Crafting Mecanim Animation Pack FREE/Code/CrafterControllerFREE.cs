@@ -1,163 +1,116 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CrafterControllerFREE : MonoBehaviour {
+public class WarriorAnimationDemoFREE : MonoBehaviour 
+{
+	public Animator animator;
 
-	private Animator animator;
-	
-	private GameObject box;
+	float rotationSpeed = 30;
 
-	float rotationSpeed = 5;
 	Vector3 inputVec;
-	bool isMoving;
-	bool isPaused;
-
-	public enum CharacterState {Idle, Box};
+	Vector3 targetDirection;
 	
-	public CharacterState charState;
+	//Warrior types
+	public enum Warrior{Karate, Ninja, Brute, Sorceress, Knight, Mage, Archer, TwoHanded, Swordsman, Spearman, Hammer, Crossbow};
 
-	void Awake()
-	{
-		animator = this.GetComponent<Animator>();
-		box = GameObject.Find("Carry");
-	}
-
-	void Start()
-	{
-		StartCoroutine (COShowItem("none", 0f));
-		charState = CharacterState.Idle;
-	}
-
+	public Warrior warrior;
+	
 	void Update()
 	{
 		//Get input from controls
 		float z = Input.GetAxisRaw("Horizontal");
 		float x = -(Input.GetAxisRaw("Vertical"));
 		inputVec = new Vector3(x, 0, z);
-		animator.SetFloat("VelocityX", -x);
-		animator.SetFloat("VelocityY", z);
+
+		//Apply inputs to animator
+		animator.SetFloat("Input X", z);
+		animator.SetFloat("Input Z", -(x));
 
 		if (x != 0 || z != 0 )  //if there is some input
 		{
 			//set that character is moving
 			animator.SetBool("Moving", true);
-			isMoving = true;
-
-			//if we are running, set the animator
-			if (Input.GetButton("Jump"))
-				animator.SetBool("Running", true);
-			else
-				animator.SetBool("Running", false);
+			animator.SetBool("Running", true);
 		}
 		else
 		{
 			//character is not moving
 			animator.SetBool("Moving", false);
-			isMoving = false;
+			animator.SetBool("Running", false);
+		}
+
+		if (Input.GetButtonDown("Fire1"))
+		{
+			animator.SetTrigger("Attack1Trigger");
+			if (warrior == Warrior.Brute)
+				StartCoroutine (COStunPause(1.2f));
+			else if (warrior == Warrior.Sorceress)
+				StartCoroutine (COStunPause(1.2f));
+			else
+				StartCoroutine (COStunPause(.6f));
 		}
 
 		UpdateMovement();  //update character position and facing
-
-		if(Input.GetKey(KeyCode.R))
-			this.gameObject.transform.position = new Vector3(0,0,0);
-
-		animator.SetFloat("Velocity", UpdateMovement());  //sent velocity to animator
 	}
 
-	void RotateTowardsMovementDir()  //face character along input direction
+	public IEnumerator COStunPause(float pauseTime)
 	{
-		if (!isPaused)
+		yield return new WaitForSeconds(pauseTime);
+	}
+
+	//converts control input vectors into camera facing vectors
+	void GetCameraRelativeMovement()
+	{  
+		Transform cameraTransform = Camera.main.transform;
+
+		// Forward vector relative to the camera along the x-z plane   
+		Vector3 forward = cameraTransform.TransformDirection(Vector3.forward);
+		forward.y = 0;
+		forward = forward.normalized;
+
+		// Right vector relative to the camera
+		// Always orthogonal to the forward vector
+		Vector3 right= new Vector3(forward.z, 0, -forward.x);
+
+		//directional inputs
+		float v= Input.GetAxisRaw("Vertical");
+		float h= Input.GetAxisRaw("Horizontal");
+
+		// Target direction relative to the camera
+		targetDirection = h * right + v * forward;
+	}
+
+	//face character along input direction
+	void RotateTowardMovementDirection()  
+	{
+		if (inputVec != Vector3.zero)
 		{
-			if (inputVec != Vector3.zero)
-			{
-				transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(inputVec), Time.deltaTime * rotationSpeed);
-			}
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(targetDirection), Time.deltaTime * rotationSpeed);
 		}
 	}
 
-	float UpdateMovement()  //movement of character
+	void UpdateMovement()
 	{
-		Vector3 motion = inputVec;  //get movement input from controls
+		//get movement input from controls
+		Vector3 motion = inputVec;
 
 		//reduce input for diagonal movement
 		motion *= (Mathf.Abs(inputVec.x) == 1 && Mathf.Abs(inputVec.z) == 1)?.7f:1;
-		
-		if(!isPaused)
-			RotateTowardsMovementDir();  //if not paused, face character along input direction
 
-		return inputVec.magnitude;
+		RotateTowardMovementDirection();  
+		GetCameraRelativeMovement();  
 	}
 
 	void OnGUI () 
 	{
-		if (charState == CharacterState.Idle && !isMoving)
+		if (GUI.Button (new Rect (25, 85, 100, 30), "Attack1")) 
 		{
-			isPaused = false;
+			animator.SetTrigger("Attack1Trigger");
 
-			if (GUI.Button (new Rect (25, 25, 150, 30), "Pickup Box")) 
-			{
-				animator.SetTrigger("CarryPickupTrigger");
-				StartCoroutine (COMovePause(1.2f));
-				StartCoroutine (COShowItem("box", .5f));
-				charState = CharacterState.Box;
-			}
-
-			if (GUI.Button (new Rect (25, 65, 150, 30), "Recieve Box")) 
-			{
-				animator.SetTrigger("CarryRecieveTrigger");
-				StartCoroutine (COMovePause(1.2f));
-				StartCoroutine (COShowItem("box", .5f));
-				charState = CharacterState.Box;
-			}
+			if (warrior == Warrior.Brute || warrior == Warrior.Sorceress)  //if character is Brute or Sorceress
+				StartCoroutine (COStunPause(1.2f));
+			else
+				StartCoroutine (COStunPause(.6f));
 		}
-
-		if (charState == CharacterState.Box && !isMoving)
-		{
-			if (GUI.Button (new Rect (25, 25, 150, 30), "Put Down Box")) 
-			{
-				animator.SetTrigger("CarryPutdownTrigger");
-				StartCoroutine (COMovePause(1.2f));
-				StartCoroutine (COShowItem("none", .7f));
-				charState = CharacterState.Idle;
-			}
-			
-			if (GUI.Button (new Rect (25, 65, 150, 30), "Give Box")) 
-			{
-				animator.SetTrigger("CarryHandoffTrigger");
-				StartCoroutine (COMovePause(1.2f));
-				StartCoroutine (COShowItem("none", .6f));
-				charState = CharacterState.Idle;
-			}
-		}
-	}
-
-	public IEnumerator COMovePause(float pauseTime)
-	{
-		isPaused = true;
-		yield return new WaitForSeconds(pauseTime);
-		isPaused = false;
-	}
-
-	public IEnumerator COChangeCharacterState(float waitTime, CharacterState state)
-	{
-		yield return new WaitForSeconds(waitTime);
-		charState = state;
-	}
-	
-	public IEnumerator COShowItem(string item, float waittime)
-	{
-		yield return new WaitForSeconds (waittime);
-		
-		if(item == "none")
-		{
-			box.SetActive(false);
-		}
-
-		else if(item == "box")
-		{
-			box.SetActive(true);
-		}
-
-		yield return null;
 	}
 }

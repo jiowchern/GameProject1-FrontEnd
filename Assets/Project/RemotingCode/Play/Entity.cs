@@ -50,7 +50,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             Equipment.AddEvent += _BroadcastEquipEvent;
             Equipment.RemoveEvent += _BroadcastEquipEvent;
 
-            _IdleStatus = ACTOR_STATUS_TYPE.NORMAL_IDLE;
+            _Status = ACTOR_STATUS_TYPE.NORMAL_IDLE;
         }
         public Entity(ENTITY type, string name , Polygon mesh ) : this(mesh )
         {
@@ -67,13 +67,13 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             Equipment.AddEvent += _BroadcastEquipEvent;
             Equipment.RemoveEvent += _BroadcastEquipEvent;
                         
-            _IdleStatus = ACTOR_STATUS_TYPE.NORMAL_IDLE;
+            _Status = ACTOR_STATUS_TYPE.NORMAL_IDLE;
 
             
         }
 
         public Entity(Polygon mesh)
-        {
+        {            
             this._Mesh = mesh;
             this._Bound = this._BuildBound(this._Mesh);
             _CollisionTargets = new IIndividual[0];
@@ -134,7 +134,18 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         void IVisible.QueryStatus()
         {
-            _InvokeStatusEvent(_IdleStatus);
+            var status = new VisibleStatus()
+            {
+                Status = _Status,
+                StartPosition = _Mesh.Center,
+                Speed = _Speed,
+                Direction = Direction,
+                Trun = _Trun
+            };
+            
+            this._StatusEvent.Invoke(status);
+            _PrevVisibleStatus = status;
+                       
             _BroadcastEquipEvent();
         }
 
@@ -170,13 +181,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private Action _BoundsEvent;
         private float _Trun;
 
-        private ACTOR_STATUS_TYPE _IdleStatus;
+        private ACTOR_STATUS_TYPE _Status;
 
         public Guid Id { get { return this._Id; } }
 
         public float Direction { get; private set; }
 
         public Equipment Equipment { get; set; }
+
+        public float Speed { get {return _Speed;} }
 
         event Action IIndividual.BoundsEvent
         {
@@ -185,12 +198,10 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         }
 
         void IIndividual.SetPosition(float x, float y)
-        {
-            if (x == 0 && y == 0)
-                return;
+        {            
 
-            var offset = this._Mesh.Center + new Vector2(x, y);
-            this._Mesh.Offset(offset);
+            var offset = new Vector2(x, y) - this._Mesh.Center;
+            this._Mesh.Offset(offset);            
             this._Bound = this._BuildBound(this._Mesh);
             if (this._BoundsEvent != null)
                 this._BoundsEvent.Invoke();
@@ -198,7 +209,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         Item[] IIndividual.Stolen()
         {
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.CHEST_OPEN);
+            _Status = ACTOR_STATUS_TYPE.CHEST_OPEN;
+            _InvokeStatusEvent();
             var itemProivder = new ItemProvider();            
             return itemProivder.FromStolen();
         }
@@ -234,7 +246,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
             this._Mesh.Offset(velocity);
             this._Bound = this._BuildBound(this._Mesh);
-            if (this._BoundsEvent != null)
+            if (this._BoundsEvent != null) 
                 this._BoundsEvent.Invoke();
 
 
@@ -248,7 +260,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         internal void Trun(int trun)
         {
             this._Trun = trun;
-            _InvokeStatusEvent(_IdleStatus);
+            _InvokeStatusEvent();
         }
         public void Move(float angle, bool run)
         {
@@ -259,7 +271,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private void _SetMove(float angle)
         {
             _SetDirection(angle);
-            _InvokeStatusEvent(_IdleStatus);
+            _InvokeStatusEvent();
         }
 
         private void _SetDirection(float angle)
@@ -270,16 +282,16 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         }
 
         private VisibleStatus _PrevVisibleStatus;
-        private void _InvokeStatusEvent(ACTOR_STATUS_TYPE type)
+        private void _InvokeStatusEvent()
         {
-            if (this._StatusEvent != null)
+            if (_StatusEvent != null)
             {
                 var status = new VisibleStatus()
                 {
-                    Status = type,
+                    Status = _Status,
                     StartPosition = _Mesh.Center,
                     Speed = _Speed,
-                    Direction = this.Direction,
+                    Direction = Direction,
                     Trun = _Trun
                 };
                 if (status.Direction != _PrevVisibleStatus.Direction ||
@@ -331,24 +343,80 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public void Normal()
         {
-            _IdleStatus = ACTOR_STATUS_TYPE.NORMAL_IDLE;
+            _Status = ACTOR_STATUS_TYPE.NORMAL_IDLE;
             Stop();
         }
 
         public void Explore()
         {
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.NORMAL_EXPLORE);
+            _Status = ACTOR_STATUS_TYPE.NORMAL_EXPLORE;
+            _InvokeStatusEvent();
         }
 
         public void Battle()
         {
-            _IdleStatus = ACTOR_STATUS_TYPE.BATTLE_AXE_IDLE;
+
+            var item = this.Equipment.Find(EQUIP_PART.RIGHT_HAND);
+            if (item.HasValue)
+            {                
+                _Status = _GetWeaponIdle(item.Value.GetPrototype().Features);
+            }
+            else
+            {
+                _Status = ACTOR_STATUS_TYPE.MELEE_IDLE;
+            }
+            
             Stop();
+        }
+
+        private ACTOR_STATUS_TYPE _GetWeaponIdle(ITEM_FEATURES features)
+        {
+            switch (features)
+            {
+                case ITEM_FEATURES.WEAPON_AXE:
+                    return ACTOR_STATUS_TYPE.BATTLE_AXE_IDLE;
+                case ITEM_FEATURES.WEAPON_TWOHANDSWORD:
+                    return ACTOR_STATUS_TYPE.TWO_HAND_SWORD_IDLE;
+                default:
+                    return ACTOR_STATUS_TYPE.BATTLE_AXE_IDLE;
+            }
         }
 
         public ActorSkill FindSkill()
         {
-            return new ActorSkill(_Datas);
+            var item = this.Equipment.Find(EQUIP_PART.RIGHT_HAND);
+            if (item.HasValue)
+            {
+                return new ActorSkill(_GetSkills(item.Value.GetPrototype().Features, _Datas));                
+            }
+            return new ActorSkill(_GetSkills(ITEM_FEATURES.MATERIAL, _Datas));
+        }
+
+        private SkillData[] _GetSkills(ITEM_FEATURES features, SkillData[] datas)
+        {
+            var baseSkills = new []
+            {
+                ACTOR_STATUS_TYPE.MELEE_ATTACK1,                
+            };
+            if (features == ITEM_FEATURES.WEAPON_AXE)
+            {
+                baseSkills = new[]
+                {
+                    ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK1,
+                    ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK2,
+                    ACTOR_STATUS_TYPE.BATTLE_AXE_BLOCK
+                };
+            }
+            if (features == ITEM_FEATURES.WEAPON_TWOHANDSWORD)
+            {
+                baseSkills = new[]
+                {
+                    ACTOR_STATUS_TYPE.TWO_HAND_SWORD_ATTACK1                    
+                };
+            }
+            
+
+            return (from d in datas where baseSkills.Any(bs => bs == d.Id) select d).ToArray();
         }
 
         public void CastBegin(ACTOR_STATUS_TYPE id)
@@ -361,7 +429,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             _Speed = 0.0f;
             _Trun = 0.0f;
-            _InvokeStatusEvent(id);
+            _Status = id;
+            _InvokeStatusEvent();
         }
 
         public void CastEnd(ACTOR_STATUS_TYPE id)
@@ -380,7 +449,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             _Speed = 0.0f;
             _Trun = 0.0f;
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.DAMAGE1);
+            _Status = ACTOR_STATUS_TYPE.DAMAGE1;
+            _InvokeStatusEvent();
+            
         }
 
         public SkillCaster GetDamagrCaster()
@@ -407,14 +478,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public void Talk(string message)
         {
-            _OnTalkMessageEvent(message);
+            if(_OnTalkMessageEvent != null)
+                _OnTalkMessageEvent(message);
         }
 
         public void Make()
         {
             _Speed = 0.0f;
             _Trun = 0.0f;
-            _InvokeStatusEvent(ACTOR_STATUS_TYPE.MAKE);
+            _InvokeStatusEvent();
         }
 
         public ItemFormula[] GetFormulas()
@@ -441,7 +513,12 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public void SetDirection(float dir)
         {
             _SetDirection(dir);
-            _InvokeStatusEvent(_IdleStatus);
+            _InvokeStatusEvent();
+        }
+
+        public ACTOR_STATUS_TYPE GetIdle()
+        {
+            return _Status;
         }
     }
 }

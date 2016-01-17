@@ -54,7 +54,7 @@ public class SkillMake : MonoBehaviour {
 
     private void _MakeSupply(IMakeSkill obj)
     {
-        _RemoveFormulaAll();
+        
         MakeObject.SetActive(true);
         _MakeSkill = obj;
         _MakeSkill.FormulasEvent += _AddFormulas;
@@ -64,6 +64,7 @@ public class SkillMake : MonoBehaviour {
 
     private void _AddFormulas(ItemFormulaLite[] obj)
     {
+        //_RemoveFormulaAll();
         _ItemFormulaLites.Set(obj);
     }
     private void _MakeUnsupply(IMakeSkill obj)

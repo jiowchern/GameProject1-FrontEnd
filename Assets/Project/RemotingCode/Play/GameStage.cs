@@ -25,6 +25,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         
         private readonly TimeCounter _DeltaTimeCounter;
+        private readonly TimeCounter _UpdateTimeCounter;
         private const float _UpdateTime = 1.0f / 30.0f;
 
         private float _UpdateAllItemTime;
@@ -35,7 +36,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         
         private readonly DifferenceNoticer<IIndividual> _DifferenceNoticer;
 
-        float _UpdateTimeCount;
+        
 
         private bool _RequestAllItems;
 
@@ -50,6 +51,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _Map = map;
             _Binder = binder;
             _DeltaTimeCounter = new TimeCounter();
+            _UpdateTimeCounter = new TimeCounter();
             _Updater = new Updater();
             _DifferenceNoticer = new DifferenceNoticer<IIndividual>();
 
@@ -95,18 +97,16 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         void IStage.Update()
         {
-            _Updater.Working();
-            
-            
+            if (_UpdateTimeCounter.Second < _UpdateTime)
+                return;
             var deltaTime = this._GetDeltaTime();
-            if (_TimeUp(deltaTime))
-            {
-                var lastDeltaTime = deltaTime + GameStage._UpdateTime;
-                _Move(lastDeltaTime);
-                _Broadcast(_Map.Find(_Player.GetView()));
-                _Player.Equipment.UpdateEffect(lastDeltaTime);
-            }
-            
+            _Updater.Working();
+
+            var lastDeltaTime = deltaTime ;
+            _Move(lastDeltaTime);
+            _Broadcast(_Map.Find(_Player.GetView()));
+            _Player.Equipment.UpdateEffect(lastDeltaTime);
+
             _ResponseItems(deltaTime);
 
         }
@@ -131,17 +131,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 _UpdateAllItemTime -= deltaTime;
             }
         }
-
-        private bool _TimeUp(float deltaTime)
-        {
-            this._UpdateTimeCount += deltaTime;
-            if(this._UpdateTimeCount >= GameStage._UpdateTime)
-            {
-                this._UpdateTimeCount %= GameStage._UpdateTime;
-                return true;
-            }
-            return false;
-        }
+        
 
         private void _Move(float deltaTime)
         {

@@ -22,7 +22,7 @@
   </ItemPrototype>
   <ItemPrototype>
     <Name>Sword</Name>
-    <Features>WEAPON_AXE</Features>
+    <Features>WEAPON_TWOHANDSWORD</Features>
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
 </ArrayOfItemPrototype>

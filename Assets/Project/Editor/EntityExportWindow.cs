@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
-using Regulus.Project.ItIsNotAGame1.Data;
+
+using System.IO;
+using System.Xml.Serialization;
+
 using Regulus.Utility;
 using UnityEditor;
 
@@ -25,7 +29,23 @@ public class EntityExportWindow : EditorWindow
         var marks = GameObject.FindObjectsOfType<SkillExportMark>();
         var entitys = (from mark in marks select mark.Data).ToArray();
 
-        var path = EditorUtility.SaveFilePanel("select", "", "skills.txt", "txt");
-        Serialization.Write(entitys, path);
+        
+
+        try
+        {
+            
+
+
+            var path = EditorUtility.SaveFilePanel("select", "", "skills.txt", "txt");
+            Serialization.Write(entitys, path);
+        }
+        catch (InvalidCastException e)
+        {
+            Debug.Log(e.InnerException.Message.ToString());
+            throw;
+        }
+        
     }
+    
+
 }

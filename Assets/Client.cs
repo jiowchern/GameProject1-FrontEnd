@@ -43,7 +43,7 @@ public class Client : MonoBehaviour
 	{
 	    
 	    Application.logMessageReceived += _Log;
-        Regulus.Utility.SpinWait.NotWindowsPlatform();
+        //Regulus.Utility.SpinWait.NotWindowsPlatform();
         var client = new Regulus.Framework.Client<Regulus.Project.ItIsNotAGame1.IUser>(Console, Console);
         client.ModeSelectorEvent += _ToMode;
 

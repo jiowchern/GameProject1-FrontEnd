@@ -41,7 +41,7 @@ public class DeterminationDrawer : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-        Regulus.CustomType.Polygon poltmp = new Polygon();
+       
         
         var angle =- transform.rotation.eulerAngles.y * Mathf.PI / 180.0f;
 	    var lefts = (from vl in Left
@@ -52,6 +52,8 @@ public class DeterminationDrawer : MonoBehaviour {
                      select Regulus.CustomType.Polygon.RotatePoint(pnt, new Regulus.CustomType.Vector2(), angle)).ToArray();
 
         var center = new Regulus.CustomType.Vector2(transform.position.x, transform.position.z);
+
+
 #if UNITY_EDITOR
         Regulus.Project.ItIsNotAGame1.Game.Play.BattleCasterStatus._DrawAll(lefts , right , transform.position, AllLineColor);
 #endif
