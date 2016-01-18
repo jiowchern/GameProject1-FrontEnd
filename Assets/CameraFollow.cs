@@ -9,6 +9,8 @@ public class CameraFollow : MonoBehaviour
 
     public float x;
     public float y;
+    public float PrevX;
+    public float PrevY;
     public float xSpeed;
     public float ySpeed;
 
@@ -36,16 +38,22 @@ public class CameraFollow : MonoBehaviour
         // Early out if we don't have a target
         if (!target)
             return;
-        if(Input.GetMouseButton(1))
-        {
-            
-               x += Input.GetAxis("Mouse X") * xSpeed * Time.deltaTime;
-            y -= Input.GetAxis("Mouse Y") * ySpeed * Time.deltaTime;
 
+        var xlen = Input.mousePosition.x;
+        var ylen = Input.mousePosition.y;
+        if (Input.GetMouseButton(1))
+        {
+
+            x -= 360 * ( (PrevX - xlen) / (float)Screen.width);
+            y += 360 * ((PrevY - ylen) / (float)Screen.height);
+            
             x = x % 360;
             y = y % 360;
         }
-        
+
+        PrevX = xlen;
+        PrevY = ylen;
+
 
         distence -= Input.GetAxis("Mouse ScrollWheel") * disSpeed * Time.deltaTime;
 
