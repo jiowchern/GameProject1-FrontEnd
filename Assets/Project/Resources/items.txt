@@ -25,4 +25,39 @@
     <Features>WEAPON_TWOHANDSWORD</Features>
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
+  <ItemPrototype>
+    <Name>Candle</Name>
+    <Features>ILLUMINATION</Features>
+    <EquipPart>FIXTURES</EquipPart>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Torch</Name>
+    <Features>ILLUMINATION</Features>
+    <EquipPart>FIXTURES</EquipPart>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Lamp</Name>
+    <Features>ILLUMINATION</Features>
+    <EquipPart>FIXTURES</EquipPart>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>AnimalFat</Name>
+    <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Cloth</Name>
+    <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Nails</Name>
+    <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
+  </ItemPrototype>
+  <ItemPrototype>
+    <Name>Sticks</Name>
+    <Features>MATERIAL</Features>
+    <EquipPart>NONE</EquipPart>
+  </ItemPrototype>
 </ArrayOfItemPrototype>

@@ -77,10 +77,10 @@ public class CameraFollow : MonoBehaviour
         RaycastHit hit;
         if (Physics.Linecast(target.position, aim, out hit))
         {
-            var entitys = hit.collider.gameObject.GetComponentsInChildren<Entity>();
             
-            string name = hit.collider.gameObject.tag;
-            if (name != "MainCamera" && entitys.Length > 0 && entitys[0].IsMainActor() == false)
+            
+            string name = hit.collider.gameObject.tag;            
+            if (name != "MainCamera" && name != "Actor")
             {
                 //当碰撞的不是摄像机也不是地形 那么直接移动摄像机的坐标
                 transform.position = hit.point;

@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
-    <Name>ACTOR2</Name>
-    <Mesh>
-      <ArrayOfVector2>
-        <Vector2 x="-0.2598096" y="0.239789426" />
-        <Vector2 x="-0.239789426" y="-0.2598096" />
-        <Vector2 x="0.2598096" y="-0.239789426" />
-        <Vector2 x="0.239789426" y="0.2598096" />
-      </ArrayOfVector2>
-    </Mesh>
-  </EntityData>
-  <EntityData>
     <Name>ACTOR1</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -37,10 +26,21 @@
     <Name>WALL_NORTH_AISLE</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-15" y="-5" />
-        <Vector2 x="15" y="-5" />
-        <Vector2 x="15" y="5" />
-        <Vector2 x="-15" y="5" />
+        <Vector2 x="-7.5" y="-2.5" />
+        <Vector2 x="7.5" y="-2.5" />
+        <Vector2 x="7.5" y="2.5" />
+        <Vector2 x="-7.5" y="2.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
+    <Name>ACTOR2</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.2598096" y="0.239789426" />
+        <Vector2 x="-0.239789426" y="-0.2598096" />
+        <Vector2 x="0.2598096" y="-0.239789426" />
+        <Vector2 x="0.239789426" y="0.2598096" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -48,10 +48,10 @@
     <Name>WALL_SOUTH</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-15" y="-0.5" />
-        <Vector2 x="15" y="-0.5" />
-        <Vector2 x="15" y="0.5" />
-        <Vector2 x="-15" y="0.5" />
+        <Vector2 x="-7.5" y="-0.5" />
+        <Vector2 x="7.5" y="-0.5" />
+        <Vector2 x="7.5" y="0.5" />
+        <Vector2 x="-7.5" y="0.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -59,10 +59,10 @@
     <Name>WALL_SOUTH_AISLE</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-15" y="-5" />
-        <Vector2 x="15" y="-5" />
-        <Vector2 x="15" y="5" />
-        <Vector2 x="-15" y="5" />
+        <Vector2 x="-7.5" y="-2.5" />
+        <Vector2 x="7.5" y="-2.5" />
+        <Vector2 x="7.5" y="2.5" />
+        <Vector2 x="-7.5" y="2.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -70,10 +70,10 @@
     <Name>WALL_NORTH</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-15" y="-0.5" />
-        <Vector2 x="15" y="-0.5" />
-        <Vector2 x="15" y="0.5" />
-        <Vector2 x="-15" y="0.5" />
+        <Vector2 x="-7.5" y="-0.5" />
+        <Vector2 x="7.5" y="-0.5" />
+        <Vector2 x="7.5" y="0.5" />
+        <Vector2 x="-7.5" y="0.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -81,10 +81,10 @@
     <Name>WALL_WESTERN_AISLE</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-5" y="-15" />
-        <Vector2 x="5" y="-15" />
-        <Vector2 x="5" y="15" />
-        <Vector2 x="-5" y="15" />
+        <Vector2 x="-2.5" y="-7.5" />
+        <Vector2 x="2.5" y="-7.5" />
+        <Vector2 x="2.5" y="7.5" />
+        <Vector2 x="-2.5" y="7.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -92,10 +92,10 @@
     <Name>WALL_EAST_AISLE</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-5" y="-15" />
-        <Vector2 x="5" y="-15" />
-        <Vector2 x="5" y="15" />
-        <Vector2 x="-5" y="15" />
+        <Vector2 x="-2.5" y="-7.5" />
+        <Vector2 x="2.5" y="-7.5" />
+        <Vector2 x="2.5" y="7.5" />
+        <Vector2 x="-2.5" y="7.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -103,10 +103,10 @@
     <Name>WALL_WESTERN</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-15" />
-        <Vector2 x="0.5" y="-15" />
-        <Vector2 x="0.5" y="15" />
-        <Vector2 x="-0.5" y="15" />
+        <Vector2 x="-0.5" y="-7.5" />
+        <Vector2 x="0.5" y="-7.5" />
+        <Vector2 x="0.5" y="7.5" />
+        <Vector2 x="-0.5" y="7.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
@@ -114,10 +114,10 @@
     <Name>WALL_EAST</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-15" />
-        <Vector2 x="0.5" y="-15" />
-        <Vector2 x="0.5" y="15" />
-        <Vector2 x="-0.5" y="15" />
+        <Vector2 x="-0.5" y="-7.5" />
+        <Vector2 x="0.5" y="-7.5" />
+        <Vector2 x="0.5" y="7.5" />
+        <Vector2 x="-0.5" y="7.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>

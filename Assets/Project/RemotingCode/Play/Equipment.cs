@@ -4,6 +4,7 @@ using System.Linq;
 
 using Regulus.Project.ItIsNotAGame1.Data;
 
+
 namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
     public class Equipment
@@ -65,10 +66,35 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public void UpdateEffect(float last_delta_time)
         {
-            foreach(var item in _Items)
+            var view = 0.0f;
+
+
+            var parts = Regulus.Utility.EnumHelper.GetEnums<EQUIP_PART>();
+
+            foreach (var part in parts)
             {
+                if (_Items.ContainsKey(part))
+                {
+                    var item = _Items[part];
+                    if (item.UpdateLife(last_delta_time))
+                    {
+                        foreach (var effect in item.Effects)
+                        {
+                            if (effect.Type == EFFECT_TYPE.ILLUMINATE_ADD)
+                            {
+                                view += effect.Value;
+                            }
+                        }
+                        _Items[part] = item;
+                    }
+                }
                 
-            }
+                
+            }            
+
+            _Entity.SetEquipView(view);
         }
+
+        
     }
 }

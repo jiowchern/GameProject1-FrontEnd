@@ -43,6 +43,8 @@ public class Entity : MonoBehaviour {
 
     private Regulus.Utility.TimeCounter _DeltaTime;
 
+    private Light _Light;
+
     public Entity()
     {
         _DeltaTime = new TimeCounter();
@@ -78,7 +80,9 @@ public class Entity : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        _Light =  GetComponentInChildren<Light>();
         _Client = Client.Instance;
         if (_Client != null)
         {
@@ -116,8 +120,14 @@ public class Entity : MonoBehaviour {
         Root.Translate(Vector3.right * Speed * delta);
         
         Debug.DrawRay(ProbeOrigin.position , ProbeOrigin.right, Color.yellow , _ProbeLength);
-        
 
+	    if (_Light != null && _Visible != null)
+	    {
+	        _Light.range = _Visible.View;
+            if(IsMainActor())
+	            RenderSettings.fogEndDistance = _Visible.View;
+	    }
+        
     }
 
     public void SetVisible(Regulus.Project.ItIsNotAGame1.Data.IVisible visible)
@@ -162,6 +172,7 @@ public class Entity : MonoBehaviour {
             if (cam != null)
             {
                 cam.target = null;                
+                
                 Debug.Log("主角離鏡" + _Visible.Id);
             }
                 
@@ -172,17 +183,11 @@ public class Entity : MonoBehaviour {
         if (EntityController.MainEntityId == _Visible.Id)
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
-            cam.target = CameraTarget;
-
-            /*var directionLight = GameObject.FindGameObjectWithTag("DirectionLight");
-            
-            directionLight.transform.localPosition.Set(0,0,0);
-            var rot = new Quaternion();
-            rot.eulerAngles.Set(0, 90, 0);
-            directionLight.transform.localRotation = rot;
-            directionLight.transform.SetParent(transform);*/
+            cam.target = CameraTarget;            
 
             Debug.Log("主角入鏡" + _Visible.Id);
+
+            
         }
         
     }
