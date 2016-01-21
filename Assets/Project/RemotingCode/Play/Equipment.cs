@@ -13,7 +13,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private readonly Dictionary<EQUIP_PART, Item> _Items;
 
-        
+
 
         public event Action<Item> AddEvent;
         public event Action<Guid> RemoveEvent;
@@ -27,21 +27,21 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             Item item;
             _Items.TryGetValue(equip_type, out item);
-            if(item.IsValid())
+            if (item.IsValid())
             {
                 _Items.Remove(equip_type);
                 RemoveEvent(item.Id);
-            }                
+            }
             return item;
         }
 
         public void Equip(Item item)
         {
-            if(_Items.ContainsKey(item.GetEquipPart()) == false)
+            if (_Items.ContainsKey(item.GetEquipPart()) == false)
             {
-                _Items.Add(item.GetEquipPart() , item);
+                _Items.Add(item.GetEquipPart(), item);
                 AddEvent(item);
-            }            
+            }
         }
 
 
@@ -59,8 +59,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public Item Unequip(Guid id)
         {
-            var part = (from item in _Items.Values where  item.Id == id
-            select item.GetEquipPart()).FirstOrDefault();
+            var part = (from item in _Items.Values
+                        where item.Id == id
+                        select item.GetEquipPart()).FirstOrDefault();
             return Unequip(part);
         }
 
@@ -88,13 +89,13 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                         _Items[part] = item;
                     }
                 }
-                
-                
-            }            
+
+
+            }
 
             _Entity.SetEquipView(view);
         }
 
-        
+
     }
 }

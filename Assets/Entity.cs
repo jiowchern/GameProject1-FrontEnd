@@ -45,6 +45,8 @@ public class Entity : MonoBehaviour {
 
     private Light _Light;
 
+    private Vector3 SkillOffset;
+
     public Entity()
     {
         _DeltaTime = new TimeCounter();
@@ -116,9 +118,12 @@ public class Entity : MonoBehaviour {
         _UpdateAnimator();
 
         var offsetRotY =  Trun * delta;
-        Root.Rotate(new Vector3(0, offsetRotY, 0));
-        Root.Translate(Vector3.right * Speed * delta);
         
+	    
+        Root.Rotate(new Vector3(0, offsetRotY, 0));
+        Root.Translate( Vector3.right * Speed * delta);
+	    Root.position = Root.position + (SkillOffset * delta);
+
         Debug.DrawRay(ProbeOrigin.position , ProbeOrigin.right, Color.yellow , _ProbeLength);
 
 	    if (_Light != null && _Visible != null)
@@ -202,10 +207,10 @@ public class Entity : MonoBehaviour {
     {        
         _SetPosition(status.StartPosition);
         
-        Speed = status.Speed;
-
+        Speed = status.Speed;        
         Trun = status.Trun;
-        
+        SkillOffset = new Vector3(status.SkillOffect.X , 0 , status.SkillOffect.Y); 
+
         var eulerAngles = Root.rotation.eulerAngles;
         eulerAngles.y = status.Direction;
         Root.rotation = Quaternion.Euler(eulerAngles);
@@ -239,7 +244,7 @@ public class Entity : MonoBehaviour {
             {
                 Avatar.SetBool("Open" , true);                
             }            
-            else if (Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed <= 0.0f)
+            else if (Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed == 0.0f)
             {
                 ResetLongIdle();
             }
@@ -255,7 +260,7 @@ public class Entity : MonoBehaviour {
         if (Avatar != null)
         {
             var deltaTime = UnityEngine.Time.deltaTime;
-            if (_LongIdleTime < 0.0f && Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed <= 0.0f)
+            if (_LongIdleTime < 0.0f && Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed == 0.0f)
             {
                 Avatar.SetTrigger("LongIdle");
                 _LongIdleTime = 0.0f;
