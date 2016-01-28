@@ -267,24 +267,38 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public void Stop()
         {
             this._Speed = 0.0f;
-            this._SetMove(0);
-        }
-        internal void Trun(int trun)
-        {
-            this._Trun = trun;
             _InvokeStatusEvent();
         }
-        public void Move(float angle, bool run)
+        internal void Trun(float trun)
         {
-            this._Speed = 1.0f + (run ? 3.0f : 0.0f);
-            this._SetMove(angle);
+            if (trun != _Trun)
+            {
+                this._Trun = trun;
+                _InvokeStatusEvent();
+            }
+
         }
 
-        private void _SetMove(float angle)
-        {
-            _SetDirection(angle);
-            _InvokeStatusEvent();
+        public void Back(float speed)
+        {            
+            if (speed != _Speed)
+            {
+                this._Speed = speed;
+                _InvokeStatusEvent();
+            }
         }
+
+        public void Move(float angle, float speed)
+        {            
+            if (speed != _Speed)
+            {
+                this._Speed = speed;
+                _SetDirection(angle);
+                _InvokeStatusEvent();
+            }
+        }
+
+
 
         private void _SetDirection(float angle)
         {
@@ -296,6 +310,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private void _InvokeStatusEvent()
         {
+#if UNITY_EDITOR
+            UnityEngine.Debug.Log("_InvokeStatusEvent speed " + _Speed);
+#endif
             if (_StatusEvent != null)
             {
                 var status = new VisibleStatus()
@@ -307,16 +324,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                     Trun = _Trun,
                     SkillOffect = _SkillOffsetVector
                 };
-                if (status.Direction != _PrevVisibleStatus.Direction ||
-                    status.Speed != _PrevVisibleStatus.Speed ||
-                    status.Trun != _PrevVisibleStatus.Trun ||
-                    status.Status != _PrevVisibleStatus.Status ||
-                    status.SkillOffect != _PrevVisibleStatus.SkillOffect
-                    )
-                {
-                    this._StatusEvent.Invoke(status);
-                    _PrevVisibleStatus = status;
-                }
+                this._StatusEvent.Invoke(status);
+                _PrevVisibleStatus = status;
 
             }
         }
@@ -504,6 +513,11 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _BaseView = range;
         }
 
+        void IDevelopActor.SetSpeed(float speed)
+        {
+            _Speed = speed;
+        }
+
         public SkillCaster GetBattleCaster()
         {
 
@@ -530,5 +544,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _SkillOffsetVector = new Vector2();
             _InvokeStatusEvent();
         }
+
+
     }
 }

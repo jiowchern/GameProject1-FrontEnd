@@ -82,7 +82,7 @@ public class CameraControl : MonoBehaviour {
 				// Ensure the cursor is always locked when set
 				Screen.lockCursor = lockCursor;
 				
-				// Allow the script to clamp based on a desired target value.
+				// Allow the script to clamp based on a desired Watchtarget value.
 				var targetOrientation = Quaternion.Euler(targetDirection);
 				
 				// Get raw mouse input for a cleaner reading on more sensitive mice.

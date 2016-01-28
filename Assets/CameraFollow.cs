@@ -5,7 +5,8 @@ using System;
 public class CameraFollow : MonoBehaviour
 {
     
-    public Transform target;
+    public Transform Watchtarget;
+    public Transform CenterTarget;
 
     public float x;
     public float y;
@@ -35,8 +36,8 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        // Early out if we don't have a target
-        if (!target)
+        // Early out if we don't have a Watchtarget
+        if (!Watchtarget)
             return;
 
         var xlen = Input.mousePosition.x;
@@ -60,7 +61,7 @@ public class CameraFollow : MonoBehaviour
         distence = Mathf.Clamp(distence , minDistence, maxDistence);
 
         rotationEuler = Quaternion.Euler(y, x, 0);
-        cameraPosition = rotationEuler * new Vector3(0, 0, -distence) + target.position;
+        cameraPosition = rotationEuler * new Vector3(0, 0, -distence) + CenterTarget.position;
 
         transform.rotation = rotationEuler;
         transform.position = cameraPosition;
@@ -68,14 +69,14 @@ public class CameraFollow : MonoBehaviour
         //这里是计算射线的方向，从主角发射方向是射线机方向
         Vector3 aim = cameraPosition;
         //得到方向
-        Vector3 ve = (target.position - cameraPosition).normalized;
+        Vector3 ve = (CenterTarget.position - cameraPosition).normalized;
         float an = rotationEuler.y;
         aim -= an * ve;
         //在场景视图中可以看到这条射线
-        Debug.DrawLine(target.position, aim, Color.red);
+        Debug.DrawLine(CenterTarget.position, aim, Color.red);
         //主角朝着这个方向发射射线
         RaycastHit hit;
-        if (Physics.Linecast(target.position, aim, out hit))
+        if (Physics.Linecast(CenterTarget.position, aim, out hit))
         {
             
             
@@ -89,7 +90,7 @@ public class CameraFollow : MonoBehaviour
         }
        
         // 让射线机永远看着主角
-        transform.LookAt(target);
+        transform.LookAt(Watchtarget);
 
     }
 

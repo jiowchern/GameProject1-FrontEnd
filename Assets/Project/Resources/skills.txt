@@ -106,13 +106,12 @@
     <Begin>0.15</Begin>
     <End>0.25</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>true</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>PUNCH</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>DAMAGE1</Id>
@@ -245,13 +244,7 @@
     <Begin>0</Begin>
     <End>1.76666677</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects />
   </SkillData>
   <SkillData>
     <Id>NORMAL_IDLE</Id>
@@ -293,13 +286,28 @@
     <Begin>0</Begin>
     <End>0</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>true</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>1</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_BACKWARD</Type>
+        <Value>-1</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>300</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>300</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>3</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>TWO_HAND_SWORD_IDLE</Id>
@@ -324,13 +332,32 @@
     <Nexts>
       <ACTOR_STATUS_TYPE>TWO_HAND_SWORD_ATTACK1</ACTOR_STATUS_TYPE>
     </Nexts>
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>true</Controll>
-    <Disarm>true</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>0.5</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_BACKWARD</Type>
+        <Value>-0.2</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>150</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>150</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>1.8</Value>
+      </Effect>
+      <Effect>
+        <Type>DISARM</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_BLOCK</Id>
@@ -469,13 +496,12 @@
     <Begin>0</Begin>
     <End>1.83333337</End>
     <Nexts />
-    <Block>true</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>BLOCK</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>GUARD_IMPACT</Id>
@@ -728,13 +754,7 @@
     <Begin>0</Begin>
     <End>3.56666684</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects />
   </SkillData>
   <SkillData>
     <Id>NORMAL_IDLE</Id>
@@ -974,13 +994,7 @@
     <Begin>0</Begin>
     <End>1.08333337</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects />
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_IDLE</Id>
@@ -1000,13 +1014,32 @@
       <ACTOR_STATUS_TYPE>BATTLE_AXE_ATTACK2</ACTOR_STATUS_TYPE>
       <ACTOR_STATUS_TYPE>BATTLE_AXE_BLOCK</ACTOR_STATUS_TYPE>
     </Nexts>
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>true</Controll>
-    <Disarm>true</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>1</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_BACKWARD</Type>
+        <Value>-1</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>300</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>300</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>3</Value>
+      </Effect>
+      <Effect>
+        <Type>DISARM</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_ATTACK1</Id>
@@ -1324,13 +1357,32 @@
     <Begin>0.8</Begin>
     <End>1</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>true</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>1</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_BACKWARD</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>300</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>300</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>1.1</Value>
+      </Effect>
+      <Effect>
+        <Type>PUNCH</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>KNOCKOUT1</Id>
@@ -1583,13 +1635,16 @@
     <Begin>0</Begin>
     <End>3.56666684</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>ATTACK_ADD</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>ATTACK_ADD</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_ATTACK2</Id>
@@ -1618,13 +1673,32 @@
     <Begin>0.93</Begin>
     <End>1.16</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>true</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>0.2</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_BACKWARD</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>100</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>100</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>1</Value>
+      </Effect>
+      <Effect>
+        <Type>SMASH</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>TWO_HAND_SWORD_ATTACK1</Id>
@@ -1647,13 +1721,28 @@
     <Begin>0.6</Begin>
     <End>0.7333333</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>true</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>SMASH</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>0.5</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>120</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>120</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>1</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>MELEE_IDLE</Id>
@@ -1783,13 +1872,32 @@
     <Nexts>
       <ACTOR_STATUS_TYPE>MELEE_ATTACK1</ACTOR_STATUS_TYPE>
     </Nexts>
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>true</Controll>
-    <Disarm>true</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>DISARM</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_FORWARD</Type>
+        <Value>1.5</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_BACKWARD</Type>
+        <Value>-1</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNLEFT</Type>
+        <Value>320</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_TURNRIGHT</Type>
+        <Value>320</Value>
+      </Effect>
+      <Effect>
+        <Type>MOVE_RUNFORWARD</Type>
+        <Value>3.5</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>MELEE_ATTACK1</Id>
@@ -1920,13 +2028,12 @@
       <ACTOR_STATUS_TYPE>MELEE_ATTACK2</ACTOR_STATUS_TYPE>
       <ACTOR_STATUS_TYPE>MELEE_ATTACK3</ACTOR_STATUS_TYPE>
     </Nexts>
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>true</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects>
+      <Effect>
+        <Type>PUNCH</Type>
+        <Value>0</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>MELEE_ATTACK3</Id>
@@ -2100,13 +2207,20 @@
     <Begin>0.233333334</Begin>
     <End>0.62</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>true</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>3.08914375</Speed>
+    <Effects>
+      <Effect>
+        <Type>SMASH</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>SMASH</Type>
+        <Value>0</Value>
+      </Effect>
+      <Effect>
+        <Type>SHIFT_SPEED</Type>
+        <Value>3.001821</Value>
+      </Effect>
+    </Effects>
   </SkillData>
   <SkillData>
     <Id>NORMAL_EXPLORE</Id>
@@ -2199,12 +2313,6 @@
     <Begin>0</Begin>
     <End>1.16666675</End>
     <Nexts />
-    <Block>false</Block>
-    <Smash>false</Smash>
-    <Punch>false</Punch>
-    <Controll>false</Controll>
-    <Disarm>false</Disarm>
-    <Direction>0</Direction>
-    <Speed>0</Speed>
+    <Effects />
   </SkillData>
 </ArrayOfSkillData>

@@ -51,7 +51,7 @@ public class jiggleBone : MonoBehaviour {
 
     void LateUpdate(){
 	
-		// Calculate target position
+		// Calculate Watchtarget position
 		targetPos = FakeTrans.position + FakeTrans.forward*targetDistance;
 		
 		
@@ -71,7 +71,7 @@ public class jiggleBone : MonoBehaviour {
         transform.LookAt(dynamicPos,FakeTrans.up);
 
         if(SquashAndStretch){
-            // Create a vector from target position to dynamic position
+            // Create a vector from Watchtarget position to dynamic position
             // We will measure the magnitude of the vector to determine
             // how much squash and stretch we will apply
             Vector3 dynamicVec = dynamicPos - targetPos;

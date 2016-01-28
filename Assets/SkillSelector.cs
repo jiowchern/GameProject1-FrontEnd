@@ -59,7 +59,7 @@ public class SkillSelector : MonoBehaviour
             //Resources.Load("UI/Skill/" + actorStatusType.ToString())
             var obj =GameObject.Instantiate(SkillButtomSource);
             var image = obj.GetComponentInChildren<UnityEngine.UI.Image>();
-            image.sprite = (Sprite)Resources.Load("UI/Skill/" + actorStatusType.ToString() , typeof(Sprite));
+            image.sprite = (Sprite)Resources.Load("Icon/Skill/" + actorStatusType.ToString() , typeof(Sprite));
             var button = obj.GetComponentInChildren<UnityEngine.UI.Button>();
             var tmp = actorStatusType;
             button.onClick.AddListener(

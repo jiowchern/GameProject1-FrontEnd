@@ -10,7 +10,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
         // Custom compiler defines:
         //
         // CROSS_PLATFORM_INPUT : denotes that cross platform input package exists, so that other packages can use their CrossPlatformInput functions.
-        // EDITOR_MOBILE_INPUT : denotes that mobile input should be used in editor, if a mobile build target is selected. (i.e. using Unity Remote app).
+        // EDITOR_MOBILE_INPUT : denotes that mobile input should be used in editor, if a mobile build Watchtarget is selected. (i.e. using Unity Remote app).
         // MOBILE_INPUT : denotes that mobile input should be used right now!
 
         static CrossPlatformInitialize()
@@ -44,7 +44,7 @@ namespace UnityStandardAssets.CrossPlatformInput.Inspector
 
                 default:
                     EditorUtility.DisplayDialog("Mobile Input",
-                                                "You have enabled Mobile Input, but you have a non-mobile build target selected in your build settings. The mobile control rigs won't be active or visible on-screen until you switch the build target to a mobile platform.",
+                                                "You have enabled Mobile Input, but you have a non-mobile build Watchtarget selected in your build settings. The mobile control rigs won't be active or visible on-screen until you switch the build Watchtarget to a mobile platform.",
                                                 "OK");
                     break;
             }

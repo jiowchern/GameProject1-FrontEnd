@@ -33,7 +33,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private void _ToGame(Map map)
         {
             var actor = EntityProvider.Create(ENTITY.ACTOR2);
-            var wisdom = new Wisdom(actor);
+            var wisdom = new UnityChanWisdom(actor);
             var stage = new GameStage(wisdom.GetSoulBinder() ,  map , actor , wisdom);
             //stage.DoneEvent += _Idle ;
             _Machine.Push(stage);

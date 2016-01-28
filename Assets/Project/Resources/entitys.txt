@@ -78,6 +78,17 @@
     </Mesh>
   </EntityData>
   <EntityData>
+    <Name>ACTOR3</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
     <Name>WALL_WESTERN_AISLE</Name>
     <Mesh>
       <ArrayOfVector2>

@@ -13,7 +13,9 @@ public class Entity : MonoBehaviour {
     private IVisible _Visible;
     public Transform Root;
     public Transform ProbeOrigin;
-    public Transform CameraTarget;
+    public Transform NormalCameraTarget;
+    public Transform BattleCameraTarget;
+    public Transform CenterCameraTarget;
     private Client _Client;
 
     public TalkReceiver Talker;
@@ -71,7 +73,8 @@ public class Entity : MonoBehaviour {
 
         if (_Client != null)
         {
-            
+            _Client.User.BattleCastControllerProvider.Supply -= _InBattle;
+            _Client.User.BattleCastControllerProvider.Unsupply -= _OutBattle;
             _Client.User.VisibleProvider.Unsupply -= _DestroyEntity;
         }
     }
@@ -89,6 +92,8 @@ public class Entity : MonoBehaviour {
         if (_Client != null)
         {
             _Client.User.VisibleProvider.Unsupply += _DestroyEntity;
+            _Client.User.BattleCastControllerProvider.Supply += _InBattle;
+            _Client.User.BattleCastControllerProvider.Unsupply += _OutBattle;
         }
 
 
@@ -99,6 +104,26 @@ public class Entity : MonoBehaviour {
         _ProbeLength = 1.0f;
 
         
+    }
+
+    private void _OutBattle(ICastSkill obj)
+    {
+        if (EntityController.MainEntityId == _Visible.Id)
+        {
+            var cam = GameObject.FindObjectOfType<CameraFollow>();
+            cam.Watchtarget = NormalCameraTarget;
+            cam.CenterTarget = CenterCameraTarget;
+        }
+    }
+
+    private void _InBattle(ICastSkill obj)
+    {
+        if (EntityController.MainEntityId == _Visible.Id)
+        {
+            var cam = GameObject.FindObjectOfType<CameraFollow>();
+            cam.Watchtarget = BattleCameraTarget;
+            cam.CenterTarget = CenterCameraTarget;
+        }
     }
 
     private void _DestroyEntity(IVisible obj)
@@ -176,11 +201,10 @@ public class Entity : MonoBehaviour {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
             if (cam != null)
             {
-                cam.target = null;                
-                
-                Debug.Log("主角離鏡" + _Visible.Id);
+                cam.Watchtarget = null;
+                cam.CenterTarget = null;
             }
-                
+            Debug.Log("主角離鏡" + _Visible.Id);
         }
     }
     private void _SetCamera()
@@ -188,12 +212,11 @@ public class Entity : MonoBehaviour {
         if (EntityController.MainEntityId == _Visible.Id)
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
-            cam.target = CameraTarget;            
-
+            cam.Watchtarget = NormalCameraTarget;
+            cam.CenterTarget = CenterCameraTarget;
             Debug.Log("主角入鏡" + _Visible.Id);
-
-            
         }
+
         
     }
 
@@ -318,3 +341,4 @@ public class Entity : MonoBehaviour {
         return Guid.Empty;
     }
 }
+

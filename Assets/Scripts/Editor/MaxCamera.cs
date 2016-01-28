@@ -34,7 +34,7 @@ public class MaxCamera : MonoBehaviour
 
     public void Init()
     {
-        //If there is no target, create a temporary target at 'distance' from the cameras current viewpoint
+        //If there is no Watchtarget, create a temporary Watchtarget at 'distance' from the cameras current viewpoint
         if (!target)
         {
             GameObject go = new GameObject("Cam Target");
@@ -83,13 +83,13 @@ public class MaxCamera : MonoBehaviour
             rotation = Quaternion.Lerp(currentRotation, desiredRotation, Time.deltaTime * zoomDampening);
             transform.rotation = rotation;
         }
-        // otherwise if middle mouse is selected, we pan by way of transforming the target in screenspace
+        // otherwise if middle mouse is selected, we pan by way of transforming the Watchtarget in screenspace
         //else if (Input.GetMouseButton(2))
         //{
         //    //grab the rotation of the camera so we can move in a psuedo local XY space
-        //    target.rotation = transform.rotation;
-        //    target.Translate(Vector3.right * -Input.GetAxis("Mouse X") * panSpeed);
-        //    target.Translate(transform.up * -Input.GetAxis("Mouse Y") * panSpeed, Space.World);
+        //    Watchtarget.rotation = transform.rotation;
+        //    Watchtarget.Translate(Vector3.right * -Input.GetAxis("Mouse X") * panSpeed);
+        //    Watchtarget.Translate(transform.up * -Input.GetAxis("Mouse Y") * panSpeed, Space.World);
         //}
 
         ////////Orbit Position
