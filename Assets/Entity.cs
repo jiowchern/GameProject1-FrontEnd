@@ -6,7 +6,7 @@ using Regulus.Extension;
 using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Utility;
 
-using UnityEditor;
+
 
 using UnityStandardAssets.Cameras;
 using Vector2 = Regulus.CustomType.Vector2;

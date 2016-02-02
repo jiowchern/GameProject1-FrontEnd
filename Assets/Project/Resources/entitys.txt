@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
+    <Name>ACTOR5</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
+    <Name>ACTOR4</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
+    <Name>ACTOR3</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+  </EntityData>
+  <EntityData>
     <Name>ACTOR1</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -74,17 +107,6 @@
         <Vector2 x="7.5" y="-0.5" />
         <Vector2 x="7.5" y="0.5" />
         <Vector2 x="-7.5" y="0.5" />
-      </ArrayOfVector2>
-    </Mesh>
-  </EntityData>
-  <EntityData>
-    <Name>ACTOR3</Name>
-    <Mesh>
-      <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-0.5" />
-        <Vector2 x="0.5" y="-0.5" />
-        <Vector2 x="0.5" y="0.5" />
-        <Vector2 x="-0.5" y="0.5" />
       </ArrayOfVector2>
     </Mesh>
   </EntityData>
