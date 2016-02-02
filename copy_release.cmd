@@ -1,6 +1,7 @@
 rd Assets\Project\Plugins\Backend /q /s
 mkdir Assets\Project\Plugins\Backend
 
+copy ..\Backend\Game\bin\Release\RegulusBehaviourTree.dll Assets\Project\Plugins\Backend
 copy ..\Backend\Data\bin\Release\*.dll Assets\Project\Plugins\Backend
 copy ..\Backend\PlayUser\bin\Release\*.dll Assets\Project\Plugins\Backend
 

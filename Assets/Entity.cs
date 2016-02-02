@@ -6,6 +6,8 @@ using Regulus.Extension;
 using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Utility;
 
+using UnityEditor;
+
 using UnityStandardAssets.Cameras;
 using Vector2 = Regulus.CustomType.Vector2;
 
@@ -149,7 +151,7 @@ public class Entity : MonoBehaviour {
         Root.Translate( Vector3.right * Speed * delta);
 	    Root.position = Root.position + (SkillOffset * delta);
 
-        Debug.DrawRay(ProbeOrigin.position , ProbeOrigin.right, Color.yellow , _ProbeLength);
+        //Debug.DrawRay(ProbeOrigin.position , ProbeOrigin.right, Color.yellow , _ProbeLength);
 
 	    if (_Light != null && _Visible != null)
 	    {
@@ -209,6 +211,8 @@ public class Entity : MonoBehaviour {
     }
     private void _SetCamera()
     {
+
+        
         if (EntityController.MainEntityId == _Visible.Id)
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
