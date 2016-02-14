@@ -105,13 +105,16 @@
     <Total>0.733333349</Total>
     <Begin>0.15</Begin>
     <End>0.25</End>
-    <Nexts />
+    <Nexts>
+      <ACTOR_STATUS_TYPE>MELEE_ATTACK3</ACTOR_STATUS_TYPE>
+    </Nexts>
     <Effects>
       <Effect>
         <Type>PUNCH</Type>
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>DAMAGE1</Id>
@@ -245,6 +248,7 @@
     <End>1.76666677</End>
     <Nexts />
     <Effects />
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>NORMAL_IDLE</Id>
@@ -308,6 +312,7 @@
         <Value>3</Value>
       </Effect>
     </Effects>
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>TWO_HAND_SWORD_IDLE</Id>
@@ -358,6 +363,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_BLOCK</Id>
@@ -502,6 +508,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>GUARD_IMPACT</Id>
@@ -755,6 +762,7 @@
     <End>3.56666684</End>
     <Nexts />
     <Effects />
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>NORMAL_IDLE</Id>
@@ -995,6 +1003,19 @@
     <End>1.08333337</End>
     <Nexts />
     <Effects />
+    <StrengthCost>1</StrengthCost>
+  </SkillData>
+  <SkillData>
+    <Id>TIRED</Id>
+    <Lefts />
+    <Rights />
+    <Roots />
+    <Total>3.866667</Total>
+    <Begin>0</Begin>
+    <End>3.866667</End>
+    <Nexts />
+    <Effects />
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_IDLE</Id>
@@ -1040,6 +1061,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_ATTACK1</Id>
@@ -1383,6 +1405,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>KNOCKOUT1</Id>
@@ -1645,6 +1668,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>BATTLE_AXE_ATTACK2</Id>
@@ -1699,6 +1723,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>TWO_HAND_SWORD_ATTACK1</Id>
@@ -1743,6 +1768,7 @@
         <Value>1</Value>
       </Effect>
     </Effects>
+    <StrengthCost>2</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>MELEE_IDLE</Id>
@@ -1898,6 +1924,7 @@
         <Value>3.5</Value>
       </Effect>
     </Effects>
+    <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>MELEE_ATTACK1</Id>
@@ -2034,6 +2061,7 @@
         <Value>0</Value>
       </Effect>
     </Effects>
+    <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>MELEE_ATTACK3</Id>
@@ -2221,6 +2249,7 @@
         <Value>3.001821</Value>
       </Effect>
     </Effects>
+    <StrengthCost>2</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>NORMAL_EXPLORE</Id>
@@ -2314,5 +2343,6 @@
     <End>1.16666675</End>
     <Nexts />
     <Effects />
+    <StrengthCost>0</StrengthCost>
   </SkillData>
 </ArrayOfSkillData>

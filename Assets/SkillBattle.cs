@@ -8,6 +8,7 @@ public class SkillBattle : MonoBehaviour {
 
     public GameObject CastSkillObject;
     public GameObject DisarmObject;
+    
     private IBattleSkill _Battle;
 
     private ICastSkill _CastSkill;
@@ -86,7 +87,7 @@ public class SkillBattle : MonoBehaviour {
         }
     }
 
-    public void CastBlock()
+    /*public void CastBlock()
     {
         if (_CastSkill != null)
         {
@@ -106,5 +107,5 @@ public class SkillBattle : MonoBehaviour {
         {
             _CastSkill.Cast(ACTOR_STATUS_TYPE.BATTLE_AXE_ATTACK1);
         }
-    }
+    }*/
 }

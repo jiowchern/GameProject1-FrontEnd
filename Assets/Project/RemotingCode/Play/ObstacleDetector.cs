@@ -4,7 +4,7 @@ using System.Linq;
 
 using Regulus.BehaviourTree;
 
-using UnityEngine;
+
 
 using Vector2 = Regulus.CustomType.Vector2;
 
@@ -24,10 +24,12 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private readonly float _ScanAngle;
 
+        private readonly bool _MaxAngle;
+
         private List<Exit> _Nears;
 
         private int _Done;
-        public ObstacleDetector(float decision_time, Entity entiry, GoblinWisdom goblin_wisdom , float distance , float scan_angle)
+        public ObstacleDetector(float decision_time, Entity entiry, GoblinWisdom goblin_wisdom , float distance , float scan_angle , bool max_angle)
         {
             _Nears = new List<Exit>();
             _DecisionTime = decision_time;
@@ -35,6 +37,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _GoblinWisdom = goblin_wisdom;
             _Distance = distance;
             _ScanAngle = scan_angle;
+            _MaxAngle = max_angle;
         }
 
         TICKRESULT ITicker.Tick(float delta)
@@ -67,7 +70,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                     hitAngle += 360;
                     hitAngle %= 360;
 
-                    _UnityDrawLine(hitAngle, pos , Color.red);
+                    //_UnityDrawLine(hitAngle, pos , Color.red);
 
                     _Nears.Add(new Exit() { Distance = distance, Direction = hitAngle });
 
@@ -78,29 +81,36 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             }
 
 
-            var sortedDirections = from e in _Nears
+            var sortedDirections = (_MaxAngle)?
+                                    from e in _Nears
                                    let diff = Math.Abs(e.Direction - _Entiry.Direction)
                                    where diff > 0.0f
-                                   orderby diff
-                                   select e;
+                                   orderby diff descending
+                                    select e 
+                                   :
+                                   from e in _Nears
+                                   let diff = Math.Abs(e.Direction - _Entiry.Direction)
+                                   where diff > 0.0f
+                                   orderby diff 
+                                   select e ;
             var soteds = from e in sortedDirections orderby e.Distance descending select e;
             var first = soteds.FirstOrDefault();            
 
             _GoblinWisdom.TurnDirection = first.Direction - _Entiry.Direction;
-            //_TurningDevice.Reset(dir, _MoveController);
 
 
 
             //var pos = _Entiry.GetPosition();            
-            var trunForce = Vector2.AngleToVector(first.Direction);
+            /*var trunForce = Vector2.AngleToVector(first.Direction);
             var forcePos = pos + trunForce * (_Distance );
             UnityEngine.Debug.DrawLine(new UnityEngine.Vector3(pos.X, 0, pos.Y), new UnityEngine.Vector3(forcePos.X, 0, forcePos.Y), UnityEngine.Color.yellow, _DecisionTime);
             _Done ++;
-            UnityEngine.Debug.Log("ObstacleDetector Tick " + _Done );
+            UnityEngine.Debug.Log("ObstacleDetector Tick " + _Done );*/
             return TICKRESULT.SUCCESS;
         }
 
-        private void _UnityDrawLine(float hitAngle, Vector2 pos , UnityEngine.Color color)
+
+        /*private void _UnityDrawLine(float hitAngle, Vector2 pos , UnityEngine.Color color)
         {
             var trunForce = Vector2.AngleToVector(hitAngle);
             var forcePos = pos + trunForce * (_Distance );
@@ -109,7 +119,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 new UnityEngine.Vector3(forcePos.X, 0, forcePos.Y),
                 color,
                 _DecisionTime);
-        }
+        }*/
 
         void IAction.Start()
         {
