@@ -82,8 +82,7 @@ public class ChatMessageRecorder : MonoBehaviour
 					  let text = TextSource.GetComponent<RectTransform>()
 					  select text.rect.height).Sum();
 		var rect = Content.rect;
-
-        Debug.Log("Chat Message Height : " + height);
+        
         Content.sizeDelta = new Vector2(0, height);
 
     }

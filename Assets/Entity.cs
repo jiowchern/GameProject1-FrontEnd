@@ -255,19 +255,7 @@ public class Entity : MonoBehaviour {
             _EndTrun = Trun > 0.0f ? 1 : Trun < 0.0f ? -1 : 0 ;            
             _TrunStep = 0.0f;
             
-            if (Status == ACTOR_STATUS_TYPE.DAMAGE1)
-            {
-                Avatar.SetTrigger("Damage1");
-            }
-            else if (Status == ACTOR_STATUS_TYPE.KNOCKOUT1)
-            {
-                Avatar.SetTrigger("Knockout");
-            }
-            else if (Status == ACTOR_STATUS_TYPE.GUARD_IMPACT)
-            {
-                Avatar.SetTrigger("GuardImpact");
-            }
-            else if (Status == ACTOR_STATUS_TYPE.CHEST_OPEN)
+            if (Status == ACTOR_STATUS_TYPE.CHEST_OPEN)
             {
                 Avatar.SetBool("Open" , true);                
             }            

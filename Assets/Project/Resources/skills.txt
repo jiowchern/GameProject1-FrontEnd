@@ -108,6 +108,9 @@
     <Nexts>
       <ACTOR_STATUS_TYPE>MELEE_ATTACK3</ACTOR_STATUS_TYPE>
     </Nexts>
+    <HitNexts>
+      <ACTOR_STATUS_TYPE>MELEE_ATTACK1</ACTOR_STATUS_TYPE>
+    </HitNexts>
     <Effects>
       <Effect>
         <Type>PUNCH</Type>
@@ -1812,8 +1815,10 @@
     <End>0.3</End>
     <Nexts>
       <ACTOR_STATUS_TYPE>MELEE_ATTACK2</ACTOR_STATUS_TYPE>
-      <ACTOR_STATUS_TYPE>MELEE_ATTACK3</ACTOR_STATUS_TYPE>
     </Nexts>
+    <HitNexts>
+      <ACTOR_STATUS_TYPE>MELEE_ATTACK3</ACTOR_STATUS_TYPE>
+    </HitNexts>
     <Effects>
       <Effect>
         <Type>PUNCH</Type>

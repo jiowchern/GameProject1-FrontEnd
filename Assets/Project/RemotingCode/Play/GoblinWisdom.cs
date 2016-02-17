@@ -189,7 +189,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                     .Selector()
                         .Sub(_ChangeToBattle())
                         .Sequence()
-                            .Action((delta) => _FindSkill(ref skill, ref distance))                            
+                            
                             .Action(
                                 (delta) =>
                                 {
@@ -199,7 +199,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                                 })                        
                             .Action((delta) => th.Run(delta))
                             .Action(_MoveForward)
-                            .Action((delta) => _CheckDistance(enemy, distance))
+                            .Action((delta) => _FindSkill(ref skill, ref distance))
+                            .Action((delta) => _CheckDistance(enemy, distance))                            
                             .Action((delta) => _UseSkill(skill))
                             .Action(() => new WaitSecond(0.1f) )
                         .End()
@@ -278,7 +279,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
             skill = _CastSkill.Skills[index];
 
-            distance = 2;
+            distance = 1.3f;
 
             return TICKRESULT.SUCCESS;
         }

@@ -48,6 +48,7 @@ public class SkillSelector : MonoBehaviour
     {
         Debug.Log("CastSkill id : " + cast_skill.Id);
         _CastSkill = cast_skill;
+        _CastSkill.HitNextsEvent += _AddHitSkills;
 
         foreach (var child in _Childs)
         {
@@ -56,25 +57,36 @@ public class SkillSelector : MonoBehaviour
         Menu.elements.Clear();
         foreach (var actorStatusType in _CastSkill.Skills)
         {
-            //Resources.Load("UI/Skill/" + actorStatusType.ToString())
-            var obj =GameObject.Instantiate(SkillButtomSource);
-            var image = obj.GetComponentInChildren<UnityEngine.UI.Image>();
-            image.sprite = (Sprite)Resources.Load("Icon/Skill/" + actorStatusType.ToString() , typeof(Sprite));
-            var button = obj.GetComponentInChildren<UnityEngine.UI.Button>();
-            var tmp = actorStatusType;
-            button.onClick.AddListener(
-                () =>
-                {                    
-                    _Cast(tmp);
-                } );
-            _Childs.Add(obj);
-            var rect = obj.GetComponent<RectTransform>();            
-            rect.SetParent(GetComponent<RectTransform>() , false);
-
-            var element = obj.GetComponentInChildren<RMF_RadialMenuElement>();            
-            Menu.elements.Add(element);
+            _AddSkill(actorStatusType);
         }
         Menu.arrangeElements();
+    }
+
+    private void _AddHitSkills(ACTOR_STATUS_TYPE[] skills)
+    {
+        foreach (var actorStatusType in skills)
+        {
+            _AddSkill(actorStatusType);
+        }
+        Menu.arrangeElements();
+    }
+
+    private void _AddSkill(ACTOR_STATUS_TYPE actorStatusType)
+    {
+        //Resources.Load("UI/Skill/" + actorStatusType.ToString())
+        var obj = GameObject.Instantiate(SkillButtomSource);
+        var image = obj.GetComponentInChildren<UnityEngine.UI.Image>();
+        image.sprite = (Sprite)Resources.Load("Icon/Skill/" + actorStatusType.ToString(), typeof (Sprite));
+        var button = obj.GetComponentInChildren<UnityEngine.UI.Button>();
+        var tmp = actorStatusType;
+        button.onClick.AddListener(
+            () => { _Cast(tmp); });
+        _Childs.Add(obj);
+        var rect = obj.GetComponent<RectTransform>();
+        rect.SetParent(GetComponent<RectTransform>(), false);
+
+        var element = obj.GetComponentInChildren<RMF_RadialMenuElement>();
+        Menu.elements.Add(element);
     }
 
     private void _Cast(ACTOR_STATUS_TYPE actor_status_type)
@@ -85,6 +97,7 @@ public class SkillSelector : MonoBehaviour
 
     private void BattleCastControllerProviderOnUnsupply(ICastSkill cast_skill)
     {
+        _CastSkill.HitNextsEvent -= _AddHitSkills;
         _CastSkill = null;
     }
 
