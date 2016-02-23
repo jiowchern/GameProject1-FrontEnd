@@ -228,7 +228,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             if (_Attacked.Contains(target.Id) == false)
             {
-                if(_Caster.HasHit())
+                if(_Caster.HasHit() && _HitNextsEvent !=null)
                     _HitNextsEvent(_Caster.Data.HitNexts);
 
                 var hitForce = new HitForce();

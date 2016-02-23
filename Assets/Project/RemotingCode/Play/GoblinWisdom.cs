@@ -41,12 +41,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private ICastSkill _CastSkill;
 
+        private readonly List<ACTOR_STATUS_TYPE> _UsableSkills;
+
         private IBattleSkill _BattleSkill;
 
         private bool _IsCollide;
 
         public GoblinWisdom(Entity entiry)
         {
+            _UsableSkills = new List<ACTOR_STATUS_TYPE>();
             _ActorMemory = new ActorMemory(entiry.GetVisible().EntityType);
 
             _DecisionTime = 0.5f;
@@ -269,15 +272,14 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         private TICKRESULT _FindSkill(ref ACTOR_STATUS_TYPE skill, ref float distance)
         {
             var strength = _Entiry.GetStrength();
-            if (_CastSkill == null || strength < 0)
+            if (strength < 0)
                 return TICKRESULT.FAILURE;
-
-            var len = _CastSkill.Skills.Length;
+            var len = _UsableSkills.Count;
             if(len == 0)
                 return TICKRESULT.FAILURE;
             var index = Regulus.Utility.Random.Instance.NextInt(0, len);
 
-            skill = _CastSkill.Skills[index];
+            skill = _UsableSkills[index];
 
             distance = 1.3f;
 
@@ -485,12 +487,22 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private void _ClearCastSkill(ICastSkill obj)
         {
+            _CastSkill.HitNextsEvent -= _AddSkills;
             _CastSkill = null;
+
+            _UsableSkills.Clear();
         }
 
         private void _SetCastSkill(ICastSkill obj)
         {
             _CastSkill = obj;
+            _CastSkill.HitNextsEvent += _AddSkills;
+            _UsableSkills.AddRange(_CastSkill.Skills);
+        }
+
+        private void _AddSkills(ACTOR_STATUS_TYPE[] obj)
+        {
+            _UsableSkills.AddRange(obj);
         }
 
         private void _ClearNormalSkill(INormalSkill obj)

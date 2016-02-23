@@ -57,7 +57,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             this._Zone = zone;
             _Updater = new TimesharingUpdater(1.0f / 30.0f);
 
-            /*for (int i = 0; i < 50; i++)
+            for (int i = 0; i < 50; i++)
             {
                 var entiry = EntityProvider.Create(ENTITY.ACTOR2);
                 var wisdom = new GoblinWisdom(entiry);
@@ -84,7 +84,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 var entiry = EntityProvider.Create(ENTITY.ACTOR5);
                 var wisdom = new GoblinWisdom(entiry);
                 _Updater.Add(new Aboriginal(_Zone, entiry, wisdom));
-            }*/
+            }
             
 
         }

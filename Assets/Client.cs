@@ -21,15 +21,11 @@ public class Client : MonoBehaviour
         STANDALONE,REMOTING
     }
 
-    public TextAsset EntitySource;
-    public TextAsset SkillSource;
-    public TextAsset ItemSource;
-    public TextAsset ItemFormulaSource;
-
+    public ResourceOwner Resource;
     public MODE Mode;
     public Console Console;
     private Client<IUser> _Client;
-    private Regulus.Utility.Updater _Updater;
+    private readonly Regulus.Utility.Updater _Updater;
 
     private IOnline _Online;
 
@@ -79,7 +75,7 @@ public class Client : MonoBehaviour
         }
         else
         {
-            _InitialResource();
+            this.Resource.Load();
             var feature = new Regulus.Project.ItIsNotAGame1.Game.DummyFrature();
             var center = new Center(feature, feature);
             
@@ -96,33 +92,8 @@ public class Client : MonoBehaviour
         User.Remoting.OnlineProvider.Unsupply += _UnsupplyOnline;
     }
 
-    private void _InitialResource()
-    {
-        Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Entitys = _ReadEntitys();
-        Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.SkillDatas = _ReadSkills();
-        Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Items = _ReadItems();
-        Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Formulas = _ReadItemFormulas();
-    }
-
-    private ItemFormula[] _ReadItemFormulas()
-    {
-        return Regulus.Utility.Serialization.Read<ItemFormula[]>(ItemFormulaSource.bytes);
-    }
-
-    private ItemPrototype[] _ReadItems()
-    {
-        return Regulus.Utility.Serialization.Read<ItemPrototype[]>(ItemSource.bytes);
-    }
-
-    private SkillData[] _ReadSkills()
-    {
-        return Regulus.Utility.Serialization.Read<SkillData[]>(SkillSource.bytes);
-    }
-
-    private EntityData[] _ReadEntitys()
-    {
-        return Regulus.Utility.Serialization.Read<EntityData[]>(EntitySource.bytes);
-    }
+    
+    
 
     public IUser User { get; private set; }
 
