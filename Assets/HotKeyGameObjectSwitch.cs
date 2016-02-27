@@ -5,10 +5,12 @@ public class HotKeyGameObjectSwitch : MonoBehaviour {
 
     public GameObject Target;
     public KeyCode Key;
+
+    public bool Default;
 	// Use this for initialization
 	void Start () {
-	    
-	}
+        Target.SetActive(Default);
+    }
 	
 	// Update is called once per frame
 	void Update () {

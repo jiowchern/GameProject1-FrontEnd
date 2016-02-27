@@ -14,6 +14,9 @@ public class Property : MonoBehaviour
     public UnityEngine.UI.Image StrengthBar;
     public UnityEngine.UI.Text StrengthText;
 
+    public UnityEngine.UI.Image HealthBar;
+    public UnityEngine.UI.Text HealthText;
+
     private Client _Client;
 
     private IPlayerProperys _PlayerProperys;
@@ -50,6 +53,9 @@ public class Property : MonoBehaviour
 	    {
 	        StrengthBar.fillAmount = _PlayerProperys.Strength / 3.0f;
 	        StrengthText.text = _PlayerProperys.Strength.ToString();
-	    }
+
+            HealthBar.fillAmount = _PlayerProperys.Health / 10.0f;
+            HealthText.text = _PlayerProperys.Health.ToString();
+        }
 	}
 }

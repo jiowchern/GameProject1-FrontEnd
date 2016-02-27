@@ -90,7 +90,7 @@ public class MapPlayer : MonoBehaviour
 	    {
 	        var avatar = actor.Value.Avatar;
 	        var visible = actor.Value.Visible;
-            avatar.SetPosition(new Vector2(visible.Position.X , visible.Position.Y));
+            avatar.UpdatePosition(new Vector2(visible.Position.X , visible.Position.Y));
         }
 	}
 }
