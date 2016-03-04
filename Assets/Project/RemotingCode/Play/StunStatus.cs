@@ -13,7 +13,10 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private readonly Regulus.Utility.TimeCounter _Counter;
 
-        public Action SurvivalEvent;
+        public Action ExitEvent;
+        public Action WakeEvent;
+
+        private float _Stun;
 
         public StunStatus(ISoulBinder binder, Entity player)
         {
@@ -21,12 +24,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _Player = player;
 
             _Counter = new TimeCounter();
+            _Stun = 10f;
         }
 
         void IStage.Enter()
         {
             _Player.Stun();
             _Counter.Reset();
+
+
         }
 
         void IStage.Leave()
@@ -35,9 +41,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         void IStage.Update()
         {
-            if (_Counter.Second > 60f)
+            var aid = _Player.HaveAid();
+            _Stun -= aid;
+            if (_Stun < 0f)
             {
-                SurvivalEvent();
+                WakeEvent();
+            }
+            if (_Counter.Second > 60f)
+            {                
+                ExitEvent();
             }
         }
     }

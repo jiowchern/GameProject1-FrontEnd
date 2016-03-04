@@ -85,4 +85,9 @@ public class ItemDescription : MonoBehaviour {
     {
         _InventoryNotifier.Discard(_Id);
     }
+
+    public void Use()
+    {
+        _InventoryNotifier.Use(_Id);
+    }
 }

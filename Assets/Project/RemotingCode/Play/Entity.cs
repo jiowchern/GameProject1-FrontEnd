@@ -248,6 +248,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private float _MaxHealth;
 
+        private float _AidCount;
+
         public Guid Id { get { return this._Id; } }
 
         public float Direction { get; private set; }
@@ -298,11 +300,13 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         
 
-        void IIndividual.AttachDamage(Guid target , HitForce force)
+        void IIndividual.AttachHit(Guid target , HitForce force)
         {
             var damage = force.Damage;
             _DamageCount += damage;
-            
+
+            _AidCount += force.Aid;
+
             if (InjuredEvent != null)
                 InjuredEvent(target , damage);
         }
@@ -470,6 +474,13 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         }
 
+        public float HaveAid()
+        {
+            var values = _AidCount;
+            _AidCount = 0;
+            return values;
+        }
+
         public float HaveDamage()
         {
             var values = _DamageCount;
@@ -564,9 +575,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
             ACTOR_STATUS_TYPE status = ACTOR_STATUS_TYPE.MELEE_IDLE;
             var item = this.Equipment.Find(EQUIP_PART.RIGHT_HAND);
-            if (item.HasValue)
+            if (item!=null)
             {
-                status = _GetWeaponIdle(item.Value.GetPrototype().Features);
+                status = _GetWeaponIdle(item.GetPrototype().Features);
             }
 
             var data = _Datas.First((s) => s.Id == status);

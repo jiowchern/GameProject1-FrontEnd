@@ -60,4 +60,9 @@
     <Features>MATERIAL</Features>
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
+  <ItemPrototype>
+    <Name>AidKit</Name>
+    <Features>USABLE</Features>
+    <EquipPart>NONE</EquipPart>
+  </ItemPrototype>
 </ArrayOfItemPrototype>

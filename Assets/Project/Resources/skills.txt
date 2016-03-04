@@ -114,7 +114,7 @@
     <Effects>
       <Effect>
         <Type>PUNCH</Type>
-        <Value>0</Value>
+        <Value>1</Value>
       </Effect>
     </Effects>
     <StrengthCost>1</StrengthCost>
@@ -122,200 +122,230 @@
   <SkillData>
     <Id>DAMAGE1</Id>
     <Lefts>
-      <Vector2 x="-0.258615434" y="-0.170149833" />
-      <Vector2 x="-0.2337359" y="-0.1890625" />
-      <Vector2 x="-0.22797206" y="-0.196832" />
-      <Vector2 x="-0.242441565" y="-0.182080939" />
-      <Vector2 x="-0.269104064" y="-0.15588735" />
-      <Vector2 x="-0.286366224" y="-0.137999222" />
-      <Vector2 x="-0.290605426" y="-0.133526623" />
-      <Vector2 x="-0.291494071" y="-0.130709484" />
-      <Vector2 x="-0.295504183" y="-0.127584517" />
-      <Vector2 x="-0.296725" y="-0.123716027" />
-      <Vector2 x="-0.296225369" y="-0.120698959" />
-      <Vector2 x="-0.295504928" y="-0.119836733" />
-      <Vector2 x="-0.296629369" y="-0.119689107" />
-      <Vector2 x="-0.299072057" y="-0.11997585" />
-      <Vector2 x="-0.3014479" y="-0.122042924" />
-      <Vector2 x="-0.302853942" y="-0.12437623" />
-      <Vector2 x="-0.3045095" y="-0.1270913" />
-      <Vector2 x="-0.305789679" y="-0.129739076" />
-      <Vector2 x="-0.3064795" y="-0.133107141" />
-      <Vector2 x="-0.305334061" y="-0.136194587" />
-      <Vector2 x="-0.3027336" y="-0.139536813" />
-      <Vector2 x="-0.2992423" y="-0.142946586" />
-      <Vector2 x="-0.29561916" y="-0.145867288" />
-      <Vector2 x="-0.290812641" y="-0.148835778" />
-      <Vector2 x="-0.285180748" y="-0.1526829" />
-      <Vector2 x="-0.279192269" y="-0.156667486" />
-      <Vector2 x="-0.273642957" y="-0.159962535" />
-      <Vector2 x="-0.268696159" y="-0.163320035" />
-      <Vector2 x="-0.2642473" y="-0.166348" />
-      <Vector2 x="-0.2613278" y="-0.168532461" />
-      <Vector2 x="-0.259620577" y="-0.1698804" />
+      <Vector2 x="0.318151563" y="0.08419912" />
+      <Vector2 x="0.318052948" y="0.08340108" />
+      <Vector2 x="0.317324877" y="0.08233577" />
+      <Vector2 x="0.3156613" y="0.08098501" />
+      <Vector2 x="0.311914772" y="0.07966572" />
+      <Vector2 x="0.3068595" y="0.0789077953" />
+      <Vector2 x="0.301215" y="0.07966922" />
+      <Vector2 x="0.2962595" y="0.08133706" />
+      <Vector2 x="0.289849162" y="0.08244645" />
+      <Vector2 x="0.2851264" y="0.08544717" />
+      <Vector2 x="0.280389637" y="0.09173767" />
+      <Vector2 x="0.27410534" y="0.101881191" />
+      <Vector2 x="0.269233078" y="0.1123948" />
+      <Vector2 x="0.267692566" y="0.118349694" />
+      <Vector2 x="0.268517643" y="0.117998533" />
+      <Vector2 x="0.271001965" y="0.116595387" />
+      <Vector2 x="0.274498433" y="0.114433363" />
+      <Vector2 x="0.278767765" y="0.111551389" />
+      <Vector2 x="0.2834078" y="0.108008586" />
+      <Vector2 x="0.288145036" y="0.10417828" />
+      <Vector2 x="0.292671919" y="0.100335367" />
+      <Vector2 x="0.29679206" y="0.09657819" />
+      <Vector2 x="0.300148219" y="0.09308407" />
+      <Vector2 x="0.302650928" y="0.08982893" />
+      <Vector2 x="0.305475831" y="0.08686677" />
+      <Vector2 x="0.308000922" y="0.08446915" />
+      <Vector2 x="0.3110435" y="0.08312755" />
+      <Vector2 x="0.3135834" y="0.08244644" />
+      <Vector2 x="0.315321118" y="0.0823909" />
+      <Vector2 x="0.316857636" y="0.082717374" />
+      <Vector2 x="0.317699462" y="0.08322704" />
+      <Vector2 x="0.318232268" y="0.0838515162" />
+      <Vector2 x="0.318553448" y="0.08424918" />
+      <Vector2 x="0.318326563" y="0.08445383" />
+      <Vector2 x="0.317992032" y="0.08450309" />
+      <Vector2 x="0.3180513" y="0.0843928456" />
     </Lefts>
     <Rights>
-      <Vector2 x="-0.17750299" y="-0.315261066" />
-      <Vector2 x="-0.167399973" y="-0.3238835" />
-      <Vector2 x="-0.171252385" y="-0.325811237" />
-      <Vector2 x="-0.184427947" y="-0.317951381" />
-      <Vector2 x="-0.2007659" y="-0.303471684" />
-      <Vector2 x="-0.209575638" y="-0.2932673" />
-      <Vector2 x="-0.209057957" y="-0.291648746" />
-      <Vector2 x="-0.206129059" y="-0.291651547" />
-      <Vector2 x="-0.205873" y="-0.290940464" />
-      <Vector2 x="-0.205626711" y="-0.2895977" />
-      <Vector2 x="-0.204831466" y="-0.288842678" />
-      <Vector2 x="-0.204008415" y="-0.288768" />
-      <Vector2 x="-0.204559565" y="-0.2883972" />
-      <Vector2 x="-0.2062256" y="-0.287904263" />
-      <Vector2 x="-0.207911447" y="-0.2882449" />
-      <Vector2 x="-0.209211126" y="-0.288819224" />
-      <Vector2 x="-0.210348442" y="-0.289761364" />
-      <Vector2 x="-0.211562216" y="-0.2908988" />
-      <Vector2 x="-0.212496176" y="-0.292548448" />
-      <Vector2 x="-0.2121938" y="-0.294261217" />
-      <Vector2 x="-0.210552618" y="-0.296246" />
-      <Vector2 x="-0.20809336" y="-0.298317671" />
-      <Vector2 x="-0.205282167" y="-0.300197273" />
-      <Vector2 x="-0.201498374" y="-0.30201748" />
-      <Vector2 x="-0.197196677" y="-0.304438144" />
-      <Vector2 x="-0.192475244" y="-0.306986749" />
-      <Vector2 x="-0.18815808" y="-0.30911544" />
-      <Vector2 x="-0.184410423" y="-0.3111905" />
-      <Vector2 x="-0.181232065" y="-0.313014925" />
-      <Vector2 x="-0.179166749" y="-0.314329177" />
-      <Vector2 x="-0.177975327" y="-0.315129668" />
+      <Vector2 x="-0.120929644" y="-0.2970224" />
+      <Vector2 x="-0.121425346" y="-0.2962988" />
+      <Vector2 x="-0.122268267" y="-0.295540929" />
+      <Vector2 x="-0.12270169" y="-0.295592159" />
+      <Vector2 x="-0.123450458" y="-0.296002984" />
+      <Vector2 x="-0.12677224" y="-0.294522077" />
+      <Vector2 x="-0.132148832" y="-0.294987857" />
+      <Vector2 x="-0.133359283" y="-0.294862181" />
+      <Vector2 x="-0.135401055" y="-0.29905647" />
+      <Vector2 x="-0.1349514" y="-0.3045801" />
+      <Vector2 x="-0.1404044" y="-0.313899964" />
+      <Vector2 x="-0.1494764" y="-0.322639048" />
+      <Vector2 x="-0.158609539" y="-0.332389861" />
+      <Vector2 x="-0.170196518" y="-0.340068221" />
+      <Vector2 x="-0.181857392" y="-0.343341082" />
+      <Vector2 x="-0.19305253" y="-0.341517359" />
+      <Vector2 x="-0.2025431" y="-0.336145341" />
+      <Vector2 x="-0.210112259" y="-0.3285815" />
+      <Vector2 x="-0.216741711" y="-0.319850415" />
+      <Vector2 x="-0.222519368" y="-0.310756654" />
+      <Vector2 x="-0.225592256" y="-0.301966429" />
+      <Vector2 x="-0.225405321" y="-0.294655" />
+      <Vector2 x="-0.221739352" y="-0.289151281" />
+      <Vector2 x="-0.214008361" y="-0.286371082" />
+      <Vector2 x="-0.203497544" y="-0.285127878" />
+      <Vector2 x="-0.191935912" y="-0.2848841" />
+      <Vector2 x="-0.180896416" y="-0.284999371" />
+      <Vector2 x="-0.1690806" y="-0.2854981" />
+      <Vector2 x="-0.157674521" y="-0.2863408" />
+      <Vector2 x="-0.14747493" y="-0.2871942" />
+      <Vector2 x="-0.139596462" y="-0.288483471" />
+      <Vector2 x="-0.133841947" y="-0.2894729" />
+      <Vector2 x="-0.129881" y="-0.290662974" />
+      <Vector2 x="-0.126431435" y="-0.29211843" />
+      <Vector2 x="-0.123728134" y="-0.293734252" />
+      <Vector2 x="-0.122384004" y="-0.295237422" />
     </Rights>
     <Roots>
       <Translate>
-        <Position x="2.010098" y="-1.46769023" />
+        <Position x="1.86264515E-09" y="4.84287739E-08" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.01239157" y="-1.46656775" />
+        <Position x="-0.000136934221" y="0.000108775217" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.02290654" y="-1.47513711" />
+        <Position x="-0.000554729253" y="-1.3737008E-07" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.03933573" y="-1.49610877" />
+        <Position x="-0.00114217028" y="-0.0005032902" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05699754" y="-1.53065777" />
+        <Position x="-0.00168404914" y="-0.001556199" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.068299" y="-1.56019127" />
+        <Position x="-0.002556204" y="-0.00302658766" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.06702471" y="-1.57640707" />
+        <Position x="-0.0025562658" y="-0.00676182471" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.06289744" y="-1.58836627" />
+        <Position x="0.00257695327" y="-0.0107854651" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.059896" y="-1.59693885" />
+        <Position x="0.0008497564" y="-0.0144551694" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05635333" y="-1.60059667" />
+        <Position x="-0.00171365542" y="-0.0148167126" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05368137" y="-1.60247266" />
+        <Position x="-0.00475571072" y="-0.014641732" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.051881" y="-1.60166955" />
+        <Position x="-0.00729815662" y="-0.0147377569" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05083823" y="-1.59650445" />
+        <Position x="-0.0104978513" y="-0.01579484" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05004239" y="-1.58905363" />
+        <Position x="-0.0133993607" y="-0.0165171884" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.049303" y="-1.57996225" />
+        <Position x="-0.0154244415" y="-0.01625911" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.04909587" y="-1.56992948" />
+        <Position x="-0.0168443378" y="-0.0154254455" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.048641" y="-1.56079042" />
+        <Position x="-0.0171775389" y="-0.0147284586" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.04965258" y="-1.55258167" />
+        <Position x="-0.0165809076" y="-0.013975488" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.050591" y="-1.54379094" />
+        <Position x="-0.0155796278" y="-0.0130881853" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05143452" y="-1.53517342" />
+        <Position x="-0.0141091365" y="-0.0121436492" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.052269" y="-1.52718246" />
+        <Position x="-0.0120255407" y="-0.01107577" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05257535" y="-1.51928592" />
+        <Position x="-0.009579016" y="-0.009965063" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05225778" y="-1.51146817" />
+        <Position x="-0.00706036948" y="-0.008850179" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.05129123" y="-1.50421011" />
+        <Position x="-0.00457705744" y="-0.007967236" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.04890466" y="-1.49722159" />
+        <Position x="-0.00207946217" y="-0.007050844" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.04555345" y="-1.49076569" />
+        <Position x="6.318651E-05" y="-0.006171738" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.04116178" y="-1.48500955" />
+        <Position x="0.0018096799" y="-0.005338613" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.03570437" y="-1.4797442" />
+        <Position x="0.003516952" y="-0.00450971629" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.02942586" y="-1.475303" />
+        <Position x="0.004850426" y="-0.00372660044" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.023185" y="-1.47175419" />
+        <Position x="0.005767546" y="-0.00298226927" />
         <Rotation>0</Rotation>
       </Translate>
       <Translate>
-        <Position x="2.01654983" y="-1.46910167" />
+        <Position x="0.00571748568" y="-0.002349972" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.004901243" y="-0.00176729658" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.003702274" y="-0.00126063847" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.002403541" y="-0.0007831231" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.00122551341" y="-0.000385298626" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.000308661256" y="-0.000109415036" />
         <Rotation>0</Rotation>
       </Translate>
     </Roots>
-    <Total>1.03333342</Total>
+    <Total>1.2</Total>
     <Begin>0</Begin>
-    <End>1.03333342</End>
+    <End>1.2</End>
     <Nexts />
     <HitNexts />
     <Effects />
@@ -973,145 +1003,110 @@
   <SkillData>
     <Id>BATTLE_AXE_BLOCK</Id>
     <Lefts>
-      <Vector2 x="-3.40693951" y="2.02312231" />
-      <Vector2 x="-3.40682888" y="2.02283382" />
-      <Vector2 x="-3.40656853" y="2.02216053" />
-      <Vector2 x="-3.40621567" y="2.02117586" />
-      <Vector2 x="-3.40582943" y="2.019916" />
-      <Vector2 x="-3.40538335" y="2.01851177" />
-      <Vector2 x="-3.40482569" y="2.016942" />
-      <Vector2 x="-3.40418458" y="2.015026" />
-      <Vector2 x="-3.40352249" y="2.01275921" />
-      <Vector2 x="-3.40283751" y="2.01055" />
-      <Vector2 x="-3.40214968" y="2.00829268" />
-      <Vector2 x="-3.401502" y="2.00587916" />
-      <Vector2 x="-3.400607" y="2.003614" />
-      <Vector2 x="-3.39971113" y="2.00147986" />
-      <Vector2 x="-3.39878941" y="1.99944282" />
-      <Vector2 x="-3.397935" y="1.99747014" />
-      <Vector2 x="-3.39723682" y="1.99553561" />
-      <Vector2 x="-3.396733" y="1.9936974" />
-      <Vector2 x="-3.39638019" y="1.99209309" />
-      <Vector2 x="-3.3961246" y="1.99069214" />
-      <Vector2 x="-3.39595151" y="1.98953342" />
-      <Vector2 x="-3.39587426" y="1.988672" />
-      <Vector2 x="-3.39601254" y="1.98812783" />
-      <Vector2 x="-3.39638734" y="1.98775291" />
-      <Vector2 x="-3.396875" y="1.98749077" />
-      <Vector2 x="-3.39740014" y="1.98728812" />
-      <Vector2 x="-3.397975" y="1.98710978" />
-      <Vector2 x="-3.398615" y="1.986978" />
-      <Vector2 x="-3.39926839" y="1.98695993" />
-      <Vector2 x="-3.39988112" y="1.98710763" />
-      <Vector2 x="-3.40046239" y="1.98744142" />
-      <Vector2 x="-3.40101361" y="1.9879" />
-      <Vector2 x="-3.40112972" y="1.98861909" />
-      <Vector2 x="-3.40100479" y="1.98953283" />
-      <Vector2 x="-3.400701" y="1.990733" />
-      <Vector2 x="-3.40025568" y="1.992199" />
-      <Vector2 x="-3.39975357" y="1.99388468" />
-      <Vector2 x="-3.39932966" y="1.99564946" />
-      <Vector2 x="-3.399072" y="1.99729514" />
-      <Vector2 x="-3.39891052" y="1.99884307" />
-      <Vector2 x="-3.39887452" y="2.00034642" />
-      <Vector2 x="-3.398874" y="2.00174546" />
-      <Vector2 x="-3.39896345" y="2.00322866" />
-      <Vector2 x="-3.39902353" y="2.00479865" />
-      <Vector2 x="-3.39914131" y="2.00625634" />
-      <Vector2 x="-3.39936018" y="2.00761533" />
-      <Vector2 x="-3.39959168" y="2.00902581" />
-      <Vector2 x="-3.399877" y="2.01048017" />
-      <Vector2 x="-3.400314" y="2.01186681" />
-      <Vector2 x="-3.40079165" y="2.013258" />
-      <Vector2 x="-3.40133214" y="2.01457882" />
-      <Vector2 x="-3.40203714" y="2.01593685" />
-      <Vector2 x="-3.40272164" y="2.01728559" />
-      <Vector2 x="-3.403425" y="2.01850748" />
-      <Vector2 x="-3.40415" y="2.019555" />
-      <Vector2 x="-3.40491033" y="2.0204792" />
-      <Vector2 x="-3.40560222" y="2.02131581" />
-      <Vector2 x="-3.40611935" y="2.02200937" />
-      <Vector2 x="-3.40648937" y="2.022491" />
-      <Vector2 x="-3.40674448" y="2.02283454" />
-      <Vector2 x="-3.406887" y="2.02305055" />
-      <Vector2 x="-3.4069345" y="2.023115" />
-      <Vector2 x="-3.40694" y="2.023122" />
+      <Vector2 x="0.318151116" y="0.0841996" />
+      <Vector2 x="0.335979819" y="0.08351288" />
+      <Vector2 x="0.3538727" y="0.06747637" />
+      <Vector2 x="0.35414657" y="0.0464193448" />
+      <Vector2 x="0.33376205" y="0.0303549245" />
+      <Vector2 x="0.306958675" y="0.0218466427" />
+      <Vector2 x="0.292210072" y="0.011037929" />
+      <Vector2 x="0.2800655" y="0.000243332368" />
+      <Vector2 x="0.2771257" y="-0.0106692221" />
+      <Vector2 x="0.2822276" y="-0.022201309" />
+      <Vector2 x="0.282071173" y="-0.03164553" />
+      <Vector2 x="0.271886677" y="-0.0382642224" />
+      <Vector2 x="0.255231619" y="-0.0467412956" />
+      <Vector2 x="0.235893339" y="-0.0521449558" />
+      <Vector2 x="0.221763089" y="-0.0537871346" />
     </Lefts>
     <Rights>
-      <Vector2 x="-3.34143853" y="1.8744483" />
-      <Vector2 x="-3.3413763" y="1.87414026" />
-      <Vector2 x="-3.34113836" y="1.87345886" />
-      <Vector2 x="-3.340697" y="1.87251532" />
-      <Vector2 x="-3.34011149" y="1.87134147" />
-      <Vector2 x="-3.339448" y="1.87002575" />
-      <Vector2 x="-3.33855748" y="1.86859477" />
-      <Vector2 x="-3.33726072" y="1.86696947" />
-      <Vector2 x="-3.33570027" y="1.86511111" />
-      <Vector2 x="-3.33434534" y="1.86321163" />
-      <Vector2 x="-3.33306861" y="1.86122942" />
-      <Vector2 x="-3.33180213" y="1.85910785" />
-      <Vector2 x="-3.3302753" y="1.85714447" />
-      <Vector2 x="-3.32885051" y="1.855266" />
-      <Vector2 x="-3.32746959" y="1.85345507" />
-      <Vector2 x="-3.3261373" y="1.851723" />
-      <Vector2 x="-3.32493162" y="1.85005009" />
-      <Vector2 x="-3.32407379" y="1.84840465" />
-      <Vector2 x="-3.32370114" y="1.846827" />
-      <Vector2 x="-3.32350683" y="1.84541059" />
-      <Vector2 x="-3.32332516" y="1.84426522" />
-      <Vector2 x="-3.32334423" y="1.84336257" />
-      <Vector2 x="-3.323751" y="1.84268618" />
-      <Vector2 x="-3.324504" y="1.84213352" />
-      <Vector2 x="-3.32543564" y="1.84165883" />
-      <Vector2 x="-3.32644272" y="1.84122133" />
-      <Vector2 x="-3.32749438" y="1.84081233" />
-      <Vector2 x="-3.32862544" y="1.84044373" />
-      <Vector2 x="-3.32984066" y="1.84015083" />
-      <Vector2 x="-3.33099174" y="1.84003341" />
-      <Vector2 x="-3.33213472" y="1.8400979" />
-      <Vector2 x="-3.33310819" y="1.84036875" />
-      <Vector2 x="-3.33360338" y="1.84091878" />
-      <Vector2 x="-3.333686" y="1.84174049" />
-      <Vector2 x="-3.33356428" y="1.84287238" />
-      <Vector2 x="-3.333336" y="1.84426129" />
-      <Vector2 x="-3.33321333" y="1.84579253" />
-      <Vector2 x="-3.33318281" y="1.84739423" />
-      <Vector2 x="-3.332966" y="1.84904289" />
-      <Vector2 x="-3.33276272" y="1.85062683" />
-      <Vector2 x="-3.33276916" y="1.85211825" />
-      <Vector2 x="-3.33272362" y="1.85353589" />
-      <Vector2 x="-3.33286333" y="1.85498667" />
-      <Vector2 x="-3.333074" y="1.85646951" />
-      <Vector2 x="-3.333293" y="1.85787034" />
-      <Vector2 x="-3.333523" y="1.85921478" />
-      <Vector2 x="-3.33388329" y="1.86055362" />
-      <Vector2 x="-3.33442831" y="1.86187851" />
-      <Vector2 x="-3.3350234" y="1.863187" />
-      <Vector2 x="-3.33573151" y="1.86446941" />
-      <Vector2 x="-3.33649588" y="1.86568236" />
-      <Vector2 x="-3.337475" y="1.86691177" />
-      <Vector2 x="-3.338489" y="1.86810565" />
-      <Vector2 x="-3.3395133" y="1.86917531" />
-      <Vector2 x="-3.34037471" y="1.87015224" />
-      <Vector2 x="-3.34115243" y="1.87106121" />
-      <Vector2 x="-3.34179854" y="1.871912" />
-      <Vector2 x="-3.3421185" y="1.87268639" />
-      <Vector2 x="-3.34206462" y="1.87334883" />
-      <Vector2 x="-3.341839" y="1.8739" />
-      <Vector2 x="-3.34158087" y="1.874291" />
-      <Vector2 x="-3.341453" y="1.87443256" />
-      <Vector2 x="-3.34143877" y="1.8744483" />
+      <Vector2 x="-0.120929711" y="-0.297020882" />
+      <Vector2 x="-0.112805218" y="-0.2945935" />
+      <Vector2 x="-0.0848998353" y="-0.290534168" />
+      <Vector2 x="-0.0485341027" y="-0.28203848" />
+      <Vector2 x="-0.0104072811" y="-0.268929064" />
+      <Vector2 x="0.0313887857" y="-0.2536209" />
+      <Vector2 x="0.08768935" y="-0.235659391" />
+      <Vector2 x="0.159382135" y="-0.212017089" />
+      <Vector2 x="0.232818887" y="-0.184451342" />
+      <Vector2 x="0.255446851" y="-0.16591911" />
+      <Vector2 x="0.256294578" y="-0.153849259" />
+      <Vector2 x="0.255317181" y="-0.143052056" />
+      <Vector2 x="0.24961783" y="-0.132642642" />
+      <Vector2 x="0.235877529" y="-0.125165671" />
+      <Vector2 x="0.223603666" y="-0.119559929" />
     </Rights>
-    <Roots />
-    <Total>1.83333337</Total>
+    <Roots>
+      <Translate>
+        <Position x="-0.000308635179" y="0.000109426677" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.00381390355" y="-0.003335145" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.00553703634" y="-0.01038994" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.00534645934" y="-0.02061913" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.004403293" y="-0.0315736458" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.00242849928" y="-0.0412109457" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.000802828465" y="-0.04805681" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.000227513723" y="-0.0540483557" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.000381812453" y="-0.0593586676" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.001643755" y="-0.06388636" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.00706210826" y="-0.06857885" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.0194821171" y="-0.07404435" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.03480154" y="-0.0802083462" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.05017736" y="-0.08470134" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.061617665" y="-0.08765272" />
+        <Rotation>0</Rotation>
+      </Translate>
+    </Roots>
+    <Total>0.5</Total>
     <Begin>0</Begin>
-    <End>1.83333337</End>
+    <End>0.5</End>
     <Nexts />
     <HitNexts />
     <Effects>
       <Effect>
         <Type>BLOCK</Type>
-        <Value>0</Value>
+        <Value>2</Value>
       </Effect>
     </Effects>
     <StrengthCost>1</StrengthCost>
@@ -1771,7 +1766,7 @@
       </Effect>
       <Effect>
         <Type>PUNCH</Type>
-        <Value>0</Value>
+        <Value>1</Value>
       </Effect>
     </Effects>
     <StrengthCost>1</StrengthCost>
@@ -2091,7 +2086,7 @@
       </Effect>
       <Effect>
         <Type>SMASH</Type>
-        <Value>0</Value>
+        <Value>3</Value>
       </Effect>
     </Effects>
     <StrengthCost>1</StrengthCost>
@@ -2121,7 +2116,7 @@
     <Effects>
       <Effect>
         <Type>SMASH</Type>
-        <Value>0</Value>
+        <Value>3</Value>
       </Effect>
       <Effect>
         <Type>MOVE_FORWARD</Type>
@@ -2433,7 +2428,7 @@
     <Effects>
       <Effect>
         <Type>PUNCH</Type>
-        <Value>0</Value>
+        <Value>1</Value>
       </Effect>
     </Effects>
     <StrengthCost>1</StrengthCost>
@@ -2614,7 +2609,7 @@
     <Effects>
       <Effect>
         <Type>SMASH</Type>
-        <Value>0</Value>
+        <Value>3</Value>
       </Effect>
       <Effect>
         <Type>SMASH</Type>
@@ -2626,6 +2621,396 @@
       </Effect>
     </Effects>
     <StrengthCost>2</StrengthCost>
+  </SkillData>
+  <SkillData>
+    <Id>AID</Id>
+    <Lefts>
+      <Vector2 x="-0.3149207" y="0.210733369" />
+      <Vector2 x="-0.351042539" y="0.213157654" />
+      <Vector2 x="-0.3694453" y="0.227803111" />
+      <Vector2 x="-0.365457028" y="0.2644573" />
+      <Vector2 x="-0.356167972" y="0.293989331" />
+      <Vector2 x="-0.307763934" y="0.3270527" />
+      <Vector2 x="-0.195106" y="0.338837" />
+      <Vector2 x="-0.000592565164" y="0.327451468" />
+      <Vector2 x="0.195969" y="0.293017119" />
+      <Vector2 x="0.3739045" y="0.225798309" />
+      <Vector2 x="0.488217" y="0.135231569" />
+      <Vector2 x="0.566883147" y="0.06485856" />
+      <Vector2 x="0.621613562" y="0.0359204523" />
+      <Vector2 x="0.659366846" y="0.02304154" />
+      <Vector2 x="0.672844" y="0.018439889" />
+      <Vector2 x="0.6781391" y="0.0161017179" />
+      <Vector2 x="0.6799239" y="0.01648431" />
+      <Vector2 x="0.6776213" y="0.01781898" />
+      <Vector2 x="0.672370255" y="0.0196188763" />
+      <Vector2 x="0.665987968" y="0.0214552358" />
+      <Vector2 x="0.657854259" y="0.0258084927" />
+      <Vector2 x="0.6461709" y="0.03251733" />
+      <Vector2 x="0.631755352" y="0.0405160971" />
+    </Lefts>
+    <Rights>
+      <Vector2 x="-0.370051563" y="-0.302559376" />
+      <Vector2 x="-0.4100041" y="-0.308369368" />
+      <Vector2 x="-0.437614858" y="-0.313605338" />
+      <Vector2 x="-0.448643744" y="-0.3194199" />
+      <Vector2 x="-0.4388526" y="-0.326351672" />
+      <Vector2 x="-0.3953711" y="-0.340694159" />
+      <Vector2 x="-0.307439566" y="-0.4088376" />
+      <Vector2 x="-0.08569383" y="-0.489734739" />
+      <Vector2 x="0.202064708" y="-0.479516059" />
+      <Vector2 x="0.4045608" y="-0.378374428" />
+      <Vector2 x="0.5149466" y="-0.306591362" />
+      <Vector2 x="0.583943665" y="-0.257907033" />
+      <Vector2 x="0.632172" y="-0.228193521" />
+      <Vector2 x="0.6624226" y="-0.2270123" />
+      <Vector2 x="0.6740013" y="-0.22774592" />
+      <Vector2 x="0.679433763" y="-0.229423791" />
+      <Vector2 x="0.6817826" y="-0.2294953" />
+      <Vector2 x="0.680923045" y="-0.226787" />
+      <Vector2 x="0.6770445" y="-0.221856117" />
+      <Vector2 x="0.6711391" y="-0.215169281" />
+      <Vector2 x="0.6634836" y="-0.208198726" />
+      <Vector2 x="0.65388757" y="-0.198664755" />
+      <Vector2 x="0.643076539" y="-0.189827114" />
+    </Rights>
+    <Roots>
+      <Translate>
+        <Position x="-3.49245965E-08" y="-5.54136932E-08" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.002140556" y="-0.0008718893" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.004900548" y="-0.001541246" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.008185178" y="-0.00253237016" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0118580032" y="-0.00440529827" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0161570311" y="-0.009122939" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0213432852" y="-0.0168832131" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0273413938" y="-0.0264124218" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.03385661" y="-0.0373782" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0412846245" y="-0.0494560972" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0490378626" y="-0.0616897158" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.055573944" y="-0.07327613" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0600582063" y="-0.0835545957" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06281154" y="-0.0921925455" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0642770156" y="-0.09910423" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0644562244" y="-0.104383804" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06318551" y="-0.107718125" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0603512079" y="-0.109071121" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.05474892" y="-0.109179422" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.046567183" y="-0.108384311" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.03662562" y="-0.106414728" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0248348136" y="-0.103398904" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.011679247" y="-0.0995192" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.00175027363" y="-0.09524719" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.0144952442" y="-0.09044527" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.02555876" y="-0.08450599" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.0334136076" y="-0.07795234" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.04065066" y="-0.0721863359" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.04972007" y="-0.06659478" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.0606205165" y="-0.059212666" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.07432481" y="-0.0519834124" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.08419077" y="-0.0443828963" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.0848078" y="-0.0378149077" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.07611127" y="-0.037756104" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.05922073" y="-0.04429384" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.0366782434" y="-0.05399934" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="-0.009832459" y="-0.0621930324" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0210238323" y="-0.06522257" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0519361757" y="-0.0648167059" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0765599459" y="-0.0648105741" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.08697004" y="-0.0652021" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.09302536" y="-0.0654963" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0967625" y="-0.06511401" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.09762856" y="-0.06394441" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.09566744" y="-0.0621180944" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0917933956" y="-0.059686292" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.08659961" y="-0.05658258" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.08005165" y="-0.05269524" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.07451965" y="-0.04754537" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0704985857" y="-0.0418880768" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0687415" y="-0.03539822" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06874242" y="-0.02854412" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06943985" y="-0.0222770646" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06990946" y="-0.0171234962" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0692493543" y="-0.0133189922" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06699958" y="-0.0109251868" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06524611" y="-0.008845051" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06389265" y="-0.00696666259" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0625658259" y="-0.00530120451" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.06136322" y="-0.00407572556" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0604463741" y="-0.00344368466" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.05968652" y="-0.00317860045" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.058716096" y="-0.00287724636" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0569595024" y="-0.00263040862" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0542509556" y="-0.00261053373" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0501166955" y="-0.00278225425" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0440806448" y="-0.00310359732" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.03736579" y="-0.00348819164" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.03137072" y="-0.00378368865" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0259438585" y="-0.00395016745" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.02106494" y="-0.004075922" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.0167962946" y="-0.0040951753" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.013015056" y="-0.003968387" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.009635497" y="-0.003791381" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.00678696344" y="-0.00355680776" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.00449724169" y="-0.00322718848" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.00291237" y="-0.00276657171" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.001856009" y="-0.002106141" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.00103442417" y="-0.00137328333" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.000489349" y="-0.000733595341" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0.000139385927" y="-0.00022456795" />
+        <Rotation>0</Rotation>
+      </Translate>
+      <Translate>
+        <Position x="0" y="0" />
+        <Rotation>0</Rotation>
+      </Translate>
+    </Roots>
+    <Total>2.7</Total>
+    <Begin>0.86</Begin>
+    <End>1.63333</End>
+    <Nexts />
+    <HitNexts />
+    <Effects />
+    <StrengthCost>10</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>NORMAL_EXPLORE</Id>
