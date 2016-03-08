@@ -625,6 +625,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _Health = _MaxHealth;
             _Strength = 3f;
             _DamageCount = 0f;
+            _AidCount = 0f;
         }
 
         public void RecoveryStrength(float delta_time)
@@ -641,6 +642,14 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public float GetViewLength()
         {
             return _View;
+        }
+
+        public void Aid()
+        {
+            _Speed = 0.0f;
+            _Trun = 0.0f;
+            _Status = ACTOR_STATUS_TYPE.AID;
+            _InvokeStatusEvent();
         }
     }
 }

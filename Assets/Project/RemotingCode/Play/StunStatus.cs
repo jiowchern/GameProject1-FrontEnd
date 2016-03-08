@@ -41,16 +41,21 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         void IStage.Update()
         {
-            var aid = _Player.HaveAid();
-            _Stun -= aid;
-            if (_Stun < 0f)
-            {
-                WakeEvent();
-            }
             if (_Counter.Second > 60f)
-            {                
+            {
                 ExitEvent();
             }
+            else
+            {
+                var aid = _Player.HaveAid();
+                _Stun -= aid;
+                if (_Stun <= 0f)
+                {
+                    WakeEvent();
+                }
+            }
+            
+            
         }
     }
 }

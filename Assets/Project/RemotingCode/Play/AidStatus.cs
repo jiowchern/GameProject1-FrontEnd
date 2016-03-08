@@ -46,6 +46,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         void IStage.Enter()
         {
             _DatumPosition = _Player.GetPosition();
+            _Player.Aid();
             _Caster = SkillCaster.Build(ACTOR_STATUS_TYPE.AID);
             _TimeCounter.Reset();
         }
@@ -58,14 +59,16 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 if (item != null)
                 {
                     
-                    var target = _Targets.Values.FirstOrDefault();
+                    var target = _Targets.Values.FirstOrDefault( t => EntityData.IsActor(t.EntityType) && t.Status == ACTOR_STATUS_TYPE.STUN );
                     if (target != null)
                     {
                         HitForce hit = new HitForce();
                         var aid = item.GetAid() + _Caster.GetAid();
                         hit.Aid = aid;
                         target.AttachHit(_Player.Id , hit);
+                        _Player.Bag.Remove(_ItemId);
                     }
+
                 }
             }
         }

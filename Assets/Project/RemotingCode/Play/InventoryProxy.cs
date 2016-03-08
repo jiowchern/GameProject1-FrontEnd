@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 
 using Regulus.Project.ItIsNotAGame1.Data;
+using Regulus.Extension;
 
 namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
@@ -63,6 +64,40 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public void Equip(Guid id)
         {
             _Notifier.Equip(id);
+        }
+
+        public int GetAmount(string item_name)
+        {
+            return (from item in _Items where item.Name == item_name select item.Count).Sum();
+        }
+
+        public void Discard(string item_name, int count)
+        {
+            var i = _Items.Shuffle().FirstOrDefault( (item) => item.Name == item_name );
+            if(i != null)
+                _Notifier.Discard(i.Id);
+        }
+
+        public bool Use(string name)
+        {
+            if (_Notifier != null)
+            {
+                var id = _FindIdByName(name);
+                if (id != Guid.Empty)
+                {
+                    _Notifier.Use(id);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private Guid _FindIdByName(string name)
+        {
+            var result =_Items.Find((item) => item.Name == name);
+            if(result != null)
+                return result.Id;
+            return Guid.Empty;
         }
     }
 }
