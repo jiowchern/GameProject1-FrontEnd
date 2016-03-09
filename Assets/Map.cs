@@ -29,14 +29,14 @@ public class Map : MonoBehaviour {
 	{
 		var rand = Regulus.Utility.Random.Instance;
 		
-		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)), rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
-		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)), rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
-		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)), rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
-		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)), rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
-		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)), rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
+		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)),0, rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
+		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)),0, rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
+		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)),0, rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
+		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)),0, rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
+		_Add(new Vector2(rand.NextFloat(-10, 10), rand.NextFloat(-10, 10)),0, rand.NextEnum<Regulus.Project.ItIsNotAGame1.Data.ENTITY>());
 	}
 
-	private MapEntity _Add(Vector2 position , Regulus.Project.ItIsNotAGame1.Data.ENTITY type)
+	private MapEntity _Add(Vector2 position ,float degree, Regulus.Project.ItIsNotAGame1.Data.ENTITY type)
 	{
 
 		var entityObject = GameObject.Instantiate(EntitySource);
@@ -50,7 +50,10 @@ public class Map : MonoBehaviour {
 		entity.SetColor(type);
 
 		var source = Resource.Instance.FindEntity(type);
-		var bound = source.Mesh.Points.ToRect();        
+        
+	    var mesh = source.Mesh.Clone();
+        mesh.RotationByDegree(degree);
+        var bound = mesh.Points.ToRect();        
 		entity.SetSize(new Vector2(bound.Width * UnitScale, bound.Height * UnitScale));
 
 		return entity;
@@ -86,7 +89,7 @@ public class Map : MonoBehaviour {
 
 	public MapEntity Add(IVisible visible)
 	{
-		return _Add(new Vector2(visible.Position.X, visible.Position.Y), visible.EntityType);
+		return _Add(new Vector2(visible.Position.X, visible.Position.Y), visible.Direction, visible.EntityType);
 	}
 
 	public void SetPosision(Regulus.CustomType.Vector2 position)

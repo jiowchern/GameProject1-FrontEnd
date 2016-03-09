@@ -6,10 +6,13 @@ using Regulus.CustomType;
 using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Extension;
 
+using RegulusVector2 = Regulus.CustomType.Vector2;
 
 public class EntityExportMark : MonoBehaviour
 {
     public Regulus.Project.ItIsNotAGame1.Data.ENTITY Name;
+
+    public bool CollisionRotation;
     public GameObject Body;
     public EntityData BuildEntity()
     {
@@ -40,11 +43,21 @@ public class EntityExportMark : MonoBehaviour
         var data = new EntityData
         {
             Name = Name,
-            Mesh = new Polygon(points.FindHull().ToArray())
+            Mesh = new Polygon(points.FindHull().ToArray()),
+            CollisionRotation = CollisionRotation
         };
         return data;
     }
 
+    public RegulusVector2 GetPosition(UnityEngine.Vector3 parent)
+    {
+        var position = gameObject.transform.position - parent;
+        return new RegulusVector2(position.x , position.z);
+    }
 
+    public float GetDirection(float parent)
+    {
+        return gameObject.transform.rotation.eulerAngles.y - parent;
+    }
 }
 

@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using Regulus.Project.ItIsNotAGame1.Data;
 
@@ -90,7 +91,9 @@ public class MapPlayer : MonoBehaviour
 	    {
 	        var avatar = actor.Value.Avatar;
 	        var visible = actor.Value.Visible;
+            
             avatar.UpdatePosition(new Vector2(visible.Position.X , visible.Position.Y));
-        }
+	        avatar.UpdateDirection(visible.Direction);
+	    }
 	}
 }

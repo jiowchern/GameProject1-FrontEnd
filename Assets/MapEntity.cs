@@ -78,4 +78,9 @@ public class MapEntity : MonoBehaviour {
         }
 
     }
+
+    public void UpdateDirection(float direction)
+    {
+        _Rect.rotation = Quaternion.Euler(0,0,direction +90 );
+    }
 }

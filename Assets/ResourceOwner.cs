@@ -10,6 +10,8 @@ public class ResourceOwner : MonoBehaviour {
     public TextAsset ItemSource;
     public TextAsset ItemFormulaSource;
 
+    public TextAsset EntityGroupLayoutSource;
+
     public bool LoadOnStart;
     // Use this for initialization
     void Start () {
@@ -30,8 +32,14 @@ public class ResourceOwner : MonoBehaviour {
         Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.SkillDatas = _ReadSkills();
         Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Items = _ReadItems();
         Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Formulas = _ReadItemFormulas();
+
+        Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.EntityGroupLayouts = _ReadEntityGroupLayouts();
     }
 
+    private EntityGroupLayout[] _ReadEntityGroupLayouts()
+    {
+        return Regulus.Utility.Serialization.Read<EntityGroupLayout[]>(EntityGroupLayoutSource.bytes);
+    }
 
     private ItemFormula[] _ReadItemFormulas()
     {

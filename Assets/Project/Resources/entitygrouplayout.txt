@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfEntityGroupLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="-5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>gate</Id>
+  </EntityGroupLayout>
+</ArrayOfEntityGroupLayout>

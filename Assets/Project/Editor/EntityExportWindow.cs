@@ -6,6 +6,7 @@ using System.Linq;
 using System.IO;
 using System.Xml.Serialization;
 
+using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Utility;
 using UnityEditor;
 
@@ -22,7 +23,23 @@ public class EntityExportWindow : EditorWindow
         Serialization.Write(entitys , path);
     }
 
+    [MenuItem("Regulus/ItIsNotAGame1/ExportEntityGroupLayout")]
+    static public void ExportEntityGroupLayout()
+    {
+        var marks = GameObject.FindObjectsOfType<EntityGroupLayoutMark>();
+        var egls = new EntityGroupLayout[marks.Length];
+        for(int i = 0; i < egls.Length ; ++i)
+        {
+            egls[i] = new EntityGroupLayout();
+            egls[i].Id = marks[i].Id;
+            egls[i].Entitys = marks[i].GetMarks().ToArray();
+        }
 
+        var path = EditorUtility.SaveFilePanel("select", "", "entitygrouplayout.txt", "txt");
+        if(path.Length > 0)
+            Serialization.Write(egls, path);
+
+    }
     [MenuItem("Regulus/ItIsNotAGame1/ExportSkill")]
     static public void ExportSkillFromScene()
     {
