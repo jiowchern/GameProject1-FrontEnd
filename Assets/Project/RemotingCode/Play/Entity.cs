@@ -60,49 +60,72 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         
 
         public Entity(EntityData data, string name, ENTITY[] enter_types)
-            : this(data, name )
+            : this(data, name, enter_types, new Inventory())
         {
-            _Concierge = new Concierge(_Mesh , enter_types);
-
-
+            
         }
 
         
-        public Entity(EntityData data) : this(data.Mesh)
+        public Entity(EntityData data) : this(data , "" , new ENTITY[0] , new Inventory() )
         {
+            
+            
+        }
+
+
+        public Entity(EntityData data, Inventory inventory) : this(data, "", new ENTITY[0], inventory)
+        {
+
+        }
+
+
+        public Entity(EntityData data, string name) : this(data, name, new ENTITY[0], new Inventory())
+        {
+            
+        }
+        
+        public Entity(Polygon mesh) 
+        {
+            _Mesh = mesh.Clone();
+        }
+
+        private Entity(EntityData data, string name , ENTITY[] enter_types ,Inventory inventory )
+            : this()
+        {
+            _Name = name;
+            Bag = inventory;
+            _Mesh = data.Mesh.Clone();
+            _Bound = this._BuildBound(this._Mesh);
+            _Concierge = new Concierge(_Mesh, enter_types);
             _RotationMesh = data.CollisionRotation;
             _Name = "";
             _EntityType = data.Name;
+            _DetectionRange = 1.0f + _Mesh.Points.ToRect().Width;
+
+        }
+
+        private Entity()
+        {
             _Datas = Resource.Instance.SkillDatas;
 
             this._Id = Guid.NewGuid();
-            this._BaseView = 15.0f; 
-            _DetectionRange = 1.0f;
-
-            Bag = new Inventory();
-            Equipment = new Equipment(this);
-            Equipment.AddEvent += _BroadcastEquipEvent;
-            Equipment.RemoveEvent += _BroadcastEquipEvent;
-
-            _Status = ACTOR_STATUS_TYPE.NORMAL_IDLE;
-        }
+            this._BaseView = 15.0f;
+            _DetectionRange = 1.0f ;
 
 
-        public Entity(EntityData data, string name) : this(data)
-        {
-            _Name = name;
-        }
-
-        public Entity(Polygon mesh)
-        {            
-            this._Mesh = mesh.Clone();
-            this._Bound = this._BuildBound(this._Mesh);
+            _SignRoster = new SignRoster();
             _CollideTargets = new DifferenceNoticer<IIndividual>();
 
             _SkillOffsetVector = new Vector2();
 
             _BaseSpeed = 1.0f;
             _MaxHealth = 10f;
+
+            Equipment = new Equipment(this);
+            Equipment.AddEvent += _BroadcastEquipEvent;
+            Equipment.RemoveEvent += _BroadcastEquipEvent;
+
+            _Status = ACTOR_STATUS_TYPE.NORMAL_IDLE;
         }
 
         private void _BroadcastEquipEvent(Guid obj)
@@ -134,12 +157,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         ENTITY IVisible.EntityType { get { return _EntityType; } }
 
-        Guid IVisible.Id
-        {
-            get { return this._Id; }
-        }
-
-
+        Guid IVisible.Id { get { return _Id; } }
 
         public float Strength(float val)
         {
@@ -255,6 +273,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private readonly bool _RotationMesh;
 
+        private SignRoster _SignRoster;
+
         public Guid Id { get { return this._Id; } }
 
         public float Direction { get; private set; }
@@ -294,16 +314,29 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             }
         }
 
-        Item[] IIndividual.Stolen()
+        Item[] IIndividual.Stolen(Guid id)
         {
+            if (_SignRoster.Sign(id) == false)
+            {
+                return new Item[0];
+            }
             if (_EntityType == ENTITY.DEBIRS)
             {
                 _Status = ACTOR_STATUS_TYPE.CHEST_OPEN;
                 _InvokeStatusEvent();
             }
+
+            var item = Bag.GetAll().Shuffle().FirstOrDefault();
+            if (item != null)
+            {
+                Bag.Remove(item.Id);
+                return new[]
+                {
+                    item
+                };
+            }
             
-            var itemProivder = new ItemProvider();
-            return itemProivder.FromStolen();
+            return new Item[0];
         }
 
 
@@ -436,7 +469,10 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         }
 
 
-
+        public float GetDetectionRange()
+        {
+            return _DetectionRange;
+        }
         public Polygon GetExploreBound()
         {
             var ext = new ExtendPolygon(_Mesh, _DetectionRange);

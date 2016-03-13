@@ -121,5 +121,13 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             return _Items.FirstOrDefault(i => i.Id == id);
         }
+
+        public void Add(Item[] items)
+        {
+            foreach (var item in items)
+            {
+                Add(item);
+            }
+        }
     }
 }

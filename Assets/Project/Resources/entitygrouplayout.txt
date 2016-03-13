@@ -3,6 +3,16 @@
   <EntityGroupLayout>
     <Entitys>
       <EntityLayout>
+        <Type>POOL</Type>
+        <Position x="-3.8" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>pool</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
         <Type>WALL_GATE</Type>
         <Position x="7.5" y="5" />
         <Direction>0</Direction>

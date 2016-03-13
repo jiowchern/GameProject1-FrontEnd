@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
+    <Name>POOL</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-3.40220165" y="-4.04452237E-07" />
+        <Vector2 x="-3.31956816" y="-0.779727936" />
+        <Vector2 x="-3.158062" y="-1.369015" />
+        <Vector2 x="-3.05509877" y="-1.67802489" />
+        <Vector2 x="-1.67802775" y="-3.05510044" />
+        <Vector2 x="-1.36901391" y="-3.15806174" />
+        <Vector2 x="-0.7797275" y="-3.3195684" />
+        <Vector2 x="1.40723259E-07" y="-3.40220165" />
+        <Vector2 x="0.7797277" y="-3.31956816" />
+        <Vector2 x="1.36901474" y="-3.158062" />
+        <Vector2 x="1.67802441" y="-3.05509877" />
+        <Vector2 x="3.05509973" y="-1.67802787" />
+        <Vector2 x="3.1580615" y="-1.36901414" />
+        <Vector2 x="3.31956816" y="-0.7797277" />
+        <Vector2 x="3.40220118" y="-4.689069E-08" />
+        <Vector2 x="3.31956768" y="0.7797275" />
+        <Vector2 x="3.1580615" y="1.3690145" />
+        <Vector2 x="3.0550983" y="1.67802441" />
+        <Vector2 x="1.67802763" y="3.05509973" />
+        <Vector2 x="1.36901379" y="3.1580615" />
+        <Vector2 x="0.7797274" y="3.31956816" />
+        <Vector2 x="-3.249824E-07" y="3.40220118" />
+        <Vector2 x="-0.7797278" y="3.31956768" />
+        <Vector2 x="-1.36901486" y="3.15806174" />
+        <Vector2 x="-1.67802489" y="3.0550983" />
+        <Vector2 x="-3.05510044" y="1.67802751" />
+        <Vector2 x="-3.158062" y="1.36901367" />
+        <Vector2 x="-3.3195684" y="0.7797273" />
+      </ArrayOfVector2>
+    </Mesh>
+    <CollisionRotation>true</CollisionRotation>
+  </EntityData>
+  <EntityData>
     <Name>ACTOR1</Name>
     <Mesh>
       <ArrayOfVector2>
