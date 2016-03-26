@@ -293,6 +293,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         {
             _SetPosition(postion.X, postion.Y);
         }
+
+        private event Action<Guid, IEnumerable<Item>> _TheftEvent;
+
+        event Action<Guid, IEnumerable<Item>> IIndividual.TheftEvent
+        {
+            add { _TheftEvent += value; }
+            remove { _TheftEvent -= value; }
+        }
+
         void IIndividual.SetPosition(float x, float y)
         {
             _SetPosition(x, y);
@@ -314,8 +323,9 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             }
         }
 
-        Item[] IIndividual.Stolen(Guid id)
+        IEnumerable<Item> IIndividual.Stolen(Guid id)
         {
+
             if (_SignRoster.Sign(id) == false)
             {
                 return new Item[0];
@@ -326,15 +336,16 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 _InvokeStatusEvent();
             }
 
-            var item = Bag.GetAll().Shuffle().FirstOrDefault();
-            if (item != null)
+            if (Bag.Any())
             {
-                Bag.Remove(item.Id);
-                return new[]
-                {
-                    item
-                };
+                var items = Bag.Shuffle().Take(1).ToArray();
+                Bag.Remove(items);
+                if (_TheftEvent != null)
+                    _TheftEvent(id, items);
+
+                return items;
             }
+            
             
             return new Item[0];
         }

@@ -3,12 +3,72 @@
   <EntityGroupLayout>
     <Entitys>
       <EntityLayout>
+        <Type>WALL_WESTERN</Type>
+        <Position x="7" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>wall</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
         <Type>POOL</Type>
         <Position x="-3.8" y="0" />
         <Direction>0</Direction>
       </EntityLayout>
     </Entitys>
     <Id>pool</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
+        <Type>ENTRANCE</Type>
+        <Position x="0" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="-5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>enterance</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="-5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_EAST</Type>
+        <Position x="-7.5" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_NORTH</Type>
+        <Position x="-0.5" y="7" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_SOUTH</Type>
+        <Position x="0.5" y="-7" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>room</Id>
   </EntityGroupLayout>
   <EntityGroupLayout>
     <Entitys>

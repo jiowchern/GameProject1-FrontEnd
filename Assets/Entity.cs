@@ -171,8 +171,10 @@ public class Entity : MonoBehaviour {
         _Visible.TalkMessageEvent += _ShowMessage;
         _Visible.QueryStatus();
 
-
+        _SetStatus(_Visible.Status);
         _SetPosition(_Visible.Position);
+
+        _SetDirection(_Visible.Direction);
 
         _SetCamera();
 
@@ -238,11 +240,14 @@ public class Entity : MonoBehaviour {
         Trun = status.Trun;
         SkillOffset = new Vector3(status.SkillOffect.X , 0 , status.SkillOffect.Y); 
 
-        var eulerAngles = Root.rotation.eulerAngles;
-        eulerAngles.y = status.Direction;
-        Root.rotation = Quaternion.Euler(eulerAngles);
+        _SetDirection(status.Direction);
 
-        Status = status.Status;
+        _SetStatus(status.Status);
+    }
+
+    private void _SetStatus(ACTOR_STATUS_TYPE status)
+    {
+        Status = status;
 
         if (Avatar != null)
         {
@@ -251,19 +256,30 @@ public class Entity : MonoBehaviour {
             _SpeedStep = 0.0f;
 
             _BeginTrun = Avatar.GetFloat("Trun");
-            
-            _EndTrun = Trun > 0.0f ? 1 : Trun < 0.0f ? -1 : 0 ;            
+
+            _EndTrun = Trun > 0.0f
+                ? 1
+                : Trun < 0.0f
+                    ? -1
+                    : 0;
             _TrunStep = 0.0f;
-            
+
             if (Status == ACTOR_STATUS_TYPE.CHEST_OPEN)
             {
-                Avatar.SetBool("Open" , true);                
-            }            
+                Avatar.SetBool("Open", true);
+            }
             else if (Status == ACTOR_STATUS_TYPE.NORMAL_IDLE && Speed == 0.0f)
             {
                 ResetLongIdle();
             }
         }
+    }
+
+    private void _SetDirection(float direction)
+    {
+        var eulerAngles = Root.rotation.eulerAngles;
+        eulerAngles.y = direction;
+        Root.rotation = Quaternion.Euler(eulerAngles);
     }
 
     public void ResetLongIdle()
@@ -296,12 +312,7 @@ public class Entity : MonoBehaviour {
             
         }
     }
-
-    private float _GetTargetSpeed()
-    {
-        return 0.0f;
-
-    }
+    
 
     private void _SetPosition(Vector3 pos)
     {

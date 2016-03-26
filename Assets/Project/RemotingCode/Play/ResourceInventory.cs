@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
@@ -19,7 +20,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private void _Supplement()
         {
-            if (GetAll().Length <= 1)
+            if ( this.Count() <= 1  )
             {
                 var itemProvider = new ItemProvider();
                 Add(itemProvider.FromStolen());

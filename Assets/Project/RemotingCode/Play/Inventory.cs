@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
@@ -9,7 +10,7 @@ using Regulus.Project.ItIsNotAGame1.Data;
 
 namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
-    public class Inventory 
+    public class Inventory : IEnumerable<Item>
     {
         private readonly List<Item> _Items;
 
@@ -31,6 +32,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                     Remove(inBagItem.Id);
                 }                
             }
+            item.RefCount ++;
             this._Items.Add(item);
             this._Weight += item.Weight;
 
@@ -46,28 +48,30 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         public void Remove(Guid id)
         {
             int weight = 0;
-            this._Items.RemoveAll(
+            var removeCount = _Items.RemoveAll(
                 (item) =>
                 {
                     if (item.Id == id)
                     {
-                        weight+=item.Weight;
-                        if (RemoveEvent != null)
-                        {
-                            RemoveEvent(id);
-                        }
+                        item.RefCount --;
+                        weight+=item.Weight;                        
                         return true;        
                     }
                     return false;
                 });
 
             this._Weight -= weight;
-        }
+            if (RemoveEvent != null)
+            {
+                RemoveEvent(id);
+            }
 
-        public Item[] GetAll()
-        {
-            return _Items.ToArray();
+            
+            if (removeCount != 1)
+                throw new Exception("錯誤的道具刪除");
+            
         }
+        
 
         public event Action<Item> AddEvent;
 
@@ -127,6 +131,24 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             foreach (var item in items)
             {
                 Add(item);
+            }
+        }
+
+        IEnumerator<Item> IEnumerable<Item>.GetEnumerator()
+        {
+            return _Items.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return _Items.GetEnumerator();
+        }
+
+        public void Remove(IEnumerable<Item> items)
+        {
+            foreach (var item in items)
+            {
+                Remove(item.Id);
             }
         }
     }
