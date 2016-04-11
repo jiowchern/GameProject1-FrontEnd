@@ -6,6 +6,7 @@ using Regulus.Project.ItIsNotAGame1;
 using System.Linq;
 
 using Regulus.Project.ItIsNotAGame1.Data;
+using Regulus.Remoting;
 
 using UnityEngine.UI;
 
@@ -16,46 +17,69 @@ public class Bag : Inventory
     private Client _Client;
     private Regulus.Project.ItIsNotAGame1.Data.IInventoryNotifier _InventoryNotifier;
 
+    private IInventoryController _InventoryController;
+
     // Use this for initialization
     void Start () {
         _Client = Client.Instance;
         if(_Client != null)
         {
-            _Client.User.InventoryNotifierProvider.Supply += InventoryNotifierProvider_Supply;
+            _Client.User.BagNotifierProvider.Supply += InventoryNotifierProvider_Supply;
+            _Client.User.InventoryControllerProvider.Supply += _SetInventoryController;
         }
 	}
+
+    
 
     void OnDestroy()
     {
         if (_Client != null)
         {
-            if (_InventoryNotifier != null)
-            {
-                _InventoryNotifier.AllItemEvent -= _InventoryNotifier_AllItemEvent;
-                _InventoryNotifier.RemoveEvent -= _RemoveItem;
-                _InventoryNotifier.AddEvent -= _AddEvent;
-            }
-            _Client.User.InventoryNotifierProvider.Supply -= InventoryNotifierProvider_Supply;
+            _ReleaseNotifier();
+            _ReleaseController();
+            _Client.User.BagNotifierProvider.Supply -= InventoryNotifierProvider_Supply;
+            _Client.User.InventoryControllerProvider.Supply -= _SetInventoryController;
         }
     }
 
-    
+    private void _ReleaseNotifier()
+    {
+        if (_InventoryNotifier != null)
+        {
+            _InventoryNotifier.RemoveEvent -= _RemoveItem;
+            _InventoryNotifier.AddEvent -= _AddEvent;
+        }
+    }
+
+    private void _ReleaseController()
+    {
+        if (_InventoryController != null)
+        {
+            _InventoryController.BagItemsEvent -= _InventoryNotifier_AllItemEvent;
+        }
+    }
 
     private void InventoryNotifierProvider_Supply(Regulus.Project.ItIsNotAGame1.Data.IInventoryNotifier obj)
     {
+        _ReleaseNotifier();
         _InventoryNotifier = obj;
-        _InventoryNotifier.AllItemEvent += _InventoryNotifier_AllItemEvent;
+        
         _InventoryNotifier.RemoveEvent += _RemoveItem;
-        _InventoryNotifier.AddEvent += _AddEvent;
-        _InventoryNotifier.Query();
+        _InventoryNotifier.AddEvent += _AddEvent;        
     }
 
-   
+    private void _SetInventoryController(IInventoryController obj)
+    {
+        _ReleaseController();
+        _InventoryController = obj;
+        _InventoryController.BagItemsEvent += _InventoryNotifier_AllItemEvent;
+        _InventoryController.Refresh();
+    }
 
     void OnEnable()
     {
-        if(_InventoryNotifier != null)
-            _InventoryNotifier.Query();
+        if(_InventoryController != null)
+            _InventoryController.Refresh();
     }
 
 

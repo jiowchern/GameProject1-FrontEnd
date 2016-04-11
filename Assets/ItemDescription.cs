@@ -12,8 +12,9 @@ public class ItemDescription : MonoBehaviour {
 
     public UnityEngine.UI.Text Name;
     public UnityEngine.UI.Text Effect;
-    private IInventoryNotifier _InventoryNotifier;
-    private IEquipmentNotifier _EquipmentNotifier;
+
+    private IInventoryController _Controller;
+    
 
     private System.Guid _Id ;
 
@@ -21,9 +22,7 @@ public class ItemDescription : MonoBehaviour {
     {
         if (_Client != null)
         {
-            
-            _Client.User.EquipmentNotifierProvider.Supply -= EquipmentNotifierProvider_Supply;
-            _Client.User.InventoryNotifierProvider.Supply -= InventoryNotifierProvider_Supply;
+            _Client.User.InventoryControllerProvider.Supply -= _SetController;            
         }
     }
 
@@ -33,20 +32,16 @@ public class ItemDescription : MonoBehaviour {
         _Client = Client.Instance;
         if (_Client != null)
         {
-            _Client.User.EquipmentNotifierProvider.Supply += EquipmentNotifierProvider_Supply;
-            _Client.User.InventoryNotifierProvider.Supply += InventoryNotifierProvider_Supply;
+            _Client.User.InventoryControllerProvider.Supply += _SetController;            
         }
     }
 
-    private void InventoryNotifierProvider_Supply(IInventoryNotifier obj)
+    private void _SetController(IInventoryController obj)
     {
-        _InventoryNotifier = obj;
+        _Controller = obj;
     }
 
-    private void EquipmentNotifierProvider_Supply(IEquipmentNotifier obj)
-    {
-        _EquipmentNotifier = obj;
-    }
+    
     void Update ()
     {
 	        
@@ -75,19 +70,19 @@ public class ItemDescription : MonoBehaviour {
 
     public void Unequip()
     {
-        _EquipmentNotifier.Unequip(_Id);
+        _Controller.Unequip(_Id);
     }
     public void Equip()
     {
-        _InventoryNotifier.Equip(_Id);
+        _Controller.Equip(_Id);
     }
     public void Discard()
     {
-        _InventoryNotifier.Discard(_Id);
+        _Controller.Discard(_Id);
     }
 
     public void Use()
     {
-        _InventoryNotifier.Use(_Id);
+        _Controller.Use(_Id);
     }
 }

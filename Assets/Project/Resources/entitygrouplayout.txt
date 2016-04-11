@@ -3,6 +3,16 @@
   <EntityGroupLayout>
     <Entitys>
       <EntityLayout>
+        <Type>WALL_WESTERN_AISLE</Type>
+        <Position x="4.5" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>thickwall</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
         <Type>WALL_WESTERN</Type>
         <Position x="7" y="0" />
         <Direction>0</Direction>
@@ -14,7 +24,7 @@
     <Entitys>
       <EntityLayout>
         <Type>POOL</Type>
-        <Position x="-3.8" y="0" />
+        <Position x="0" y="0" />
         <Direction>0</Direction>
       </EntityLayout>
     </Entitys>
@@ -39,6 +49,26 @@
       </EntityLayout>
     </Entitys>
     <Id>enterance</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.5" y="-5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>DEBIRS</Type>
+        <Position x="0" y="0" />
+        <Direction>90.00001</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>chest</Id>
   </EntityGroupLayout>
   <EntityGroupLayout>
     <Entitys>
@@ -84,5 +114,15 @@
       </EntityLayout>
     </Entitys>
     <Id>gate</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
+        <Type>FIELD</Type>
+        <Position x="0" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>field</Id>
   </EntityGroupLayout>
 </ArrayOfEntityGroupLayout>

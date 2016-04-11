@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
+    <Name>FIELD</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+    <CollisionRotation>true</CollisionRotation>
+  </EntityData>
+  <EntityData>
     <Name>ACTOR1</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -160,10 +172,10 @@
     <Name>WALL_WESTERN_AISLE</Name>
     <Mesh>
       <ArrayOfVector2>
-        <Vector2 x="-2.5" y="-7.5" />
-        <Vector2 x="2.5" y="-7.5" />
-        <Vector2 x="2.5" y="7.5" />
-        <Vector2 x="-2.5" y="7.5" />
+        <Vector2 x="-2" y="-7.5" />
+        <Vector2 x="2" y="-7.5" />
+        <Vector2 x="2" y="7.5" />
+        <Vector2 x="-2" y="7.5" />
       </ArrayOfVector2>
     </Mesh>
     <CollisionRotation>true</CollisionRotation>
