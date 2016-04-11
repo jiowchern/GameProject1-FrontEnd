@@ -59,7 +59,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 {LEVEL_UNIT.ENTERANCE3, new EntityGroupBuilder("enterance", new EnterancePostProduction(_Map , new [] {ENTITY.ACTOR4, ENTITY.ACTOR2 }).ProcessStronghold )},
                 {LEVEL_UNIT.ENTERANCE4, new EntityGroupBuilder("enterance", new EnterancePostProduction(_Map , new [] {ENTITY.ACTOR5, ENTITY.ACTOR2 }).ProcessStronghold )},
                 {LEVEL_UNIT.CHEST, new EntityGroupBuilder("chest", _AllInorganics )},
-                {LEVEL_UNIT.FIELD, new EntityGroupBuilder("field", new EnterancePostProduction(_Map , new [] {ENTITY.ACTOR2, ENTITY.ACTOR3 , ENTITY.ACTOR4 , ENTITY.ACTOR5 }).ProcessField ) },
+                {LEVEL_UNIT.FIELD, new EntityGroupBuilder("field", new EnterancePostProduction(_Map , new [] {ENTITY.ACTOR3 , ENTITY.ACTOR4 , ENTITY.ACTOR5 }).ProcessField ) },
                 {LEVEL_UNIT.GATE, new EntityGroupBuilder("thickwall", _AllInorganics )},
                 {LEVEL_UNIT.POOL, new EntityGroupBuilder("pool", _ResourcePostProduction )},                
             };

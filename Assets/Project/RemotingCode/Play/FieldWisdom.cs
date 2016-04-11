@@ -51,12 +51,15 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private TICKRESULT _Pass(float arg)
         {
-            if (_Ids.Count > 0)
+            bool success = false;
+            success = _Ids.Count > 0;
+            while (_Ids.Count > 0)
             {
                 var id = _Ids.Dequeue();
-                _Gate.Pass(_Owner.GetPosition(), id);
-                return TICKRESULT.SUCCESS;
+                _Gate.Pass(_Owner.GetPosition(), id);                
             }
+            if(success)
+                return TICKRESULT.SUCCESS;
             return TICKRESULT.FAILURE;
 
         }
