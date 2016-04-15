@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityData>
-    <Name>FIELD</Name>
-    <Mesh>
-      <ArrayOfVector2>
-        <Vector2 x="-0.5" y="-0.5" />
-        <Vector2 x="0.5" y="-0.5" />
-        <Vector2 x="0.5" y="0.5" />
-        <Vector2 x="-0.5" y="0.5" />
-      </ArrayOfVector2>
-    </Mesh>
-    <CollisionRotation>true</CollisionRotation>
-  </EntityData>
-  <EntityData>
     <Name>ACTOR1</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -59,6 +47,18 @@
       </ArrayOfVector2>
     </Mesh>
     <CollisionRotation>false</CollisionRotation>
+  </EntityData>
+  <EntityData>
+    <Name>CHEST_EXIT</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-1" />
+        <Vector2 x="0.5" y="-1" />
+        <Vector2 x="0.5" y="1" />
+        <Vector2 x="-0.5" y="1" />
+      </ArrayOfVector2>
+    </Mesh>
+    <CollisionRotation>true</CollisionRotation>
   </EntityData>
   <EntityData>
     <Name>WALL_SOUTH_AISLE</Name>
@@ -133,6 +133,18 @@
     <CollisionRotation>true</CollisionRotation>
   </EntityData>
   <EntityData>
+    <Name>CHEST_OWNER</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
+      </ArrayOfVector2>
+    </Mesh>
+    <CollisionRotation>true</CollisionRotation>
+  </EntityData>
+  <EntityData>
     <Name>ACTOR3</Name>
     <Mesh>
       <ArrayOfVector2>
@@ -176,6 +188,18 @@
         <Vector2 x="2" y="-7.5" />
         <Vector2 x="2" y="7.5" />
         <Vector2 x="-2" y="7.5" />
+      </ArrayOfVector2>
+    </Mesh>
+    <CollisionRotation>true</CollisionRotation>
+  </EntityData>
+  <EntityData>
+    <Name>FIELD</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-0.5" />
+        <Vector2 x="0.5" y="-0.5" />
+        <Vector2 x="0.5" y="0.5" />
+        <Vector2 x="-0.5" y="0.5" />
       </ArrayOfVector2>
     </Mesh>
     <CollisionRotation>true</CollisionRotation>
@@ -227,6 +251,18 @@
       </ArrayOfVector2>
     </Mesh>
     <CollisionRotation>false</CollisionRotation>
+  </EntityData>
+  <EntityData>
+    <Name>CHEST_GATE</Name>
+    <Mesh>
+      <ArrayOfVector2>
+        <Vector2 x="-0.5" y="-2.5" />
+        <Vector2 x="0.5" y="-2.5" />
+        <Vector2 x="0.5" y="2.5" />
+        <Vector2 x="-0.5" y="2.5" />
+      </ArrayOfVector2>
+    </Mesh>
+    <CollisionRotation>true</CollisionRotation>
   </EntityData>
   <EntityData>
     <Name>DEBIRS</Name>

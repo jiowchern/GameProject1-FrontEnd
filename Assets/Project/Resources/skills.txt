@@ -2111,12 +2111,14 @@
     <Total>1.33333337</Total>
     <Begin>0.6</Begin>
     <End>0.7333333</End>
-    <Nexts />
+    <Nexts>
+      <ACTOR_STATUS_TYPE>TWO_HAND_SWORD_ATTACK2</ACTOR_STATUS_TYPE>
+    </Nexts>
     <HitNexts />
     <Effects>
       <Effect>
-        <Type>SMASH</Type>
-        <Value>3</Value>
+        <Type>PUNCH</Type>
+        <Value>1</Value>
       </Effect>
       <Effect>
         <Type>MOVE_FORWARD</Type>
@@ -2135,7 +2137,7 @@
         <Value>1</Value>
       </Effect>
     </Effects>
-    <StrengthCost>2</StrengthCost>
+    <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
     <Id>MELEE_IDLE</Id>
@@ -3106,5 +3108,35 @@
     <HitNexts />
     <Effects />
     <StrengthCost>0</StrengthCost>
+  </SkillData>
+  <SkillData>
+    <Id>TWO_HAND_SWORD_ATTACK2</Id>
+    <Lefts>
+      <Vector2 x="1.27844858" y="-0.12556839" />
+      <Vector2 x="2.56367278" y="0.0502156019" />
+      <Vector2 x="2.57019877" y="0.0506720543" />
+      <Vector2 x="2.57378387" y="0.0515979528" />
+      <Vector2 x="1.57576609" y="-0.3914175" />
+    </Lefts>
+    <Rights>
+      <Vector2 x="0.768028259" y="-0.495872021" />
+      <Vector2 x="3.3765893" y="0.0369917154" />
+      <Vector2 x="3.38148117" y="0.0488249063" />
+      <Vector2 x="3.38407063" y="0.06284368" />
+      <Vector2 x="1.87213349" y="-0.8988234" />
+    </Rights>
+    <Roots />
+    <Total>1.33333337</Total>
+    <Begin>0.6</Begin>
+    <End>0.7333333</End>
+    <Nexts />
+    <HitNexts />
+    <Effects>
+      <Effect>
+        <Type>SMASH</Type>
+        <Value>3</Value>
+      </Effect>
+    </Effects>
+    <StrengthCost>2</StrengthCost>
   </SkillData>
 </ArrayOfSkillData>

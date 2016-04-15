@@ -63,26 +63,6 @@
         <Direction>0</Direction>
       </EntityLayout>
       <EntityLayout>
-        <Type>DEBIRS</Type>
-        <Position x="0" y="0" />
-        <Direction>90.00001</Direction>
-      </EntityLayout>
-    </Entitys>
-    <Id>chest</Id>
-  </EntityGroupLayout>
-  <EntityGroupLayout>
-    <Entitys>
-      <EntityLayout>
-        <Type>WALL_GATE</Type>
-        <Position x="7.5" y="5" />
-        <Direction>0</Direction>
-      </EntityLayout>
-      <EntityLayout>
-        <Type>WALL_GATE</Type>
-        <Position x="7.5" y="-5" />
-        <Direction>0</Direction>
-      </EntityLayout>
-      <EntityLayout>
         <Type>WALL_EAST</Type>
         <Position x="-7.5" y="0" />
         <Direction>0</Direction>
@@ -114,6 +94,41 @@
       </EntityLayout>
     </Entitys>
     <Id>gate</Id>
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Entitys>
+      <EntityLayout>
+        <Type>CHEST_OWNER</Type>
+        <Position x="0" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>CHEST_EXIT</Type>
+        <Position x="11.84" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>CHEST_GATE</Type>
+        <Position x="7.6" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.6" y="5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>WALL_GATE</Type>
+        <Position x="7.6" y="-5" />
+        <Direction>0</Direction>
+      </EntityLayout>
+      <EntityLayout>
+        <Type>DEBIRS</Type>
+        <Position x="0" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Id>chest</Id>
   </EntityGroupLayout>
   <EntityGroupLayout>
     <Entitys>
