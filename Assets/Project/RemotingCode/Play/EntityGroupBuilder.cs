@@ -17,11 +17,11 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _Id = id;
         }
 
-        internal delegate IUpdatable OnCreateInteractive(Entity[] entitys, IMapGate gate);
-        internal IUpdatable Create(float degree, Vector2 center , IMapGate gate)
+        internal delegate IUpdatable OnCreateInteractive(Entity[] entitys, IMapGate gate , IMapFinder finder);
+        internal IUpdatable Create(float degree, Vector2 center , IMapGate gate, IMapFinder finder)
         {
             var entitys = _CreateFromGroup(_Id, degree, center);
-            return _CreateInteractive(entitys.ToArray() , gate);            
+            return _CreateInteractive(entitys.ToArray() , gate , finder);            
         }        
         
         private IEnumerable<Entity> _CreateFromGroup(string id, float degree, Vector2 center)

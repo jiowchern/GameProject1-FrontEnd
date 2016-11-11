@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TownData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>town1</Name>
+  <StaticEntitys>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="-7.62113571" y="-28.5551033" />
+        <Vector2 x="-4.379096" y="-28.5551033" />
+        <Vector2 x="-4.379096" y="-26.793169" />
+        <Vector2 x="-7.62113571" y="-26.793169" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="9.021765" y="-12.8980217" />
+        <Vector2 x="9.22812748" y="-13.01683" />
+        <Vector2 x="9.64178848" y="-13.01683" />
+        <Vector2 x="10.6095781" y="-12.9295778" />
+        <Vector2 x="10.7782" y="-12.8980217" />
+        <Vector2 x="10.7782" y="-12.7219791" />
+        <Vector2 x="10.6095772" y="-12.690423" />
+        <Vector2 x="9.64178848" y="-12.60317" />
+        <Vector2 x="9.22812748" y="-12.60317" />
+        <Vector2 x="9.021765" y="-12.72198" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="-11.7998886" y="-22.9021988" />
+        <Vector2 x="-11.6312666" y="-22.9337559" />
+        <Vector2 x="-10.6634769" y="-23.02101" />
+        <Vector2 x="-10.2498159" y="-23.02101" />
+        <Vector2 x="-10.0434532" y="-22.9022" />
+        <Vector2 x="-10.0434532" y="-22.7261581" />
+        <Vector2 x="-10.2498159" y="-22.6073475" />
+        <Vector2 x="-10.6634769" y="-22.6073475" />
+        <Vector2 x="-11.6312656" y="-22.6946011" />
+        <Vector2 x="-11.7998886" y="-22.7261581" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="-7.41674137" y="4.3875" />
+        <Vector2 x="-3.35262251" y="1.5816555" />
+        <Vector2 x="1.37090158" y="1.58165407" />
+        <Vector2 x="5.23898" y="4.38749552" />
+        <Vector2 x="5.23898125" y="8.409294" />
+        <Vector2 x="5.238982" y="12.4310932" />
+        <Vector2 x="-7.41673851" y="12.431097" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="9.629098" y="6.17165565" />
+        <Vector2 x="14.352622" y="6.171654" />
+        <Vector2 x="14.352623" y="10.1461535" />
+        <Vector2 x="11.9908619" y="10.1461554" />
+        <Vector2 x="9.629099" y="10.1461554" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="10.5016537" y="-7.747377" />
+        <Vector2 x="10.5016546" y="-12.4709015" />
+        <Vector2 x="13.4764671" y="-12.4709015" />
+        <Vector2 x="21.3276253" y="-12.2989788" />
+        <Vector2 x="21.3276253" y="0.450937271" />
+        <Vector2 x="17.3533783" y="0.450938225" />
+        <Vector2 x="13.3791294" y="0.450937271" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="-18.0561581" y="-1.4508996" />
+        <Vector2 x="-14.0816555" y="-1.450902" />
+        <Vector2 x="-14.0816526" y="3.27262259" />
+        <Vector2 x="-18.0561543" y="3.272625" />
+        <Vector2 x="-18.0561562" y="0.9108628" />
+      </ArrayOfVector2>
+    </Polygon>
+    <Polygon>
+      <ArrayOfVector2>
+        <Vector2 x="-22.3276253" y="-23.3984623" />
+        <Vector2 x="-14.476469" y="-23.6563511" />
+        <Vector2 x="-11.5016565" y="-23.656353" />
+        <Vector2 x="-11.5016527" y="-16.5710659" />
+        <Vector2 x="-14.3791218" y="-4.273595" />
+        <Vector2 x="-18.3533688" y="-4.273591" />
+        <Vector2 x="-22.3276157" y="-4.27359" />
+      </ArrayOfVector2>
+    </Polygon>
+  </StaticEntitys>
+</TownData>
