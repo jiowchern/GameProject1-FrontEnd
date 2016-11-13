@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
+
 using Regulus.CustomType;
 using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Utility;
@@ -9,43 +12,140 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
     public class EntityGroupBuilder
     {
         private readonly string _Id;
+        private readonly IMapFinder _Finder;
+        private readonly IMapGate _Gate;
 
-        private readonly OnCreateInteractive _CreateInteractive;
-        internal EntityGroupBuilder(string id , OnCreateInteractive create_interactive)
+
+        internal EntityGroupBuilder(string id , IMapFinder finder , IMapGate gate)
         {
-            _CreateInteractive = create_interactive;
             _Id = id;
+            _Finder = finder;
+            _Gate = gate;
         }
 
-        internal delegate IUpdatable OnCreateInteractive(Entity[] entitys, IMapGate gate , IMapFinder finder);
-        internal IUpdatable Create(float degree, Vector2 center , IMapGate gate, IMapFinder finder)
-        {
-            var entitys = _CreateFromGroup(_Id, degree, center);
-            return _CreateInteractive(entitys.ToArray() , gate , finder);            
+        internal IEnumerable<IUpdatable> Create(float degree, Vector2 center )
+        {            
+            return _CreateFromGroup(_Id, degree, center);            
         }        
         
-        private IEnumerable<Entity> _CreateFromGroup(string id, float degree, Vector2 center)
+        private IEnumerable<IUpdatable> _CreateFromGroup(string id, float degree, Vector2 center)
         {
-
+            
             var layout = Resource.Instance.FindEntityGroupLayout(id);
-            var buildInfos = from e in layout.Entitys
-                             let radians = degree * (float)System.Math.PI / 180f
-                             let position = Polygon.RotatePoint(e.Position, new Vector2(), radians)
-                             select new EntityCreateParameter
-                             {
-                                 EntityType = e.Type,
-                                 Position = position + center,
-                                 Direction = e.Direction + degree
-                             };
-            foreach (var info in buildInfos)
+            var buildInfos = (from e in layout.Entitys
+                        let radians = degree * (float) System.Math.PI/180f
+                        let position = Polygon.RotatePoint(e.Position, new Vector2(), radians)
+                        select new EntityCreateParameter
+                        {
+                            Id = e.Id,
+                            Entity = EntityProvider.Create(e.Type , position + center , e.Direction + degree)                            
+                        }).ToArray();
+            
+            foreach (var updatable in _CreateChests(layout.Chests, buildInfos))
             {
-                var entity = EntityProvider.Create(info.EntityType);
-                IIndividual individual = entity;
-                individual.SetPosition(info.Position);
-                individual.AddDirection(info.Direction);
-                yield return entity;
+                yield return updatable;
+            }
+
+            foreach (var updatable in _CreateEnterances(layout.Enterances, buildInfos))
+            {
+                yield return updatable;
             }
             
+            foreach (var updatable in _CreateStrongholds(layout.Strongholds, buildInfos))
+            {
+                yield return updatable;
+            }
+
+            foreach (var updatable in _CreateFields(layout.Fields, buildInfos))
+            {
+                yield return updatable;
+            }
+
+            var inorganics = new List<Entity>();
+            inorganics.AddRange(_CreateResources(layout.Resources, buildInfos));
+            inorganics.AddRange(_StaticChests(layout.Statics, buildInfos));
+            inorganics.AddRange(_WallChests(layout.Walls, buildInfos));
+            yield return new InorganicsWisdom(  inorganics , _Gate);
+
+        }
+
+        private IEnumerable<Entity> _WallChests(WallLayout[] walls, EntityCreateParameter[] build_infos)
+        {
+            foreach (var layout in walls)
+            {
+                var owner = _Find(build_infos, layout.Owner);                
+                yield return owner;
+            }
+        }
+
+        private IEnumerable<IUpdatable> _CreateFields(FieldLayout[] fields, EntityCreateParameter[] build_infos)
+        {
+            foreach (var layout in fields)
+            {
+                var owner = _Find(build_infos, layout.Owner);
+                yield return new FieldWisdom(layout.Kinds, owner, _Gate, _Finder);
+            }
+        }
+
+        private IEnumerable<IUpdatable> _CreateStrongholds(StrongholdLayout[] strongholds, EntityCreateParameter[] build_infos)
+        {
+            foreach (var layout in strongholds)
+            {
+                var owner = _Find(build_infos, layout.Owner);
+                yield return new StrongholdWisdom(layout.Kinds, owner, _Gate , _Finder);
+            }
+        }
+
+        private IEnumerable<IUpdatable> _CreateEnterances(EnteranceLayout[] enterances, EntityCreateParameter[] build_infos)
+        {
+            foreach (var layout in enterances)
+            {
+                var owner = _Find(build_infos, layout.Owner);
+                yield return new EnteranceWisdom(layout.Kinds , owner , _Gate);
+            }
+        }
+
+        private IEnumerable<Entity> _CreateResources(ResourceLayout[] resources, IEnumerable<EntityCreateParameter> build_infos)
+        {
+            foreach (var layout in resources)
+            {
+                var owner = _Find(build_infos, layout.Owner);
+                var bag = new ResourceBag(layout.Items);
+                owner.SetBag(bag);
+                yield return owner;
+            }
+        }
+
+        private IEnumerable<Entity> _StaticChests(StaticLayout[] statics, IEnumerable<EntityCreateParameter> build_infos)
+        {
+            foreach (var layout in statics)
+            {
+                var owner = _Find(build_infos, layout.Owner);
+                owner.SetBody(layout.Body);
+
+                yield return owner;
+            }
+        }
+
+        private IEnumerable<IUpdatable> _CreateChests(ChestLayout[] chests, IEnumerable<EntityCreateParameter> build_infos)
+        {
+            foreach (var chestLayout in chests)
+            {
+                var owner = _Find(build_infos, chestLayout.Owner);
+                var exit = _Find(build_infos, chestLayout.Exit);
+                var debirs = _Find(build_infos, chestLayout.Debirs);
+                var gate = _Find(build_infos, chestLayout.Gate);
+
+                var chest = new ChestWisdom(owner , exit , debirs , gate , _Finder , _Gate);
+                yield return chest;
+            }
+        }
+
+        private Entity _Find(IEnumerable<EntityCreateParameter> build_infos, Guid owner)
+        {
+            return (from build_info in build_infos where build_info.Id == owner select build_info.Entity).Single();
         }
     }
 }
+
+

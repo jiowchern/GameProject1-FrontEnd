@@ -18,8 +18,10 @@ public class Login : MonoBehaviour
 	public UnityEngine.UI.Text Message;
 	
 	
-	public string NextScene;
-	private IUser _User;
+	public int GameScene;
+    public int HuiScene;
+    public int UnloadScene;
+    private IUser _User;
 	private readonly Regulus.Utility.StageMachine _Machine;
 	
 
@@ -107,10 +109,10 @@ public class Login : MonoBehaviour
 
 	private void _ToLoadPlay()
 	{
-		SceneManager.UnloadScene("login");
-		SceneManager.LoadScene(NextScene , LoadSceneMode.Additive);
-		SceneManager.LoadScene("HUI", LoadSceneMode.Additive);        
+        SceneChanger.ToGame();		
 	}
+
+
 
 	private void _Error(string message)
 	{

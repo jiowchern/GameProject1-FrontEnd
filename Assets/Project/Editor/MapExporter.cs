@@ -53,15 +53,7 @@ public class MapExporter : EditorWindow
 
     private void _Save(string name ,List<Polygon> polygons, string path)
     {
-        var towndata = new Regulus.Project.ItIsNotAGame1.Data.TownData
-        {
-            Name = name, Walls = new WallData[]
-            {
-                                                
-            }
-             
-        };
-        Regulus.Utility.Serialization.Write(towndata, path);        
+                
     }
 
     private List<Polygon> _Expore()

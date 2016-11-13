@@ -8,8 +8,7 @@ using UnityEngine.SceneManagement;
 public class KickDetector : MonoBehaviour {
 
     private Client _Client;
-
-    public string LoginScene;
+    
     private IAccountStatus _AccountStatus;
 
     // Use this for initialization
@@ -36,7 +35,7 @@ public class KickDetector : MonoBehaviour {
 
     private void _ToLogin()
     {
-        SceneManager.LoadScene(LoginScene);        
+        SceneChanger.ToLogin();       
     }
 
     void OnDestroy()

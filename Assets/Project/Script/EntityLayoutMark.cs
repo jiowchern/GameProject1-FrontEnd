@@ -1,12 +1,24 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+
+using UnityEngine;
+using System.Collections.Generic;
 
 using Regulus.Project.ItIsNotAGame1.Data;
 
 using RegulusVector2 = Regulus.CustomType.Vector2;
-public class EntityLayoutMark : MonoBehaviour {
+public class EntityLayoutMark : MonoBehaviour, IMarkToLayout<EntityLayout>
+{
     
     public Regulus.Project.ItIsNotAGame1.Data.ENTITY Name;
+
+
+    public string Id;
+
+
+    public EntityLayoutMark()
+    {
+        Id = Guid.NewGuid().ToString();
+    }
 
     void Start () {
 	
@@ -28,8 +40,20 @@ public class EntityLayoutMark : MonoBehaviour {
         return gameObject.transform.rotation.eulerAngles.y - parent;
     }
 
-    public EntityLayout BuildLayout()
+    public Guid GetId()
     {
-        throw new System.NotImplementedException();
+        return new Guid(Id);
+    }
+
+    IEnumerable<EntityLayout> IMarkToLayout<EntityLayout>.ToLayouts()
+    {
+        var el = new EntityLayout
+        {
+            Id = new Guid(Id),
+            Type = Name,
+            Position = GetPosition(gameObject.transform.position),
+            Direction = GetDirection(gameObject.transform.rotation.eulerAngles.y)
+        };
+        yield return el;
     }
 }

@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+
+using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 using Regulus.Project.ItIsNotAGame1.Data;
 
-public class EntityGroupLayoutMark : MonoBehaviour
+public class EntityGroupLayoutMark : MonoBehaviour 
 {
     public string Id;
 	// Use this for initialization
@@ -15,6 +18,14 @@ public class EntityGroupLayoutMark : MonoBehaviour
 	void Update () {
 	
 	}
+    
+
+    public IEnumerable<TData> GetLayouts<TMark , TData>()
+        where TMark : IMarkToLayout<TData>
+    {
+        var marks = gameObject.GetComponentsInChildren<TMark>();
+        return marks.SelectMany(mark => mark.ToLayouts());
+    }
 
     public IEnumerable<EntityLayout> GetMarks()
     {
@@ -22,10 +33,13 @@ public class EntityGroupLayoutMark : MonoBehaviour
         foreach (var entityExportMark in marks)
         {
             var el = new EntityLayout();
+            el.Id = entityExportMark.GetId();
             el.Type = entityExportMark.Name;
-            el.Position = entityExportMark.GetPosition(gameObject.transform.position); 
+            el.Position = entityExportMark.GetPosition(gameObject.transform.position);
             el.Direction = entityExportMark.GetDirection(gameObject.transform.rotation.eulerAngles.y);
-            yield return entityExportMark.BuildLayout();
+            yield return el;
         }
     }
+
 }
+

@@ -30,9 +30,21 @@ public class EntityExportWindow : EditorWindow
         var egls = new EntityGroupLayout[marks.Length];
         for(int i = 0; i < egls.Length ; ++i)
         {
-            egls[i] = new EntityGroupLayout();
-            egls[i].Id = marks[i].Id;
-            egls[i].Entitys = marks[i].GetMarks().ToArray();
+            egls[i] = new EntityGroupLayout
+            {
+                Id = marks[i].Id,
+                Entitys = marks[i].GetMarks().ToArray(),
+                //Entitys = marks[i].GetLayouts<EntityLayoutMark, EntityLayout>().ToArray(),
+                Chests = marks[i].GetLayouts<ChestLayoutMark, ChestLayout>().ToArray(),
+                Statics = marks[i].GetLayouts<StaticLayoutMark, StaticLayout>().ToArray(),
+                Walls = marks[i].GetLayouts<WallsLayoutMark, WallLayout>().ToArray(),
+                Resources = marks[i].GetLayouts<ResourceLayoutMark, ResourceLayout>().ToArray(),
+                Enterances = marks[i].GetLayouts<EnteranceLayoutMark, EnteranceLayout>().ToArray(),
+                Strongholds = marks[i].GetLayouts<StrongholdLayoutMark, StrongholdLayout>().ToArray(),
+                Fields = marks[i].GetLayouts<FieldLayoutMark, FieldLayout>().ToArray()
+            };
+
+
         }
 
         var path = EditorUtility.SaveFilePanel("select", "", "entitygrouplayout.txt", "txt");
