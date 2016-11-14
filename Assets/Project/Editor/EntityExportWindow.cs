@@ -35,6 +35,7 @@ public class EntityExportWindow : EditorWindow
                 Id = marks[i].Id,
                 Entitys = marks[i].GetMarks().ToArray(),
                 //Entitys = marks[i].GetLayouts<EntityLayoutMark, EntityLayout>().ToArray(),
+                Protals = marks[i].GetLayouts<ProtalLayoutMark, ProtalLayout>().ToArray(),
                 Chests = marks[i].GetLayouts<ChestLayoutMark, ChestLayout>().ToArray(),
                 Statics = marks[i].GetLayouts<StaticLayoutMark, StaticLayout>().ToArray(),
                 Walls = marks[i].GetLayouts<WallsLayoutMark, WallLayout>().ToArray(),

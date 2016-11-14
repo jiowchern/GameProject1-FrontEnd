@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-16"?>
 <ArrayOfEntityGroupLayout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <EntityGroupLayout>
+    <Id>exit1</Id>
+    <Entitys>
+      <EntityLayout>
+        <Id>1184b074-866a-4305-8a91-395a38ee3cef</Id>
+        <Type>PORTAL</Type>
+        <Position x="0" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Chests />
+    <Statics />
+    <Walls />
+    <Resources />
+    <Enterances />
+    <Strongholds />
+    <Protals>
+      <ProtalLayout>
+        <Owner>1184b074-866a-4305-8a91-395a38ee3cef</Owner>
+        <TargetRealm>town2</TargetRealm>
+        <PassEntity>
+          <ENTITY>ACTOR1</ENTITY>
+        </PassEntity>
+      </ProtalLayout>
+    </Protals>
+    <Fields />
+  </EntityGroupLayout>
+  <EntityGroupLayout>
     <Id>thickwall</Id>
     <Entitys>
       <EntityLayout>
@@ -20,6 +47,7 @@
     <Resources />
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -65,6 +93,7 @@
         </Kinds>
       </StrongholdLayout>
     </Strongholds>
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -87,6 +116,7 @@
     <Resources />
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -132,6 +162,7 @@
     </Resources>
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -176,6 +207,7 @@
       </EnteranceLayout>
     </Enterances>
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -234,6 +266,7 @@
     <Resources />
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -279,6 +312,7 @@
         </Kinds>
       </StrongholdLayout>
     </Strongholds>
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -310,6 +344,7 @@
     <Resources />
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -372,6 +407,7 @@
     <Resources />
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields />
   </EntityGroupLayout>
   <EntityGroupLayout>
@@ -390,6 +426,7 @@
     <Resources />
     <Enterances />
     <Strongholds />
+    <Protals />
     <Fields>
       <FieldLayout>
         <Owner>054f49ed-9c6f-4385-85ae-fe12c7e9f6ae</Owner>
@@ -444,6 +481,34 @@
         </Kinds>
       </StrongholdLayout>
     </Strongholds>
+    <Protals />
+    <Fields />
+  </EntityGroupLayout>
+  <EntityGroupLayout>
+    <Id>exit2</Id>
+    <Entitys>
+      <EntityLayout>
+        <Id>fd4a6124-796d-4381-9050-1f1b8aef164c</Id>
+        <Type>PORTAL</Type>
+        <Position x="0" y="0" />
+        <Direction>0</Direction>
+      </EntityLayout>
+    </Entitys>
+    <Chests />
+    <Statics />
+    <Walls />
+    <Resources />
+    <Enterances />
+    <Strongholds />
+    <Protals>
+      <ProtalLayout>
+        <Owner>fd4a6124-796d-4381-9050-1f1b8aef164c</Owner>
+        <TargetRealm>town1</TargetRealm>
+        <PassEntity>
+          <ENTITY>ACTOR1</ENTITY>
+        </PassEntity>
+      </ProtalLayout>
+    </Protals>
     <Fields />
   </EntityGroupLayout>
 </ArrayOfEntityGroupLayout>

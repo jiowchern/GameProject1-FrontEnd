@@ -110,7 +110,9 @@ public class Entity : MonoBehaviour {
 
     private void _OutBattle(ICastSkill obj)
     {
-        if (EntityController.MainEntityId == _Visible.Id)
+        
+
+        if (EntityController.IsMainEntity(_Visible))
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
             cam.Watchtarget = NormalCameraTarget;
@@ -120,7 +122,8 @@ public class Entity : MonoBehaviour {
 
     private void _InBattle(ICastSkill obj)
     {
-        if (EntityController.MainEntityId == _Visible.Id)
+        
+        if (EntityController.IsMainEntity(_Visible))
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
             cam.Watchtarget = BattleCameraTarget;
@@ -129,7 +132,9 @@ public class Entity : MonoBehaviour {
     }
 
     private void _DestroyEntity(IVisible obj)
-    {        
+    {
+        if (_Visible == null)
+            return;
         if (obj.Id == _Visible.Id)
         {
             _ClearCamera();
@@ -194,13 +199,11 @@ public class Entity : MonoBehaviour {
 
     public bool IsMainActor()
     {
-        if(_Visible != null)
-            return EntityController.MainEntityId == _Visible.Id;
-        return false;
+        return EntityController.IsMainEntity(_Visible);
     }
     private void _ClearCamera()
     {
-        if (EntityController.MainEntityId == _Visible.Id)
+        if (EntityController.IsMainEntity(_Visible))
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
             if (cam != null)
@@ -215,7 +218,7 @@ public class Entity : MonoBehaviour {
     {
 
         
-        if (EntityController.MainEntityId == _Visible.Id)
+        if (EntityController.IsMainEntity(_Visible))
         {
             var cam = GameObject.FindObjectOfType<CameraFollow>();
             cam.Watchtarget = NormalCameraTarget;

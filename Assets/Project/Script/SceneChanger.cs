@@ -45,6 +45,10 @@ public class SceneChanger : MonoBehaviour
         {
             SceneManager.LoadScene(add , LoadSceneMode.Additive);
         }
+
+        var scene = SceneManager.CreateScene("game");
+        SceneManager.SetActiveScene(scene);
+
     }
 
     static IEnumerable<string> _ForeachSceneName()
@@ -55,9 +59,12 @@ public class SceneChanger : MonoBehaviour
             yield return scene.name;
         }
     }
+    
 
-    public static void ToGame()
+    public static void ToRealm(string realm)
     {
-        _Load(new []{"maze1" , "hui"} , new []{Core});
+        _Load(new[] { realm, "hui" }, new[] { Core });
     }
+
+    
 }

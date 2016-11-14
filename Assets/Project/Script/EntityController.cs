@@ -47,14 +47,14 @@ public class EntityController : MonoBehaviour
 	    {
 	        if (Input.GetKey(KeyCode.W))
 	        {
-                _MoveController.RunForward();
+                _MoveController.Forward();
             }	        
         }
 	    else
 	    {
             if (Input.GetKey(KeyCode.W))
             {
-                _MoveController.Forward();
+                _MoveController.RunForward();
             }
 
         }
@@ -127,5 +127,12 @@ public class EntityController : MonoBehaviour
         MainEntityId = obj.Id;
         _PlayerProperys = obj;
         Debug.Log("取得主角" + MainEntityId);
+    }
+
+    public static bool IsMainEntity(IVisible visible)
+    {
+        if (visible == null)
+            return false;
+        return visible.Id == MainEntityId;
     }
 }

@@ -18,6 +18,7 @@ public class KickDetector : MonoBehaviour {
         {
             _Client.User.AccountStatusProvider.Supply += _AccountStatusProvider;
             _Client.User.AccountStatusProvider.Unsupply += _ToLeave;
+            _Client.User.JumpMapProvider.Supply += _JumpMap;
         }
         
     }
@@ -44,12 +45,18 @@ public class KickDetector : MonoBehaviour {
         {
             _Client.User.AccountStatusProvider.Supply -= _AccountStatusProvider;
             _Client.User.AccountStatusProvider.Unsupply -= _ToLeave;
+            _Client.User.JumpMapProvider.Supply -= _JumpMap;
         }
         if (_AccountStatus != null)
             _AccountStatus.KickEvent -= _ToLogin;
     }
-	
-	// Update is called once per frame
+
+    private void _JumpMap(IJumpMap obj)
+    {
+        //SceneChanger.ToJumpMap();
+    }
+
+    // Update is called once per frame
 	void Update () {
 	
 	}

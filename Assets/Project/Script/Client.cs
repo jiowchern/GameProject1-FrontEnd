@@ -26,7 +26,7 @@ public class Client : MonoBehaviour
     public MODE Mode;
     public Console Console;
 
-    private readonly Command _Command;
+   
     private Client<IUser> _Client;
     private readonly Regulus.Utility.Updater _Updater;
 
@@ -34,7 +34,7 @@ public class Client : MonoBehaviour
 
     public Client()
     {
-        _Command = new Command();
+        
         _Updater = new Updater();
         
     }
@@ -47,7 +47,7 @@ public class Client : MonoBehaviour
 #if !UNITY_STANDALONE_WIN
         Regulus.Utility.SpinWait.NotWindowsPlatform();
 #endif
-        var client = new Regulus.Framework.Client<Regulus.Project.ItIsNotAGame1.IUser>(Console, _Command);
+        var client = new Regulus.Framework.Client<Regulus.Project.ItIsNotAGame1.IUser>(Console, Console.Command );
         client.ModeSelectorEvent += _ToMode;
 
         
@@ -94,10 +94,14 @@ public class Client : MonoBehaviour
         User = user;
         User.Remoting.OnlineProvider.Supply += _SupplyOnline;
         User.Remoting.OnlineProvider.Unsupply += _UnsupplyOnline;
+        User.JumpMapProvider.Supply += _JumpMap;
     }
 
-    
-    
+    private void _JumpMap(IJumpMap obj)
+    {
+        SceneChanger.ToRealm(obj.Realm);
+        obj.Ready();
+    }
 
     public IUser User { get; private set; }
 
@@ -128,6 +132,7 @@ public class Client : MonoBehaviour
 
     void OnDestroy()
     {
+        User.JumpMapProvider.Supply -= _JumpMap;
         User.Remoting.OnlineProvider.Supply -= _SupplyOnline;
         User.Remoting.OnlineProvider.Unsupply -= _UnsupplyOnline;
         _Updater.Shutdown();

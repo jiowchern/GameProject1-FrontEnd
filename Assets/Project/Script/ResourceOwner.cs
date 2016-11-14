@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using Regulus.Project.ItIsNotAGame1.Data;
 
@@ -10,7 +11,7 @@ public class ResourceOwner : MonoBehaviour {
     public TextAsset ItemSource;
     public TextAsset ItemFormulaSource;
 
-    public TextAsset EntityGroupLayoutSource;
+    public TextAsset[] EntityGroupLayoutSources;
 
     public bool LoadOnStart;
     // Use this for initialization
@@ -38,7 +39,12 @@ public class ResourceOwner : MonoBehaviour {
 
     private EntityGroupLayout[] _ReadEntityGroupLayouts()
     {
-        return Regulus.Utility.Serialization.Read<EntityGroupLayout[]>(EntityGroupLayoutSource.bytes);
+        var groups = new List<EntityGroupLayout>();
+        foreach (var entityGroupLayoutSource in EntityGroupLayoutSources)
+        {
+            groups.AddRange(Regulus.Utility.Serialization.Read<EntityGroupLayout[]>(entityGroupLayoutSource.bytes));
+        }
+        return groups.ToArray();
     }
 
     private ItemFormula[] _ReadItemFormulas()

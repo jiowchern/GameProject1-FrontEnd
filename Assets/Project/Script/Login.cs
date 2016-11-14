@@ -109,7 +109,7 @@ public class Login : MonoBehaviour
 
 	private void _ToLoadPlay()
 	{
-        SceneChanger.ToGame();		
+        	
 	}
 
 

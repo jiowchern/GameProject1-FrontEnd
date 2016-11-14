@@ -1,24 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+using Regulus.Utility;
+
 public class Console : MonoBehaviour 
     , Regulus.Utility.Console.IInput
      , Regulus.Utility.Console.IViewer
 {
-
+    private Regulus.Utility.Console _Console;
     public string Title;
     const int LineCount = 25;
-    const int MaxLineCount = 100;    
-    System.Collections.Generic.Queue<string> _Messages;
+    const int MaxLineCount = 100;
+
+    readonly System.Collections.Generic.Queue<string> _Messages;
     string _LastMessage;
     public string _Input;
-    
+
+    public Command Command
+    {
+        get { return _Console.Command; }
+    }
+
     public Console()
     {
         _Messages = new System.Collections.Generic.Queue<string>();
         _Input = "";
         _LastMessage = "";
         _ScrollView = Vector2.zero;
+        _Console = new Regulus.Utility.Console(this ,this);
+        
     }
 	// Use this for initialization
 	void Start () 
