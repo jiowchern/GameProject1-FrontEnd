@@ -46,8 +46,8 @@ public class SceneChanger : MonoBehaviour
             SceneManager.LoadScene(add , LoadSceneMode.Additive);
         }
 
-        var scene = SceneManager.CreateScene("game");
-        SceneManager.SetActiveScene(scene);
+        Debug.Log(string.Format("active scene is {0}" , adds.First()));
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(adds.First()));
 
     }
 

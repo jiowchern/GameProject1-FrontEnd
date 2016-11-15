@@ -161,8 +161,17 @@ public class Entity : MonoBehaviour {
 	    if (_Light != null && _Visible != null)
 	    {
 	        _Light.range = _Visible.View;
-            if(IsMainActor())
-	            RenderSettings.fogEndDistance = _Visible.View;
+	        if (IsMainActor())
+	        {
+                
+	            /*RenderSettings.fog= true;
+                RenderSettings.fogColor = Color.red;
+                RenderSettings.fogMode = FogMode.Linear;
+                RenderSettings.fogDensity = 1;
+	            RenderSettings.fogStartDistance = 0;*/
+                RenderSettings.fogEndDistance = _Visible.View;
+            }
+	            
 	    }
         
     }
