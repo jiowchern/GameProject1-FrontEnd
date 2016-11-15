@@ -3,10 +3,32 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
+   
+    public class ActiveSetter
+    {
+        private readonly string _First;
+
+        public ActiveSetter(string first)
+        {
+            _First = first;            
+        }
+
+        public void Done(Scene arg0, LoadSceneMode arg1)
+        {
+            if (arg0.isLoaded &&  arg0.name == _First)
+            {
+                Debug.Log(string.Format("active scene is {0}", arg0.name));
+                var result = SceneManager.SetActiveScene(arg0);
+                Debug.Log(string.Format("active scene result {0}", result));
+                SceneManager.sceneLoaded -= Done;
+            }
+        }
+    }
 
     private const string Core = "core";
     public static void Initial()
@@ -16,7 +38,7 @@ public class SceneChanger : MonoBehaviour
 
     public static void ToLogin()
     {
-        _Load(
+        SceneChanger._LoadScene(
             new[]
             {
                 "login"
@@ -27,12 +49,13 @@ public class SceneChanger : MonoBehaviour
             });
     }
 
-    private static void _Load(string[] adds, string[] reserveds)
+
+    private void _Load(string[] adds, string[] reserveds)
     {
         var removes = new List<string>();
         foreach (var name in SceneChanger._ForeachSceneName())
         {
-            if(reserveds.All(reserved => reserved != name))
+            if (reserveds.All(reserved => reserved != name))
                 removes.Add(name);
         }
 
@@ -41,13 +64,35 @@ public class SceneChanger : MonoBehaviour
             SceneManager.UnloadScene(remove);
         }
 
+
+
+        
         foreach (var add in adds)
         {
-            SceneManager.LoadScene(add , LoadSceneMode.Additive);
+            SceneManager.LoadScene(add, LoadSceneMode.Additive);
         }
 
-        Debug.Log(string.Format("active scene is {0}" , adds.First()));
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(adds.First()));
+        StartCoroutine(_SetActiveScene(adds.First()));
+    }
+
+    private IEnumerator _SetActiveScene(string first)
+    {
+        
+        Debug.Log(string.Format("active scene is {0}", first));
+        var scene = SceneManager.GetSceneByName(first);
+        yield return new WaitWhile(() => scene.isLoaded == false);
+        var result = SceneManager.SetActiveScene(scene);
+        Debug.Log(string.Format("active scene result {0} {1}", result, scene.isLoaded));
+
+
+
+    }
+
+    private static void _LoadScene(string[] adds, string[] reserveds)
+    {
+        var instance = GameObject.FindObjectOfType<SceneChanger>();
+        if(instance != null)
+            instance._Load(adds , reserveds);
 
     }
 
@@ -63,7 +108,7 @@ public class SceneChanger : MonoBehaviour
 
     public static void ToRealm(string realm)
     {
-        _Load(new[] { realm, "hui" }, new[] { Core });
+        SceneChanger._LoadScene(new[] { realm, "hui" }, new[] { Core });
     }
 
     

@@ -434,6 +434,7 @@
           <ENTITY>ACTOR2</ENTITY>
           <ENTITY>ACTOR3</ENTITY>
           <ENTITY>ACTOR4</ENTITY>
+          <ENTITY>ACTOR5</ENTITY>
         </Kinds>
       </FieldLayout>
     </Fields>

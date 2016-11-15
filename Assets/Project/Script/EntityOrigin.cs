@@ -30,6 +30,13 @@ public class EntityOrigin : MonoBehaviour
             _EntitySources.Add(data.Name , data.Prefab );
         }
 
+        
+        StartCoroutine(_WaitSceneLoadDone());
+	}
+
+    private IEnumerator _WaitSceneLoadDone()
+    {
+        yield return new WaitWhile( ()=>gameObject.scene.isLoaded == false);
         _Client = Client.Instance;
         if (_Client != null)
         {
