@@ -9,26 +9,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
    
-    public class ActiveSetter
-    {
-        private readonly string _First;
-
-        public ActiveSetter(string first)
-        {
-            _First = first;            
-        }
-
-        public void Done(Scene arg0, LoadSceneMode arg1)
-        {
-            if (arg0.isLoaded &&  arg0.name == _First)
-            {
-                Debug.Log(string.Format("active scene is {0}", arg0.name));
-                var result = SceneManager.SetActiveScene(arg0);
-                Debug.Log(string.Format("active scene result {0}", result));
-                SceneManager.sceneLoaded -= Done;
-            }
-        }
-    }
+   
 
     private const string Core = "core";
     public static void Initial()
