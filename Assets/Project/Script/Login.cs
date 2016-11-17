@@ -118,4 +118,10 @@ public class Login : MonoBehaviour
 	{
 		Message.text = message;
 	}
+
+
+    public void Credits()
+    {
+        SceneChanger.ToCredits();
+    }
 }

@@ -92,5 +92,9 @@ public class SceneChanger : MonoBehaviour
         SceneChanger._LoadScene(new[] { realm, "hui" }, new[] { Core });
     }
 
-    
+
+    public static void ToCredits()
+    {
+        SceneChanger._LoadScene(new[] { "credits" }, new[] { Core });
+    }
 }
