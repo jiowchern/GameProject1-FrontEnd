@@ -13,7 +13,7 @@ public class ClientInitial : MonoBehaviour
 	
 	// Use this for initialization
 	void Start () {		
-        SceneChanger.Initial();
+        
 	}
 	
 	// Update is called once per frame
@@ -25,4 +25,17 @@ public class ClientInitial : MonoBehaviour
             SceneChanger.ToLogin();
         }
 	}
+
+
+    public void Online()
+    {
+        SceneChanger.Initial();
+        Client.Instance.Mode = Client.MODE.REMOTING;
+    }
+
+    public void Offline()
+    {
+        SceneChanger.Initial();
+        Client.Instance.Mode = Client.MODE.STANDALONE;
+    }
 }
