@@ -8,12 +8,13 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-   
-   
 
+
+    public static Client.MODE Mode;
     private const string Core = "core";
-    public static void Initial()
+    public static void Initial(Client.MODE remoting)
     {
+        Mode = remoting;
         SceneManager.LoadScene("core" , LoadSceneMode.Additive);    
     }
 

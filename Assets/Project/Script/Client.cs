@@ -41,7 +41,7 @@ public class Client : MonoBehaviour
     // Use this for initialization
 	void Start ()
 	{
-	    
+	    Mode = SceneChanger.Mode;
 	    Application.logMessageReceived += _Log;
 
 #if !UNITY_STANDALONE_WIN

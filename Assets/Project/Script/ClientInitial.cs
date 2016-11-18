@@ -29,13 +29,13 @@ public class ClientInitial : MonoBehaviour
 
     public void Online()
     {
-        SceneChanger.Initial();
-        Client.Instance.Mode = Client.MODE.REMOTING;
+        SceneChanger.Initial(Client.MODE.REMOTING);
+        
     }
 
     public void Offline()
     {
-        SceneChanger.Initial();
-        Client.Instance.Mode = Client.MODE.STANDALONE;
+        SceneChanger.Initial(Client.MODE.STANDALONE);
+        
     }
 }
