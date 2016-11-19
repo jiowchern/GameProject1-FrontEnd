@@ -6,8 +6,7 @@ using System;
 public class EntityController : MonoBehaviour
 {
 	public static Guid MainEntityId { get; private set; }
-	private Client _Client;
-	private IPlayerProperys _PlayerProperys;
+	private Client _Client;	
 	private IMoveController _MoveController;
 
 	void OnDestroy()
@@ -119,13 +118,12 @@ public class EntityController : MonoBehaviour
 	private void _ClearPlayer(IPlayerProperys obj)
 	{
 		MainEntityId = Guid.Empty;
-		_PlayerProperys = null;
+		
 	}
 
 	private void _SetPlayer(IPlayerProperys obj)
 	{
-		MainEntityId = obj.Id;
-		_PlayerProperys = obj;
+		MainEntityId = obj.Id;		
 		Debug.Log("取得主角" + MainEntityId);
 	}
 

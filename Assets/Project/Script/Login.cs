@@ -1,7 +1,10 @@
 ﻿using System;
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 using System.Net;
+
+using Regulus.Extension;
 using Regulus.Project.ItIsNotAGame1;
 
 using Regulus.Utility;
@@ -16,11 +19,20 @@ public class Login : MonoBehaviour
 	public UnityEngine.UI.InputField IPAddress;
 	public UnityEngine.UI.InputField Port;
 	public UnityEngine.UI.Text Message;
-	
-	
-	public int GameScene;
-    public int HuiScene;
-    public int UnloadScene;
+    public UnityEngine.UI.Text Version;
+
+
+    [Serializable]
+    public struct AccountPassword
+    {
+        public string Id;
+        public string Password;
+    }
+
+
+    public AccountPassword[] AccountPasswords;
+
+    
     private IUser _User;
 	private readonly Regulus.Utility.StageMachine _Machine;
 	
@@ -47,6 +59,14 @@ public class Login : MonoBehaviour
 		{
 			_User = Client.Instance.User;            
 		}
+
+	    var account = AccountPasswords.Shuffle().First();
+	    Account.text = account.Id;
+	    Password.text = account.Password;
+
+	    Version.text = Application.version;
+
+
 	}
 
 	public void Verify()
