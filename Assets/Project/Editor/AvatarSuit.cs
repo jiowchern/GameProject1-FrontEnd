@@ -77,6 +77,10 @@ public class AvatarSuit : EditorWindow
             {
                 bones.Add(bone);
             }
+            else
+            {
+                Debug.LogWarning("not bone " + boneName);
+            }
         }
 
 
