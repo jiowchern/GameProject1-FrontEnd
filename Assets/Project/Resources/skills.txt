@@ -935,11 +935,11 @@
       </Effect>
       <Effect>
         <Type>MOVE_TURNLEFT</Type>
-        <Value>300</Value>
+        <Value>500</Value>
       </Effect>
       <Effect>
         <Type>MOVE_TURNRIGHT</Type>
-        <Value>300</Value>
+        <Value>500</Value>
       </Effect>
       <Effect>
         <Type>MOVE_RUNFORWARD</Type>
