@@ -99,7 +99,8 @@ public class Client : MonoBehaviour
 
     private void _JumpMap(IJumpMap obj)
     {
-        SceneChanger.ToRealm(obj.Realm);
+        
+        SceneChanger.Instance.ToRealm(obj.Realm);
         obj.Ready();
     }
 

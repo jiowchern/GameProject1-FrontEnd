@@ -15,6 +15,6 @@ public class ToLogin : MonoBehaviour {
 
     public void ToMenu()
     {
-        SceneChanger.ToLogin();
+        SceneChanger.Instance.ToLogin();
     }
 }

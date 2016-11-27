@@ -8,19 +8,28 @@ using UnityEngine.SceneManagement;
 
 public class SceneChanger : MonoBehaviour
 {
-
+    public static  SceneChanger Instance { get { return Object.FindObjectOfType<SceneChanger>();  } }
 
     public static Client.MODE Mode;
     private const string Core = "core";
-    public static void Initial(Client.MODE remoting)
+    public void Initial(Client.MODE remoting)
     {
         Mode = remoting;
-        SceneManager.LoadScene("core" , LoadSceneMode.Additive);    
+        SceneManager.LoadScene(Core, LoadSceneMode.Additive);    
     }
 
-    public static void ToLogin()
+    public void ToQuit()
     {
-        SceneChanger._LoadScene(
+        Application.Quit();
+    }
+    public void ToStart()
+    {
+        SceneManager.LoadScene("start", LoadSceneMode.Single);
+    }
+
+    public void ToLogin()
+    {
+        _LoadScene(
             new[]
             {
                 "login"
@@ -35,7 +44,7 @@ public class SceneChanger : MonoBehaviour
     private void _Load(string[] adds, string[] reserveds)
     {
         var removes = new List<string>();
-        foreach (var name in SceneChanger._ForeachSceneName())
+        foreach (var name in _ForeachSceneName())
         {
             if (reserveds.All(reserved => reserved != name))
                 removes.Add(name);
@@ -53,8 +62,9 @@ public class SceneChanger : MonoBehaviour
         {
             SceneManager.LoadScene(add, LoadSceneMode.Additive);
         }
-
-        StartCoroutine(_SetActiveScene(adds.First()));
+        var instance = Instance;
+        if(instance != null)
+            instance.StartCoroutine(_SetActiveScene(adds.First()));
     }
 
     private IEnumerator _SetActiveScene(string first)
@@ -70,7 +80,7 @@ public class SceneChanger : MonoBehaviour
 
     }
 
-    private static void _LoadScene(string[] adds, string[] reserveds)
+    private void _LoadScene(string[] adds, string[] reserveds)
     {
         var instance = GameObject.FindObjectOfType<SceneChanger>();
         if(instance != null)
@@ -88,14 +98,14 @@ public class SceneChanger : MonoBehaviour
     }
     
 
-    public static void ToRealm(string realm)
+    public void ToRealm(string realm)
     {
-        SceneChanger._LoadScene(new[] { realm, "hui" }, new[] { Core });
+        SceneChanger.Instance._LoadScene(new[] { realm, "hui" }, new[] { Core });
     }
 
 
-    public static void ToCredits()
+    public void ToCredits()
     {
-        SceneChanger._LoadScene(new[] { "credits" }, new[] { Core });
+        SceneChanger.Instance._LoadScene(new[] { "credits" }, new[] { Core });
     }
 }

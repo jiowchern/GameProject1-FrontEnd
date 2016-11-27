@@ -22,20 +22,20 @@ public class ClientInitial : MonoBehaviour
         
 		if (Client.Instance != null && Client.Instance.User != null)
 		{
-            SceneChanger.ToLogin();
+            SceneChanger.Instance.ToLogin();
         }
 	}
 
 
     public void Online()
     {
-        SceneChanger.Initial(Client.MODE.REMOTING);
+        SceneChanger.Instance.Initial(Client.MODE.REMOTING);
         
     }
 
     public void Offline()
     {
-        SceneChanger.Initial(Client.MODE.STANDALONE);
+        SceneChanger.Instance.Initial(Client.MODE.STANDALONE);
         
     }
 }

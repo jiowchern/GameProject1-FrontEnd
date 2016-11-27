@@ -14,7 +14,7 @@
   </ItemPrototype>
   <ItemPrototype>
     <Id>Sword2</Id>
-    <Features>WEAPON_SWORD</Features>
+    <Features>WEAPON_TWOHANDSWORD</Features>
     <Description />
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
@@ -56,7 +56,7 @@
   </ItemPrototype>
   <ItemPrototype>
     <Id>Sword1</Id>
-    <Features>WEAPON_SWORD</Features>
+    <Features>WEAPON_AXE</Features>
     <Description />
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>

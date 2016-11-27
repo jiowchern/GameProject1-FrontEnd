@@ -142,6 +142,6 @@ public class Login : MonoBehaviour
 
     public void Credits()
     {
-        SceneChanger.ToCredits();
+        SceneChanger.Instance.ToCredits();
     }
 }

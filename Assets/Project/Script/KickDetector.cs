@@ -36,7 +36,8 @@ public class KickDetector : MonoBehaviour {
 
     private void _ToLogin()
     {
-        SceneChanger.ToLogin();       
+        if(SceneChanger.Instance != null)
+            SceneChanger.Instance.ToLogin();       
     }
 
     void OnDestroy()
@@ -53,7 +54,7 @@ public class KickDetector : MonoBehaviour {
 
     private void _JumpMap(IJumpMap obj)
     {
-        //SceneChanger.ToJumpMap();
+        //SceneChanger.Instance.ToJumpMap();
     }
 
     // Update is called once per frame
