@@ -13,7 +13,7 @@ namespace Assets.Project.Editor
         {
             foreach (var item in items)
             {
-                _Items.Add(item.Name , item);
+                _Items.Add(item.Id , item);
             }
         }
         public ItemPrototypeSet()
@@ -28,7 +28,7 @@ namespace Assets.Project.Editor
 
         public void Add(ItemPrototype item)
         {
-            _Items[item.Name] = item;
+            _Items[item.Id] = item;
         }
 
         public ItemPrototype Find(string item_name)

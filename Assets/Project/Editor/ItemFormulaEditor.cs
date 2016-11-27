@@ -32,13 +32,13 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
     {
         _TestCount = new int[0];
         DefaultPath = "ItemFormula.txt";
-        Expression = i => i.Name;
-        SelectedItem = new ItemFormula() { Name = "default"};
+        Expression = i => i.Id;
+        SelectedItem = new ItemFormula() { Id = "default"};
     }
 
     protected override void _DrawDetail(ref ItemFormula key)
     {
-        key.Name = EditorGUILayout.TextField("Formula", key.Name);
+        key.Id = EditorGUILayout.TextField("Formula", key.Id);
         key.Item = EditorGUILayout.TextField("Item", key.Item);
         key.NeedLimit = EditorGUILayout.IntField("NeedLimit", key.NeedLimit);
         _DrawNeeds(key);
@@ -205,7 +205,7 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
 
     protected override void _DrawItem(ref ItemFormula key)
     {        
-        EditorGUILayout.SelectableLabel(key.Name);
+        EditorGUILayout.SelectableLabel(key.Id);
     }
 }
 

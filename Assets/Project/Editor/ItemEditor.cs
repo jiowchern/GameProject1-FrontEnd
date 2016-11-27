@@ -75,7 +75,7 @@ namespace Assets.Project.Editor
                 EditorGUILayout.BeginHorizontal();
                 for (; index < end && index < length; index++)
                 {
-                    EditorGUILayout.SelectableLabel(set[index].Name);
+                    EditorGUILayout.SelectableLabel(set[index].Id);
                 }
                 EditorGUILayout.EndHorizontal();
             }
@@ -99,7 +99,7 @@ namespace Assets.Project.Editor
                 
                 _ItemSet.Add(new ItemPrototype()
                 {
-                    Name = _ItemName,
+                    Id = _ItemName,
                     Features = _ItemFeatures,
                     EquipPart = _EquipPart
 

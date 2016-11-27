@@ -3,17 +3,17 @@
   <ItemFormula>
     <NeedItems>
       <ItemFormulaNeed>
-        <Item>Rope</Item>
+        <Item>Rope1</Item>
         <Min>2</Min>
         <Max>4</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>Branch</Item>
+        <Item>Branch1</Item>
         <Min>2</Min>
         <Max>6</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>IronSheets</Item>
+        <Item>IronSheets1</Item>
         <Min>3</Min>
         <Max>3</Max>
       </ItemFormulaNeed>
@@ -83,24 +83,24 @@
         </Effects>
       </ItemEffect>
     </Effects>
-    <Name>Axe</Name>
-    <Item>Axe</Item>
+    <Id>Axe1</Id>
+    <Item>Axe1</Item>
     <NeedLimit>10</NeedLimit>
   </ItemFormula>
   <ItemFormula>
     <NeedItems>
       <ItemFormulaNeed>
-        <Item>Rope</Item>
+        <Item>Rope1</Item>
         <Min>3</Min>
         <Max>16</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>Branch</Item>
+        <Item>Branch1</Item>
         <Min>4</Min>
         <Max>7</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>IronSheets</Item>
+        <Item>IronSheets1</Item>
         <Min>1</Min>
         <Max>12</Max>
       </ItemFormulaNeed>
@@ -152,24 +152,24 @@
         </Effects>
       </ItemEffect>
     </Effects>
-    <Name>Sword</Name>
-    <Item>Sword</Item>
+    <Id>Sword1</Id>
+    <Item>Sword1</Item>
     <NeedLimit>20</NeedLimit>
   </ItemFormula>
   <ItemFormula>
     <NeedItems>
       <ItemFormulaNeed>
-        <Item>AnimalFat</Item>
+        <Item>Fat1</Item>
         <Min>2</Min>
         <Max>7</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>Cloth</Item>
+        <Item>Cloth1</Item>
         <Min>1</Min>
         <Max>3</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>Sticks</Item>
+        <Item>Sticks1</Item>
         <Min>1</Min>
         <Max>1</Max>
       </ItemFormulaNeed>
@@ -215,24 +215,24 @@
         </Effects>
       </ItemEffect>
     </Effects>
-    <Name>Torch</Name>
-    <Item>Torch</Item>
+    <Id>Torch1</Id>
+    <Item>Torch1</Item>
     <NeedLimit>8</NeedLimit>
   </ItemFormula>
   <ItemFormula>
     <NeedItems>
       <ItemFormulaNeed>
-        <Item>Nails</Item>
+        <Item>Nails1</Item>
         <Min>6</Min>
         <Max>10</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>AnimalFat</Item>
+        <Item>Fat1</Item>
         <Min>1</Min>
         <Max>6</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>IronSheets</Item>
+        <Item>IronSheets1</Item>
         <Min>3</Min>
         <Max>4</Max>
       </ItemFormulaNeed>
@@ -278,19 +278,19 @@
         </Effects>
       </ItemEffect>
     </Effects>
-    <Name>Lamp</Name>
-    <Item>Lamp</Item>
+    <Id>Lamp1</Id>
+    <Item>Lamp1</Item>
     <NeedLimit>12</NeedLimit>
   </ItemFormula>
   <ItemFormula>
     <NeedItems>
       <ItemFormulaNeed>
-        <Item>AnimalFat</Item>
+        <Item>Fat1</Item>
         <Min>2</Min>
         <Max>8</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>Rope</Item>
+        <Item>Rope1</Item>
         <Min>3</Min>
         <Max>3</Max>
       </ItemFormulaNeed>
@@ -323,24 +323,24 @@
         </Effects>
       </ItemEffect>
     </Effects>
-    <Name>Candle</Name>
-    <Item>Candle</Item>
+    <Id>Candle1</Id>
+    <Item>Candle1</Item>
     <NeedLimit>5</NeedLimit>
   </ItemFormula>
   <ItemFormula>
     <NeedItems>
       <ItemFormulaNeed>
-        <Item>Rope</Item>
+        <Item>Rope1</Item>
         <Min>1</Min>
         <Max>5</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>Cloth</Item>
+        <Item>Cloth1</Item>
         <Min>4</Min>
         <Max>7</Max>
       </ItemFormulaNeed>
       <ItemFormulaNeed>
-        <Item>IronSheets</Item>
+        <Item>IronSheets1</Item>
         <Min>2</Min>
         <Max>4</Max>
       </ItemFormulaNeed>
@@ -383,8 +383,8 @@
         </Effects>
       </ItemEffect>
     </Effects>
-    <Name>AidKit</Name>
-    <Item>AidKit</Item>
+    <Id>AidKit1</Id>
+    <Item>AidKit1</Item>
     <NeedLimit>9</NeedLimit>
   </ItemFormula>
 </ArrayOfItemFormula>

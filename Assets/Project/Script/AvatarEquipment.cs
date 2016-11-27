@@ -50,8 +50,8 @@ public class AvatarEquipment : MonoBehaviour
             {
                 continue;
             }
-
-            var equipAvater = (GameObject)GameObject.Instantiate(Resources.Load("Avatar/Equip/" + statuse.Item, typeof(GameObject)));
+            
+            var equipAvater = (GameObject)GameObject.Instantiate(Resources.Load(ItemSource.GetResourcePath(statuse.Item), typeof(GameObject)));
             
             equipAvater.transform.SetParent(gameObject.transform);
             equipAvater.transform.localPosition = Vector3.zero;            

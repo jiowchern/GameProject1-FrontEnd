@@ -38,7 +38,7 @@ public class UIItemFormula : MonoBehaviour
     public void Set(ItemFormulaLite formula_lite)
     {
         
-        Name.text = formula_lite.Name;
+        Name.text = formula_lite.Id;
         Item.text = formula_lite.Item;
         ItemImage.sprite = (Sprite)UnityEngine.Resources.Load("Icon/Item/" + formula_lite.Item , typeof (Sprite));
         int i = 0;

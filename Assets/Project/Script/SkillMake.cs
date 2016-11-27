@@ -88,7 +88,7 @@ public class SkillMake : MonoBehaviour {
         var formulas = ItemFormulaViewObject.GetComponentsInChildren<UIItemFormula>();
         foreach(var formula in formulas)
         {
-            if(instances.Any( i => i.Name == formula.Name.text))            
+            if(instances.Any( i => i.Id == formula.Name.text))            
                 GameObject.Destroy(formula.gameObject);
         }
 
