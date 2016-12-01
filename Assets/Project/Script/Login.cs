@@ -57,8 +57,12 @@ public class Login : MonoBehaviour
 	{
 		if (Client.Instance != null)
 		{
-			_User = Client.Instance.User;            
-		}
+			_User = Client.Instance.User;
+		    if (_User.Remoting.OnlineProvider.Ghosts.Length > 0)
+		    {
+                _User.Remoting.OnlineProvider.Ghosts[0].Disconnect();
+            }
+        }
 
 	    var account = AccountPasswords.Shuffle().First();
 	    Account.text = account.Id;

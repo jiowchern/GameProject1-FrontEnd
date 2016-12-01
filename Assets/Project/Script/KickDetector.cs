@@ -11,11 +11,15 @@ public class KickDetector : MonoBehaviour {
     
     private IAccountStatus _AccountStatus;
 
+    
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+    
         _Client = Client.Instance;
         if (_Client != null)
         {
+            
             _Client.User.AccountStatusProvider.Supply += _AccountStatusProvider;
             _Client.User.AccountStatusProvider.Unsupply += _ToLeave;
             _Client.User.JumpMapProvider.Supply += _JumpMap;
@@ -35,9 +39,12 @@ public class KickDetector : MonoBehaviour {
     }
 
     private void _ToLogin()
-    {
-        if(SceneChanger.Instance != null)
-            SceneChanger.Instance.ToLogin();       
+    {        
+
+        if (SceneChanger.Instance != null)
+            SceneChanger.Instance.ToLogin();
+
+        
     }
 
     void OnDestroy()

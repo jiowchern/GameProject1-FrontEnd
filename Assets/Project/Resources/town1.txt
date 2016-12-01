@@ -273,6 +273,12 @@
         <Position x="24.1176147" y="8.422577" />
         <Direction>0</Direction>
       </EntityLayout>
+      <EntityLayout>
+        <Id>8b0c8240-68c7-499b-acc2-a5cfdabf174d</Id>
+        <Type>ENTRANCE</Type>
+        <Position x="3.63" y="-4.17" />
+        <Direction>0</Direction>
+      </EntityLayout>
     </Entitys>
     <Chests />
     <Statics>
@@ -793,7 +799,14 @@
         </Kinds>
       </EnteranceLayout>
     </Enterances>
-    <Strongholds />
+    <Strongholds>
+      <StrongholdLayout>
+        <Owner>8b0c8240-68c7-499b-acc2-a5cfdabf174d</Owner>
+        <Kinds>
+          <ENTITY>ACTOR2</ENTITY>
+        </Kinds>
+      </StrongholdLayout>
+    </Strongholds>
     <Protals>
       <ProtalLayout>
         <Owner>984f8c48-2240-4a30-bf5a-2652b1bd4368</Owner>

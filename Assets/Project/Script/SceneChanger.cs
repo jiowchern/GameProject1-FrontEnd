@@ -29,7 +29,9 @@ public class SceneChanger : MonoBehaviour
 
     public void ToLogin()
     {
-        _LoadScene(
+        
+
+        _LoadScene( 
             new[]
             {
                 "login"

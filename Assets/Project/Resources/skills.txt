@@ -949,7 +949,7 @@
     <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
-    <Id>TWO_HAND_SWORD_IDLE</Id>
+    <Id>CLAYMORE_IDLE</Id>
     <Lefts>
       <Vector2 x="1.27844858" y="-0.12556839" />
       <Vector2 x="2.56367278" y="0.0502156019" />
@@ -969,7 +969,7 @@
     <Begin>0</Begin>
     <End>0</End>
     <Nexts>
-      <ACTOR_STATUS_TYPE>TWO_HAND_SWORD_ATTACK1</ACTOR_STATUS_TYPE>
+      <ACTOR_STATUS_TYPE>CLAYMORE_IDLE</ACTOR_STATUS_TYPE>
     </Nexts>
     <HitNexts />
     <Effects>
@@ -2092,7 +2092,7 @@
     <StrengthCost>1</StrengthCost>
   </SkillData>
   <SkillData>
-    <Id>TWO_HAND_SWORD_ATTACK1</Id>
+    <Id>CLAYMORE_ATTACK1</Id>
     <Lefts>
       <Vector2 x="1.27844858" y="-0.12556839" />
       <Vector2 x="2.56367278" y="0.0502156019" />
@@ -2112,7 +2112,7 @@
     <Begin>0.6</Begin>
     <End>0.7333333</End>
     <Nexts>
-      <ACTOR_STATUS_TYPE>TWO_HAND_SWORD_ATTACK2</ACTOR_STATUS_TYPE>
+      <ACTOR_STATUS_TYPE>CLAYMORE_ATTACK2</ACTOR_STATUS_TYPE>
     </Nexts>
     <HitNexts />
     <Effects>
@@ -3110,7 +3110,7 @@
     <StrengthCost>0</StrengthCost>
   </SkillData>
   <SkillData>
-    <Id>TWO_HAND_SWORD_ATTACK2</Id>
+    <Id>CLAYMORE_ATTACK2</Id>
     <Lefts>
       <Vector2 x="1.27844858" y="-0.12556839" />
       <Vector2 x="2.56367278" y="0.0502156019" />

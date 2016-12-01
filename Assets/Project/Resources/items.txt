@@ -2,91 +2,76 @@
 <ArrayOfItemPrototype xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ItemPrototype>
     <Id>AidKit1</Id>
-    <Features>USABLE</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Pike1</Id>
-    <Features>WEAPON_PIKE</Features>
     <Description />
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Sword2</Id>
-    <Features>WEAPON_TWOHANDSWORD</Features>
     <Description />
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Cloth1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Rope1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Axe1</Id>
-    <Features>WEAPON_AXE</Features>
     <Description />
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Nails1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Fat1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Torch1</Id>
-    <Features>ILLUMINATION</Features>
     <Description />
-    <EquipPart>FIXTURES</EquipPart>
+    <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Sword1</Id>
-    <Features>WEAPON_AXE</Features>
     <Description />
     <EquipPart>RIGHT_HAND</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>IronSheets1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Branch1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Candle1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Sticks1</Id>
-    <Features>MATERIAL</Features>
     <Description />
     <EquipPart>NONE</EquipPart>
   </ItemPrototype>
   <ItemPrototype>
     <Id>Lamp1</Id>
-    <Features>ILLUMINATION</Features>
     <Description />
     <EquipPart>FIXTURES</EquipPart>
   </ItemPrototype>

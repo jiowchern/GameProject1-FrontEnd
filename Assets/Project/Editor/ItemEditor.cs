@@ -21,8 +21,7 @@ namespace Assets.Project.Editor
         private int _End = 20;
 
         private string _ItemName;
-
-        private ITEM_FEATURES _ItemFeatures;
+        
 
         private string _Description;
 
@@ -89,7 +88,7 @@ namespace Assets.Project.Editor
 
 
             _EquipPart = (EQUIP_PART)EditorGUILayout.EnumPopup("EquipPart", _EquipPart);
-            _ItemFeatures = (ITEM_FEATURES)EditorGUILayout.EnumPopup("Features", _ItemFeatures);
+            
             _Description = EditorGUILayout.TextField("Description", _Description);
             EditorGUILayout.EndHorizontal();
 
@@ -100,15 +99,14 @@ namespace Assets.Project.Editor
                 _ItemSet.Add(new ItemPrototype()
                 {
                     Id = _ItemName,
-                    Features = _ItemFeatures,
+                    
                     EquipPart = _EquipPart
 
                 } );
             }
             if (GUILayout.Button("Load"))
             {
-                var item = _ItemSet.Find(_ItemName);
-                _ItemFeatures = item.Features;
+                var item = _ItemSet.Find(_ItemName);                
                 _Description = item.Description;
                 _EquipPart = item.EquipPart;
             }

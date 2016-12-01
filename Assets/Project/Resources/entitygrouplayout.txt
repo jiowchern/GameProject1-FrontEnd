@@ -137,25 +137,25 @@
         <Owner>10022e17-71f0-4482-8fd7-bd97d15154b9</Owner>
         <Items>
           <ResourceItem>
-            <Name>Rope</Name>
+            <Name>Rope1</Name>
           </ResourceItem>
           <ResourceItem>
-            <Name>Branch</Name>
+            <Name>Branch1</Name>
           </ResourceItem>
           <ResourceItem>
-            <Name>IronSheets</Name>
+            <Name>IronSheets1</Name>
           </ResourceItem>
           <ResourceItem>
-            <Name>AnimalFat</Name>
+            <Name>Fat1</Name>
           </ResourceItem>
           <ResourceItem>
-            <Name>Cloth</Name>
+            <Name>Cloth1</Name>
           </ResourceItem>
           <ResourceItem>
-            <Name>Nails</Name>
+            <Name>Nails1</Name>
           </ResourceItem>
           <ResourceItem>
-            <Name>Sticks</Name>
+            <Name>Sticks1</Name>
           </ResourceItem>
         </Items>
       </ResourceLayout>

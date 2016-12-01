@@ -62,6 +62,10 @@
             <Type>ATTACK_ADD</Type>
             <Value>1</Value>
           </Effect>
+          <Effect>
+            <Type>SKILL_AXE1</Type>
+            <Value>0</Value>
+          </Effect>
         </Effects>
       </ItemEffect>
       <ItemEffect>
@@ -148,6 +152,10 @@
           <Effect>
             <Type>ATTACK_ADD</Type>
             <Value>2</Value>
+          </Effect>
+          <Effect>
+            <Type>SKILL_SWORD1</Type>
+            <Value>0</Value>
           </Effect>
         </Effects>
       </ItemEffect>
@@ -386,5 +394,60 @@
     <Id>AidKit1</Id>
     <Item>AidKit1</Item>
     <NeedLimit>9</NeedLimit>
+  </ItemFormula>
+  <ItemFormula>
+    <NeedItems>
+      <ItemFormulaNeed>
+        <Item>IronSheets1</Item>
+        <Min>3</Min>
+        <Max>9</Max>
+      </ItemFormulaNeed>
+      <ItemFormulaNeed>
+        <Item>Branch1</Item>
+        <Min>1</Min>
+        <Max>3</Max>
+      </ItemFormulaNeed>
+      <ItemFormulaNeed>
+        <Item>Cloth1</Item>
+        <Min>5</Min>
+        <Max>7</Max>
+      </ItemFormulaNeed>
+    </NeedItems>
+    <Effects>
+      <ItemEffect>
+        <Quality>0</Quality>
+        <Effects>
+          <Effect>
+            <Type>ATTACK_ADD</Type>
+            <Value>3</Value>
+          </Effect>
+          <Effect>
+            <Type>SKILL_SWORD1</Type>
+            <Value>0</Value>
+          </Effect>
+        </Effects>
+      </ItemEffect>
+      <ItemEffect>
+        <Quality>0.5</Quality>
+        <Effects>
+          <Effect>
+            <Type>ATTACK_ADD</Type>
+            <Value>6</Value>
+          </Effect>
+        </Effects>
+      </ItemEffect>
+      <ItemEffect>
+        <Quality>1</Quality>
+        <Effects>
+          <Effect>
+            <Type>ATTACK_ADD</Type>
+            <Value>4</Value>
+          </Effect>
+        </Effects>
+      </ItemEffect>
+    </Effects>
+    <Id>Sword2</Id>
+    <Item>Sword2</Item>
+    <NeedLimit>12</NeedLimit>
   </ItemFormula>
 </ArrayOfItemFormula>

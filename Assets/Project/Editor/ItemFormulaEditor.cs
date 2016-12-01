@@ -28,12 +28,26 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
 
     private int[] _TestCount;
 
-    public ItemFormulaEditor1()
+    public ItemFormulaEditor1() 
     {
+        //new ItemFormula() { Id = "default"} , formula => formula.Id 
         _TestCount = new int[0];
         DefaultPath = "ItemFormula.txt";
-        Expression = i => i.Id;
-        SelectedItem = new ItemFormula() { Id = "default"};
+        SelectedItem = new ItemFormula()
+        {
+            Id = "default"
+        };
+        GetKeyExpression = formula => formula.Id;
+    }
+
+    protected override ItemFormula _Create()
+    {
+        return new ItemFormula() { Id = Guid.NewGuid().ToString()};
+    }
+
+    protected override string _GetKeyString(ItemFormula item)
+    {
+        return item.Id;
     }
 
     protected override void _DrawDetail(ref ItemFormula key)
@@ -187,6 +201,8 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
                 key.NeedItems[i].Max = needs[i].Max;
             }
         }
+
+        
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.BeginVertical();
@@ -203,9 +219,6 @@ public class ItemFormulaEditor1 : ResourceEditor<ItemFormula , string>
         EditorGUILayout.EndVertical();
     }
 
-    protected override void _DrawItem(ref ItemFormula key)
-    {        
-        EditorGUILayout.SelectableLabel(key.Id);
-    }
+    
 }
 

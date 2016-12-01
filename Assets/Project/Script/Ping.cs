@@ -9,11 +9,12 @@ public class Ping : MonoBehaviour
 
     private Client _Client;
 
+    private float _Last;
     // Use this for initialization
 	void Start ()
 	{
-
-	    _Client = Client.Instance;
+	    _Last = 0;
+        _Client = Client.Instance;
 	}
 	
 	// Update is called once per frame
@@ -21,7 +22,13 @@ public class Ping : MonoBehaviour
 	{
 	    if (_Client != null)
 	    {
-            Text.text = _Client.Ping.ToString();
+	        var val = _Client.Ping;
+	        if (val != _Last)
+	        {
+	            _Last = val;
+                Text.text = val.ToString();
+            }
+            
         }
 	    
 	}
