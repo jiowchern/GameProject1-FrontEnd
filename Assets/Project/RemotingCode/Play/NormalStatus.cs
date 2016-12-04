@@ -69,7 +69,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 {
                     if (_EquipItemsEvent != null)
                     {
-                        _EquipItemsEvent(_Player.Equipment.GetAll());
+                        _EquipItemsEvent(_Player.Equipment.GetItems());
                     }
                     if (_BagItemsEvent != null)
                     {

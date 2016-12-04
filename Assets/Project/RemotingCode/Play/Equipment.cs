@@ -28,7 +28,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             _Skills.Add(new Skill(EFFECT_TYPE.SKILL_CLAYMORE1, ACTOR_STATUS_TYPE.CLAYMORE_IDLE, ITEM_FEATURES.CLAYMORE, ITEM_FEATURES.NONE));
             _Skills.Add(new Skill(EFFECT_TYPE.SKILL_DUALSWORD1, ACTOR_STATUS_TYPE.DUALSWORD_IDLE, ITEM_FEATURES.SWORD, ITEM_FEATURES.SWORD));
             _Skills.Add(new Skill(EFFECT_TYPE.SKILL_SWORD1, ACTOR_STATUS_TYPE.SWORD_IDLE, ITEM_FEATURES.SWORD, ITEM_FEATURES.NONE));
-            _Skills.Add(new Skill(EFFECT_TYPE.SKILL_SWORDSHIELD1, ACTOR_STATUS_TYPE.SWORD_IDLE, ITEM_FEATURES.SWORD, ITEM_FEATURES.SHIELD));
+            _Skills.Add(new Skill(EFFECT_TYPE.SKILL_SWORDSHIELD1, ACTOR_STATUS_TYPE.SWORD_IDLE, ITEM_FEATURES.SHIELD, ITEM_FEATURES.SWORD));
 
 
 
@@ -59,20 +59,27 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         public bool Equip(Item item)
         {
+
             var part = item.GetEquipPart();
             if (_Items.ContainsKey(part) == false)
             {
-                _Items.Add(item.GetEquipPart(), item);                
+                _Items.Add(part, item);
                 AddEvent(item);
                 return true;
             }
-            if (part == EQUIP_PART.RIGHT_HAND  && _Items.ContainsKey(EQUIP_PART.LEFT_HAND) == false)
+
+            var rightItem = _Items.FirstOrDefault(i => i.Key == EQUIP_PART.RIGHT_HAND);            
+            if (part == EQUIP_PART.RIGHT_HAND  
+                && _Items.ContainsKey(EQUIP_PART.LEFT_HAND) == false
+                && rightItem.Value.GetPrototype().Features != ITEM_FEATURES.CLAYMORE)
             {
                 _Items.Add(EQUIP_PART.LEFT_HAND, item);
                 AddEvent(item);
 
                 return true;
             }
+
+            
 
             return false;
         }
@@ -85,10 +92,11 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
             return null;
         }
-        public Item[] GetAll()
+        public Item[] GetItems()
         {
             return _Items.Values.ToArray();
         }
+        
 
         public Item[] Unequip(Guid id)
         {
@@ -137,11 +145,23 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
                 ITEM_FEATURES leftFeatures = ITEM_FEATURES.NONE;
                 if (leftItem != null)
                     leftFeatures = leftItem.GetPrototype().Features;
-                var effect = rightItem.Effects.FirstOrDefault();
+                var effect = rightItem.Effects.FirstOrDefault( e=> _Skills.Any( s => s.Effect == e.Type));
 
                 return (from skill in _Skills where skill.Conform(effect.Type , rightFeatures , leftFeatures) select skill.Status).First();
             }
             return ACTOR_STATUS_TYPE.MELEE_IDLE;
+        }
+
+        public EquipStatus[] GetStatus()
+        {
+            var status = new EquipStatus[_Items.Count];
+            int i = 0;
+            foreach (var item in _Items)
+            {
+                status[i++] = new EquipStatus() { Item = item.Value.Name , Part = item.Key};
+            }
+
+            return status;
         }
     }
 
@@ -164,6 +184,8 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
         }
 
         public ACTOR_STATUS_TYPE Status { get {return _StatusIdle;} }
+
+        public EFFECT_TYPE Effect { get { return _SkillEffect; } }
 
         public bool Conform(EFFECT_TYPE effect, ITEM_FEATURES right_features, ITEM_FEATURES left_features)
         {

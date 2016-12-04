@@ -38,12 +38,22 @@ public class Recorder : EditorWindow {
 
     private Object _Skill;
 
+    private Object _Clip;
+
+    private Object _Player;
+
     public void OnGUI()
     {
         EditorGUILayout.BeginVertical();
 
         var pervAni = _Ani;
+        var pervClip = _Clip;
+
+        _Player = EditorGUILayout.ObjectField("Player", _Player, typeof(GameObject), true);
         _Ani = EditorGUILayout.ObjectField("Animator", _Ani, typeof(Animator) , true);
+
+        
+        _Clip = EditorGUILayout.ObjectField("AnimationClip", _Clip, typeof(AnimationClip), true);
         _Layer = EditorGUILayout.TextField("Layer", _Layer);
         _State = EditorGUILayout.TextField("State", _State);
         _BeginTime = EditorGUILayout.FloatField("BeginTime", _BeginTime);
@@ -53,24 +63,39 @@ public class Recorder : EditorWindow {
         _Skill = EditorGUILayout.ObjectField("Skill", _Skill, typeof(SkillExportMark), true);
 
 
-        if (GUILayout.Button("Go"))
+        if (GUILayout.Button("Go Animator"))
         {
             _Catche();
+        }
+        if (GUILayout.Button("Go Clip"))
+        {
+            _Record(_Clip as AnimationClip);
         }
         EditorGUILayout.EndVertical();
 
         if (_Ani != pervAni)
         {
 
-            _UpdateTime();
+            _UpdateTime(_Ani as Animator);
+        }
+
+        if(pervClip != _Clip)
+        {
+            _UpdateTime(_Clip as AnimationClip);
         }
     }
 
-    private void _UpdateTime()
+    private void _Record(AnimationClip clip)
     {
-        if (_Ani == null)
-            return;
-        var anim = _Ani as Animator;
+        var data = _FindPoints(clip, _Interval);
+
+        _Record(data);
+    }
+
+    private void _UpdateTime(Animator anim)
+    {
+        if (anim == null)
+            return;        
         
         var ac = anim.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;        
         if (ac == null)
@@ -81,7 +106,12 @@ public class Recorder : EditorWindow {
         if (state == null)
             return;
         var clip = _FindClips(state, _State);
+        _UpdateTime(clip);
+        
+    }
 
+    private void _UpdateTime(AnimationClip clip)
+    {
         if (clip == null)
             return;
         _BeginTime = 0;
@@ -96,10 +126,7 @@ public class Recorder : EditorWindow {
         {
             var state = _FindLayer(ac, _Layer);
             var clip = _FindClips(state , _State);
-
-            var data  = _FindPoints(clip, _Interval );
-            
-            _Record(data);
+            _Record(clip);
         }        
     }
     
@@ -125,10 +152,9 @@ public class Recorder : EditorWindow {
 
     private SkillData _FindPoints( AnimationClip clip, float interval)
     {
-        var data = new SkillData(); 
-        var anim = _Ani as Animator;
+        var data = new SkillData();         
         
-        var go = anim.gameObject;
+        var go = _Player as GameObject;
         
         var marks = go.GetComponentsInChildren<DeterminationExportMark>(); 
         var markLeft = (from m in marks where m.Part == DeterminationExportMark.PART.LEFT select m).Single(); 
