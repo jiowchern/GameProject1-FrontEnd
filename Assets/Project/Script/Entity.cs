@@ -71,6 +71,7 @@ public class Entity : MonoBehaviour {
 		{            
 			_Visible.StatusEvent -= _Move;
 			_Visible.TalkMessageEvent -= _ShowMessage;
+		    _Visible.EnergyEvent -= _ShowEnergy;
 		}
 
 		if (_Client != null)
@@ -81,7 +82,12 @@ public class Entity : MonoBehaviour {
 		}
 	}
 
-	private void _ShowMessage(string obj)
+    private void _ShowEnergy(Energy energy)
+    {
+        PopupEnergyLauncher.Launch(gameObject.transform  , energy);
+    }
+
+    private void _ShowMessage(string obj)
 	{
 		Talker.Show(obj);
 	}
@@ -183,7 +189,8 @@ public class Entity : MonoBehaviour {
 		_Visible = visible;        
 		_Visible.StatusEvent += _Move;
 		_Visible.TalkMessageEvent += _ShowMessage;
-		_Visible.QueryStatus();
+	    _Visible.EnergyEvent += _ShowEnergy;
+        _Visible.QueryStatus();
 
 		_SetStatus(_Visible.Status);
 		_SetPosition(_Visible.Position);
@@ -245,8 +252,11 @@ public class Entity : MonoBehaviour {
 	}
 
 	private void _Move(VisibleStatus status)
-	{        
-		_SetPosition(status.StartPosition);
+	{
+
+        if(EntityController.MainEntityId == _Visible.Id)
+            Debug.Log("set status " + _Visible.Position.X +" , "+_Visible.Position.Y);
+        _SetPosition(status.StartPosition);
 		
 		Speed = status.Speed;        
 		Trun = status.Trun;
@@ -259,11 +269,15 @@ public class Entity : MonoBehaviour {
 
 	private void _SetStatus(ACTOR_STATUS_TYPE status)
 	{
+        
 		Status = status;
 
 		if (Avatar != null)
 		{
-			_BeginSpeed = Avatar.GetFloat("Speed");
+            if(Status == ACTOR_STATUS_TYPE.DAMAGE1)
+                Avatar.SetTrigger(ACTOR_STATUS_TYPE.DAMAGE1.ToString());
+            Avatar.SetInteger("Status", (int)Status);
+            _BeginSpeed = Avatar.GetFloat("Speed");
 			_EndSpeed = Speed;
 			_SpeedStep = 0.0f;
 
@@ -316,11 +330,13 @@ public class Entity : MonoBehaviour {
 			_SpeedStep += deltaTime * 2.50f;
 			_TrunStep += deltaTime * 5.0f;
 
-			Avatar.SetFloat("Speed", Mathf.Lerp(_BeginSpeed, _EndSpeed, _SpeedStep));
 
-			Avatar.SetFloat("Trun", Mathf.Lerp(_BeginTrun, _EndTrun, _TrunStep));
+            if(_SpeedStep <= 1f)
+			    Avatar.SetFloat("Speed", Mathf.Lerp(_BeginSpeed, _EndSpeed, _SpeedStep));
 
-			Avatar.SetInteger("Status", (int)Status);
+            if(_TrunStep <= 1f)
+			    Avatar.SetFloat("Trun", Mathf.Lerp(_BeginTrun, _EndTrun, _TrunStep));
+			
 			
 		}
 	}

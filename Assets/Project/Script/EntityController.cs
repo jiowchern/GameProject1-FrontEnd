@@ -9,7 +9,8 @@ public class EntityController : MonoBehaviour
 	private Client _Client;	
 	private IMoveController _MoveController;
 
-	void OnDestroy()
+    private KeyCode _PrevKeyCode;
+    void OnDestroy()
 	{
 		if (_Client != null)
 		{
@@ -41,32 +42,19 @@ public class EntityController : MonoBehaviour
 		if (_MoveController == null)
 			return;
 
-
-		if (Input.GetKey(KeyCode.LeftShift))
-		{
-			if (Input.GetKey(KeyCode.W))
-			{
-				_MoveController.Forward();
-			}	        
-		}
-		else
-		{
-			if (Input.GetKey(KeyCode.W))
-			{
-				_MoveController.RunForward();
-			}
-
-		}
+        
+        
 
 
 		if (Input.GetKeyDown(KeyCode.W))
 		{
-			if(Input.GetKey(KeyCode.LeftShift))
+            Debug.Log("Forward move.");
+            if (Input.GetKeyDown(KeyCode.LeftShift))
 			{
-				_MoveController.RunForward();
+				_MoveController.Forward();
 			}
 			else
-				_MoveController.Forward();
+				_MoveController.RunForward();
 		}
 		
 
@@ -92,6 +80,8 @@ public class EntityController : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.W) ||
 			Input.GetKeyUp(KeyCode.S)            )
 		{
+
+            Debug.Log("stop move.");
 			_MoveController.StopMove();
 			
 		}
