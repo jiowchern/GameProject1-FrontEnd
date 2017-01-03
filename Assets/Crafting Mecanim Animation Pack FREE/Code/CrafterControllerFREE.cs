@@ -95,7 +95,7 @@ public class WarriorAnimationDemoFREE : MonoBehaviour
 		Vector3 motion = inputVec;
 
 		//reduce input for diagonal movement
-		motion *= (Mathf.Abs(inputVec.x) == 1 && Mathf.Abs(inputVec.z) == 1)?.7f:1;
+		motion *= (Mathf.Abs(inputVec.x) == 1 && Mathf.Abs(inputVec.z) == 1)?0.7f:1;
 
 		RotateTowardMovementDirection();  
 		GetCameraRelativeMovement();  

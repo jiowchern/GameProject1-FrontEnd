@@ -11,11 +11,13 @@ public class SceneChanger : MonoBehaviour
     public static  SceneChanger Instance { get { return Object.FindObjectOfType<SceneChanger>();  } }
 
     public static Client.MODE Mode;
-    private const string Core = "core";
+    private const string _Core = "Core";
     public void Initial(Client.MODE remoting)
     {
         Mode = remoting;
-        SceneManager.LoadScene(Core, LoadSceneMode.Additive);    
+        SceneManager.LoadScene(SceneChanger._Core, LoadSceneMode.Additive);
+        var scene = SceneManager.GetSceneByName(_Core);
+        SceneManager.MoveGameObjectToScene(gameObject , scene);
     }
 
     public void ToQuit()
@@ -38,7 +40,7 @@ public class SceneChanger : MonoBehaviour
             },
             new[]
             {
-                Core
+                SceneChanger._Core
             });
     }
 
@@ -52,20 +54,34 @@ public class SceneChanger : MonoBehaviour
                 removes.Add(name);
         }
 
-        foreach (var remove in removes)
-        {
-            SceneManager.UnloadScene(remove);
-        }
+        Instance.StartCoroutine( _RemoveScenes(adds , removes) );
+
+        
 
 
 
         
+        
+    }
+
+    private IEnumerator _RemoveScenes(string[] adds , List<string> removes)
+    {
+        foreach (var remove in removes)
+        {
+            yield return SceneManager.UnloadSceneAsync(remove);
+        }
+
+        Instance.StartCoroutine(_LoadScenes(adds));
+    }
+
+    private IEnumerator _LoadScenes(string[] adds)
+    {
         foreach (var add in adds)
         {
-            SceneManager.LoadScene(add, LoadSceneMode.Additive);
+            yield return SceneManager.LoadSceneAsync(add, LoadSceneMode.Additive);
         }
         var instance = Instance;
-        if(instance != null)
+        if (instance != null)
             instance.StartCoroutine(_SetActiveScene(adds.First()));
     }
 
@@ -102,12 +118,12 @@ public class SceneChanger : MonoBehaviour
 
     public void ToRealm(string realm)
     {
-        SceneChanger.Instance._LoadScene(new[] { realm, "hui" }, new[] { Core });
+        SceneChanger.Instance._LoadScene(new[] { realm, "hui" }, new[] { SceneChanger._Core });
     }
 
 
     public void ToCredits()
     {
-        SceneChanger.Instance._LoadScene(new[] { "credits" }, new[] { Core });
+        SceneChanger.Instance._LoadScene(new[] { "credits" }, new[] { SceneChanger._Core });
     }
 }

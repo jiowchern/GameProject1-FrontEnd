@@ -10,9 +10,10 @@ using System;
 
 using Regulus.Remoting;
 
+
 public class Client : MonoBehaviour
 {
-
+    
 	public static Client Instance {
 		get { return GameObject.FindObjectOfType<Client>();  }
 	}
@@ -71,10 +72,11 @@ public class Client : MonoBehaviour
 
 	private void _ToMode(GameModeSelector<IUser> selector)
 	{
+	    var gpiProvider =new Regulus.Project.ItIsNotAGame1.GPIProvider();
 		UserProvider<IUser> provider;
 		if (Mode == MODE.REMOTING)
 		{
-			selector.AddFactoty("r", new RemotingUserFactory());
+			selector.AddFactoty("r", new RemotingUserFactory( ));
 			provider = selector.CreateUserProvider("r");
 		}
 		else
@@ -119,10 +121,14 @@ public class Client : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 
-		try
-		{
-			_Updater.Working();
-		}
+	    try
+	    {
+	        _Updater.Working();
+	    }
+	    catch (Regulus.DeserializeException de)
+	    {
+            Debug.Log(de);
+        }
 		catch(Exception e)
 		{
 			Debug.Log(e);

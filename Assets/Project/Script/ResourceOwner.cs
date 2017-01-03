@@ -29,6 +29,8 @@ public class ResourceOwner : MonoBehaviour {
 
     public void Load()
     {
+        var formula = new ItemFormula();
+        Debug.Log(formula.GetHashCode());
         Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Entitys = _ReadEntitys();
         Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.SkillDatas = _ReadSkills();
         Regulus.Project.ItIsNotAGame1.Data.Resource.Instance.Items = _ReadItems();
