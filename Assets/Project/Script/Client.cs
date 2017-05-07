@@ -11,7 +11,7 @@ using System;
 using Regulus.Remoting;
 
 
-public class Client : MonoBehaviour
+public class Client : MonoBehaviour , ICore
 {
     
 	public static Client Instance {
@@ -33,10 +33,13 @@ public class Client : MonoBehaviour
 
 	private IOnline _Online;
 
-	public Client()
+    private Center _Center;
+
+    public Client()
 	{
-		
-		_Updater = new Updater();
+        var feature = new Regulus.Project.ItIsNotAGame1.Game.DummyFrature();
+        _Center= new Center(feature, feature);
+        _Updater = new Updater();
 		
 	}
 	// Use this for initialization
@@ -72,21 +75,20 @@ public class Client : MonoBehaviour
 
 	private void _ToMode(GameModeSelector<IUser> selector)
 	{
-	    var gpiProvider =new Regulus.Project.ItIsNotAGame1.GPIProvider();
-		UserProvider<IUser> provider;
+	    var gpiProvider = new Regulus.Project.ItIsNotAGame.Data.Protocol();
+        UserProvider<IUser> provider;
 		if (Mode == MODE.REMOTING)
 		{
-			selector.AddFactoty("r", new RemotingUserFactory( ));
+			selector.AddFactoty("r", new RemotingUserFactory(gpiProvider));
 			provider = selector.CreateUserProvider("r");
 		}
 		else
 		{
 			this.Resource.Load();
-			var feature = new Regulus.Project.ItIsNotAGame1.Game.DummyFrature();
-			var center = new Center(feature, feature);
 			
-			_Updater.Add(center);
-			selector.AddFactoty("s", new StandaloneUserFactory(center));
+			
+			_Updater.Add(_Center);
+			selector.AddFactoty("s", new StandaloneUserFactory(this, gpiProvider));
 			provider = selector.CreateUserProvider("s");
 		}
 
@@ -119,7 +121,22 @@ public class Client : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update () {
+    void ICore.Launch(IProtocol protocol, ICommand command)
+    {
+        
+    }
+
+    bool ICore.Update()
+    {
+        return true;
+    }
+
+    void ICore.Shutdown()
+    {
+        
+    }
+
+    void Update () {
 
 	    try
 	    {
@@ -129,11 +146,11 @@ public class Client : MonoBehaviour
 	    {
             Debug.Log(de);
         }
-		catch(Exception e)
+		/*catch(Exception e)
 		{
 			Debug.Log(e);
 			
-		}
+		}*/
 		
 	}
 
@@ -149,4 +166,9 @@ public class Client : MonoBehaviour
 	{
 		_Online = null;
 	}
+
+    void IBinderProvider.AssignBinder(ISoulBinder binder)
+    {
+        _Center.AssignBinder(binder);
+    }
 }

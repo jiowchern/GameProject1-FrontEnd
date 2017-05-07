@@ -6,11 +6,12 @@ using Regulus.Framework;
 using Regulus.Game;
 using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Project.ItIsNotAGame1.Game.Data;
+using Regulus.Remoting;
 using Regulus.Utility;
 
 namespace Regulus.Project.ItIsNotAGame1.Game.Play
 {
-    public class Center : IUpdatable , Remoting.ICore
+    public class Center : IUpdatable
     {
         private readonly IAccountFinder _AccountFinder;
         private readonly IGameRecorder _GameRecorder;
@@ -20,8 +21,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
 
         private readonly Zone _Zone;
         public Center(IAccountFinder account_finder, IGameRecorder game_recorder  )
-        {
-            
+        {            
             _AccountFinder = account_finder;
             _GameRecorder = game_recorder;
             _Hall = new Hall();
@@ -190,7 +190,7 @@ namespace Regulus.Project.ItIsNotAGame1.Game.Play
             return true;
         }
 
-        void Remoting.ICore.AssignBinder(Remoting.ISoulBinder binder)
+        public void AssignBinder(Remoting.ISoulBinder binder)
         {
             this.Join(binder);
         }

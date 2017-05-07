@@ -1,3 +1,5 @@
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 // Shader created with Shader Forge v1.28 
@@ -62,7 +64,7 @@ Shader "UnityChan/ToonShader_rim" {
                 VertexOutput o = (VertexOutput)0;
                 o.uv0 = v.texcoord0;
                 float4 _Outline_sampler_var = tex2Dlod(_Outline_sampler,float4(TRANSFORM_TEX(o.uv0, _Outline_sampler),0.0,0)); // Outlineの入り抜き調整Sampler
-                o.pos = mul(UNITY_MATRIX_MVP, float4(v.vertex.xyz + v.normal*(_Outline_sampler_var.rgb*_Outline_Width*0.001).r,1) );
+                o.pos = UnityObjectToClipPos(float4(v.vertex.xyz + v.normal*(_Outline_sampler_var.rgb*_Outline_Width*0.001).r,1) );
                 UNITY_TRANSFER_FOG(o,o.pos);
                 return o;
             }
@@ -129,7 +131,7 @@ Shader "UnityChan/ToonShader_rim" {
                 o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
+                o.pos = UnityObjectToClipPos(v.vertex );
                 UNITY_TRANSFER_FOG(o,o.pos);
                 TRANSFER_VERTEX_TO_FRAGMENT(o)
                 return o;
@@ -217,7 +219,7 @@ Shader "UnityChan/ToonShader_rim" {
                 o.tangentDir = normalize( mul( unity_ObjectToWorld, float4( v.tangent.xyz, 0.0 ) ).xyz );
                 o.bitangentDir = normalize(cross(o.normalDir, o.tangentDir) * v.tangent.w);
                 o.posWorld = mul(unity_ObjectToWorld, v.vertex);
-                o.pos = mul(UNITY_MATRIX_MVP, v.vertex );
+                o.pos = UnityObjectToClipPos(v.vertex );
                 UNITY_TRANSFER_FOG(o,o.pos);
                 TRANSFER_VERTEX_TO_FRAGMENT(o)
                 return o;
