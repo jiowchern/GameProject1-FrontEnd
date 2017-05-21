@@ -16,9 +16,9 @@
                 _Type = typeof(Regulus.Project.ItIsNotAGame1.Data.IInventoryNotifier);                   
             
             }
-            Delegate Regulus.Remoting.IEventProxyCreator.Create(Guid soul_id, Action<Guid, string, object[]> invoke_Event)
+            Delegate Regulus.Remoting.IEventProxyCreator.Create(Guid soul_id,int event_id, Regulus.Remoting.InvokeEventCallabck invoke_Event)
             {                
-                var closure = new Regulus.Remoting.GenericEventClosure<Regulus.Project.ItIsNotAGame1.Data.Item>(soul_id , _Name , invoke_Event);                
+                var closure = new Regulus.Remoting.GenericEventClosure<Regulus.Project.ItIsNotAGame1.Data.Item>(soul_id , event_id , invoke_Event);                
                 return new Action<Regulus.Project.ItIsNotAGame1.Data.Item>(closure.Run);
             }
         

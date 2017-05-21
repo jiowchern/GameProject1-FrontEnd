@@ -7,25 +7,18 @@
     { 
         public class CIJumpMap : Regulus.Project.ItIsNotAGame1.Data.IJumpMap , Regulus.Remoting.IGhost
         {
-            bool _HaveReturn ;
-            Regulus.Remoting.IGhostRequest _Requester;
-            Guid _GhostIdName;
-            Regulus.Remoting.ReturnValueQueue _Queue;
-            readonly Regulus.Serialization.ISerializer _Serializer ;
-            public CIJumpMap(Regulus.Remoting.IGhostRequest requester , Guid id,Regulus.Remoting.ReturnValueQueue queue, bool have_return , Regulus.Serialization.ISerializer serializer)
+            readonly bool _HaveReturn ;
+            
+            readonly Guid _GhostIdName;
+            
+            
+            
+            public CIJumpMap(Guid id, bool have_return )
             {
-                _Serializer = serializer;
-
-                _Requester = requester;
                 _HaveReturn = have_return ;
-                _GhostIdName = id;
-                _Queue = queue;
+                _GhostIdName = id;            
             }
-
-            void Regulus.Remoting.IGhost.OnEvent(string name_event, byte[][] args)
-            {
-                Regulus.Remoting.AgentCore.CallEvent(name_event , "CIJumpMap" , this , args, _Serializer);
-            }
+            
 
             Guid Regulus.Remoting.IGhost.GetID()
             {
@@ -36,27 +29,30 @@
             {
                 return _HaveReturn;
             }
-
-            void Regulus.Remoting.IGhost.OnProperty(string name, object value)
+            object Regulus.Remoting.IGhost.GetInstance()
             {
-                Regulus.Remoting.AgentCore.UpdateProperty(name , "CIJumpMap" , this , value );
+                return this;
             }
+
+            private event Regulus.Remoting.CallMethodCallback _CallMethodEvent;
+
+            event Regulus.Remoting.CallMethodCallback Regulus.Remoting.IGhost.CallMethodEvent
+            {
+                add { this._CallMethodEvent += value; }
+                remove { this._CallMethodEvent -= value; }
+            }
+            
             
                 void Regulus.Project.ItIsNotAGame1.Data.IJumpMap.Ready()
                 {                    
 
-                        
-                    var packageCallMethod = new Regulus.Remoting.PackageCallMethod();
-                    packageCallMethod.EntityId = _GhostIdName;
-                    packageCallMethod.MethodName ="Ready";
-                    
-                    var paramList = new System.Collections.Generic.List<byte[]>();
-
-packageCallMethod.MethodParams = paramList.ToArray();
-                    _Requester.Request(Regulus.Remoting.ClientToServerOpCode.CallMethod , packageCallMethod.ToBuffer(_Serializer));
-
+                    Regulus.Remoting.IValue returnValue = null;
+                    var info = typeof(Regulus.Project.ItIsNotAGame1.Data.IJumpMap).GetMethod("Ready");
+                    _CallMethodEvent(info , new object[] {} , returnValue);                    
                     
                 }
+
+                
 
 
                 System.String _Realm;

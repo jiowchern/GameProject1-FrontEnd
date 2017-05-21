@@ -7,25 +7,18 @@
     { 
         public class CIMakeSkill : Regulus.Project.ItIsNotAGame1.Data.IMakeSkill , Regulus.Remoting.IGhost
         {
-            bool _HaveReturn ;
-            Regulus.Remoting.IGhostRequest _Requester;
-            Guid _GhostIdName;
-            Regulus.Remoting.ReturnValueQueue _Queue;
-            readonly Regulus.Serialization.ISerializer _Serializer ;
-            public CIMakeSkill(Regulus.Remoting.IGhostRequest requester , Guid id,Regulus.Remoting.ReturnValueQueue queue, bool have_return , Regulus.Serialization.ISerializer serializer)
+            readonly bool _HaveReturn ;
+            
+            readonly Guid _GhostIdName;
+            
+            
+            
+            public CIMakeSkill(Guid id, bool have_return )
             {
-                _Serializer = serializer;
-
-                _Requester = requester;
                 _HaveReturn = have_return ;
-                _GhostIdName = id;
-                _Queue = queue;
+                _GhostIdName = id;            
             }
-
-            void Regulus.Remoting.IGhost.OnEvent(string name_event, byte[][] args)
-            {
-                Regulus.Remoting.AgentCore.CallEvent(name_event , "CIMakeSkill" , this , args, _Serializer);
-            }
+            
 
             Guid Regulus.Remoting.IGhost.GetID()
             {
@@ -36,68 +29,54 @@
             {
                 return _HaveReturn;
             }
-
-            void Regulus.Remoting.IGhost.OnProperty(string name, object value)
+            object Regulus.Remoting.IGhost.GetInstance()
             {
-                Regulus.Remoting.AgentCore.UpdateProperty(name , "CIMakeSkill" , this , value );
+                return this;
+            }
+
+            private event Regulus.Remoting.CallMethodCallback _CallMethodEvent;
+
+            event Regulus.Remoting.CallMethodCallback Regulus.Remoting.IGhost.CallMethodEvent
+            {
+                add { this._CallMethodEvent += value; }
+                remove { this._CallMethodEvent -= value; }
             }
             
-                void Regulus.Project.ItIsNotAGame1.Data.IMakeSkill.Create(System.String formula,System.Int32[] amounts)
+            
+                void Regulus.Project.ItIsNotAGame1.Data.IMakeSkill.Create(System.String _1,System.Int32[] _2)
                 {                    
 
-                        
-                    var packageCallMethod = new Regulus.Remoting.PackageCallMethod();
-                    packageCallMethod.EntityId = _GhostIdName;
-                    packageCallMethod.MethodName ="Create";
-                    
-                    var paramList = new System.Collections.Generic.List<byte[]>();
-
-    var formulaBytes = _Serializer.Serialize(formula);  
-    paramList.Add(formulaBytes);
- 
-
-    var amountsBytes = _Serializer.Serialize(amounts);  
-    paramList.Add(amountsBytes);
-
-packageCallMethod.MethodParams = paramList.ToArray();
-                    _Requester.Request(Regulus.Remoting.ClientToServerOpCode.CallMethod , packageCallMethod.ToBuffer(_Serializer));
-
+                    Regulus.Remoting.IValue returnValue = null;
+                    var info = typeof(Regulus.Project.ItIsNotAGame1.Data.IMakeSkill).GetMethod("Create");
+                    _CallMethodEvent(info , new object[] {_1 ,_2} , returnValue);                    
                     
                 }
+
+                
  
 
                 void Regulus.Project.ItIsNotAGame1.Data.IMakeSkill.Exit()
                 {                    
 
-                        
-                    var packageCallMethod = new Regulus.Remoting.PackageCallMethod();
-                    packageCallMethod.EntityId = _GhostIdName;
-                    packageCallMethod.MethodName ="Exit";
-                    
-                    var paramList = new System.Collections.Generic.List<byte[]>();
-
-packageCallMethod.MethodParams = paramList.ToArray();
-                    _Requester.Request(Regulus.Remoting.ClientToServerOpCode.CallMethod , packageCallMethod.ToBuffer(_Serializer));
-
+                    Regulus.Remoting.IValue returnValue = null;
+                    var info = typeof(Regulus.Project.ItIsNotAGame1.Data.IMakeSkill).GetMethod("Exit");
+                    _CallMethodEvent(info , new object[] {} , returnValue);                    
                     
                 }
+
+                
  
 
                 void Regulus.Project.ItIsNotAGame1.Data.IMakeSkill.QueryFormula()
                 {                    
 
-                        
-                    var packageCallMethod = new Regulus.Remoting.PackageCallMethod();
-                    packageCallMethod.EntityId = _GhostIdName;
-                    packageCallMethod.MethodName ="QueryFormula";
-                    
-                    var paramList = new System.Collections.Generic.List<byte[]>();
-
-packageCallMethod.MethodParams = paramList.ToArray();
-                    _Requester.Request(Regulus.Remoting.ClientToServerOpCode.CallMethod , packageCallMethod.ToBuffer(_Serializer));
-
+                    Regulus.Remoting.IValue returnValue = null;
+                    var info = typeof(Regulus.Project.ItIsNotAGame1.Data.IMakeSkill).GetMethod("QueryFormula");
+                    _CallMethodEvent(info , new object[] {} , returnValue);                    
                     
                 }
+
+                
 
 
 
