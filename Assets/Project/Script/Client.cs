@@ -7,7 +7,7 @@ using Regulus.Project.ItIsNotAGame1.Data;
 using Regulus.Project.ItIsNotAGame1.Game.Play;
 using Regulus.Utility;
 using System;
-
+using Regulus.Network.Rudp;
 using Regulus.Remoting;
 
 
@@ -34,9 +34,10 @@ public class Client : MonoBehaviour , ICore
 	private IOnline _Online;
 
     private Center _Center;
-
+    private Regulus.Network.Rudp.Client _Rudp;
     public Client()
 	{
+	    _Rudp = new Regulus.Network.Rudp.Client(new UdpSocket());
         var feature = new Regulus.Project.ItIsNotAGame1.Game.DummyFrature();
         _Center= new Center(feature, feature);
         _Updater = new Updater();
@@ -59,8 +60,9 @@ public class Client : MonoBehaviour , ICore
 		_Updater.Add(_Client);
 		Debug.Log("Started .");
 
-		
-	}
+	    _Rudp.Launch();
+
+    }
 	
 
 	private void _Log(string condition, string stacktrace, LogType type)
@@ -75,11 +77,12 @@ public class Client : MonoBehaviour , ICore
 
 	private void _ToMode(GameModeSelector<IUser> selector)
 	{
-	    var gpiProvider = new Regulus.Project.ItIsNotAGame.Data.Protocol();
+	    
+        var gpiProvider = new Regulus.Project.ItIsNotAGame.Data.Protocol();
         UserProvider<IUser> provider;
 		if (Mode == MODE.REMOTING)
 		{
-			selector.AddFactoty("r", new RemotingUserFactory(gpiProvider));
+			selector.AddFactoty("r", new RemotingUserFactory(gpiProvider,_Rudp));
 			provider = selector.CreateUserProvider("r");
 		}
 		else
@@ -160,7 +163,9 @@ public class Client : MonoBehaviour , ICore
 		User.Remoting.OnlineProvider.Supply -= _SupplyOnline;
 		User.Remoting.OnlineProvider.Unsupply -= _UnsupplyOnline;
 		_Updater.Shutdown();
-	}
+	    _Rudp.Shutdown();
+
+    }
 
 	private void _UnsupplyOnline(IOnline obj)
 	{

@@ -20,6 +20,11 @@ class VerifyStage : Regulus.Utility.IStage
         this._Password = _Password;
         this._Provider = providerNotice;
     }
+
+    public void Enter()
+    {
+        
+    }
     void Regulus.Utility.IStage.Enter()
     {
         _Provider.Supply += _Provider_Supply;

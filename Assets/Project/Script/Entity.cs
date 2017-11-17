@@ -127,9 +127,10 @@ public class Entity : MonoBehaviour {
 	}
 
 	private void _InBattle(ICastSkill obj)
-	{
-		
-		if (EntityController.IsMainEntity(_Visible))
+	{	    
+	    
+
+        if (EntityController.IsMainEntity(_Visible))
 		{
 			var cam = GameObject.FindObjectOfType<CameraFollow>();
 			cam.Watchtarget = BattleCameraTarget;
